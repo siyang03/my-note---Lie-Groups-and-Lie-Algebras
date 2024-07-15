@@ -1,0 +1,180 @@
+\chapter{Lie groups}
+\section{Lie groups}
+\begin{itemize}
+	\item \textbf{Lie group} $G$ is a group and a manifold,
+	\begin{itemize}
+		\item group multiplication, $G \times G \rightarrow G$, is $C^\infty$.
+		
+		\item inverse, $G \rightarrow G$, is $C^\infty$.
+	\end{itemize}
+	
+	\item \textbf{left transformation}, $L_g: G \rightarrow G, L_g(h) = g h$.
+	\begin{itemize}
+		\item $L_e = \mathrm{id}$.
+		
+		\item $L_g L_h = L_{g h}$.
+		
+		\item $L_g^{-1} = L_{g^{-1}}$.
+		
+		\item $L_g$ is diffeomorphism, i.e. bijective + $C^\infty$.
+	\end{itemize}
+	
+	\item property of elements near $e$, if $x^i(e) = 0$, then,
+	\begin{equation}
+		x^i(g h) = x^i(g) + x^i(h)
+	\end{equation}
+	
+	\begin{tcolorbox}[title=proof:]
+		\begin{align}
+			g h &= \Big( e + x^i(g) \frac{\partial g}{\partial x^i} \Big|_e + \cdots \Big) \Big( e + x^i(h) \frac{\partial g}{\partial x^i} \Big|_e + \cdots \Big) \notag \\
+			&= e + (x^i(g) + x^i(h)) \frac{\partial g}{\partial x^i} \Big|_e + \cdots
+		\end{align}
+	\end{tcolorbox}
+	
+	consequently, $x^i(g^{-1}) = - x^i(g)$.
+	\begin{itemize}
+		\item for example, $\mathrm{GL}$,
+		\begin{equation}
+			x_{i j}(I + \Delta) = \Delta_{i j}
+		\end{equation}
+	\end{itemize}
+\end{itemize}
+
+\section{topological properties}
+\subsection{compactness}
+\begin{itemize}
+	\item compactness is a property that seeks to generalize the notion of a \textbf{closed} and \textbf{bounded} subset of Euclidean space.
+	
+	The idea is that a compact space has no "punctures" or "missing endpoints", i.e. it includes all \textbf{limiting} values of points.
+	
+	\item \textbf{def.:} compact Lie group:
+	\begin{itemize}
+		\item 有限个 $\mathbb{R}^n$ 中的闭集通过坐标映射到 Lie group 上可以覆盖整个 Lie group.
+		
+		\item 注意, $\mathbb{R}$ 不是闭集, $\mathbb{R} \cup \{\pm \infty\}$ 才是闭集.
+	\end{itemize}
+	
+	\item \textbf{Heine-Borel theorem:}
+	
+	a \textbf{matrix} Lie group is compact $\iff$ it is topologically \textbf{closed} as a subset of $\mathcal{M}_m(\mathbb{C})$ and \textbf{bounded}.
+	
+	\begin{center}
+		\newcolumntype{K}{>{\centering\arraybackslash}X}
+		\begin{tabularx}{\linewidth}{KK}
+			\toprule 
+			compact & noncompact \\
+			\midrule 
+			$\mathrm{O}(m), \mathrm{SO}(m), \mathrm{U}(m), \mathrm{SU}(m), \mathrm{Sp}(m)$ & $\mathrm{SL}(m, \mathbb{R})$ (not bounded) \\
+			\bottomrule
+		\end{tabularx}
+	\end{center}
+\end{itemize}
+
+\subsection{connectedness}
+\begin{itemize}
+	\item a topological space is connected if it is not the union of two \textbf{disjoint nonempty open sets}.
+	
+	\item \textbf{matrix} Lie group is \textbf{connected} $\iff$ it is \textbf{path-connected}.
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item the \textbf{identity component} of $G$, denoted by $G_0$, is the biggest connected subset containing $I$.
+	\begin{itemize}
+		\item $G_0$ is a \textbf{normal subgroup} of $G$.
+		
+		\begin{tcolorbox}[title=proof:]
+			\begin{itemize}
+				\item $G_0$ is a subgroup.
+				
+				$\forall A, B \in G_0$ there are paths $A(t), B(t)$ connecting to $I$.
+				
+				then $A(t) B(t)$ is a continuous path connecting $I$ and $A B$.
+				
+				$(A(t))^{- 1}$ is... $I$ and $A^{- 1}$.
+				
+				\item $G_0$ is invariant.
+				
+				$\forall A \in G_0, B \in G$ there are a path $B A(t) B^{- 1}$ connecting $B A B^{- 1}$ and $I$.
+			\end{itemize}
+		\end{tcolorbox}
+	\end{itemize}
+\end{itemize}
+
+\subsection{simple connectedness}
+\begin{itemize}
+	\item a topological space is \textbf{simply connected} $\iff$ it is \textbf{path connected} and every \textbf{loop} can be \textbf{shrunk continuously into a point}.
+	
+	\begin{tcolorbox}[title=more precisely:]
+		for every loop $A(t), t \in [0, 1]$ in $G$, $A(0) = A(1)$.
+		
+		there exist a function $A(s, t), s, t \in [0, 1]$ such that:
+		\begin{itemize}	
+			\item $A(0, t) = A(t)$ is the original loop.
+			
+			\item $A(1, t) = A(1, 0)$ is a point.
+			
+			\item $A(s, 0) = A(s, 1)$ which means $A(s, t)$ is a loop.
+		\end{itemize}
+	\end{tcolorbox}
+	
+	\item summary:
+	
+	\begin{center}
+		\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+		\newcolumntype{K}{>{\centering\arraybackslash}X}
+		\begin{tabularx}{\linewidth}{C{4cm}KKK}
+			\toprule 
+			matrix Lie groups & compactness & components & simple connectedness \\
+			\midrule 
+			$\mathrm{GL}(m, \mathbb{C})$ & no & 1 & no \\
+			$\mathrm{GL}(m, \mathbb{R})$ & no & 2 & no \\
+			$\mathrm{SL}(m, \mathbb{C})$ & no & 1 & yes \\
+			$\mathrm{SL}(m, \mathbb{R})$ & no & 1 & no \\
+			$\mathrm{O}(m)$ & yes & 2 &  \\
+			$\mathrm{SO}(m)$ & yes & 1 & no \\
+			$\mathrm{U}(m)$ & yes & 1 & no \\
+			$\mathrm{SU}(m)$ & yes & 1 & yes \\
+			$\mathrm{O}(m, 1)$ & yes & 4 &  \\
+			$\mathrm{SO}(m, 1)$ & yes & 2 & $m = 1$, yes; $m \geq 2$, no \\
+			$\mathrm{E}(m)$ (Euclidean group) &  & 2 &  \\
+			$\mathrm{P}(m, 1)$ (Poincaré group) &  & 4 & \\
+			\bottomrule
+		\end{tabularx}
+	\end{center}
+\end{itemize}
+
+\section{Lie subgroups}
+\begin{itemize}
+	\item \textbf{def.:} a \textbf{Lie subgroup} $H$ of a Lie group $G$ is a subgroup which is also a submanifold.
+	
+	\item \textbf{closed subgroup theorem:} $\{\text{closed subgroups}\} = \{\text{Lie subgroups}\}$.
+	
+	\begin{tcolorbox}[title=proof:]
+		first, let's prove that a closed subgroup $H$ is a Lie subgroup.
+		\begin{itemize}
+			\item let,
+			\begin{equation}
+				\mathfrak{h} = \{A \in \mathfrak{g} | \exp(t A) \in H, \forall t \in \mathbb{R}\}
+			\end{equation}
+			\begin{itemize}
+				\item $\mathfrak{h}$ is a subspace of $\mathfrak{g}$.
+				\begin{align}
+					\lim_{n \rightarrow \infty} \Big( \exp(\frac{A}{n}) \exp(\frac{B}{n}) \Big)^n &= \lim_{n \rightarrow \infty} \Big( \exp(\frac{A}{n} + \frac{B}{n} + O(\frac{1}{n^2})) \Big)^n \notag \\
+					&= \exp(A + B) \in H
+				\end{align}
+				极限存在要求 $H$ 是\textbf{闭集}.
+			\end{itemize}
+			
+			\item $W \subset \mathfrak{h}$ is a neighborhood of $0$, which is small enough that $\exp : W \rightarrow H$ is a one-to-one homomorphism (\textbf{local diffeomorphism}).
+			
+			\item $\exp^{- 1} : \exp[V] \rightarrow V$ with $V \cap \mathfrak{h} = W$ is a diffeomorphism, so $(\exp^{- 1}, \exp[V], V)$ is a chart on $G$, which can be extended by left translation. so, $H$ is a submanifold.
+		\end{itemize}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		second, let's prove that Lie subgroups are closed.
+		\begin{itemize}
+			\item 暂时不会证.
+		\end{itemize}
+	\end{tcolorbox}
+\end{itemize}

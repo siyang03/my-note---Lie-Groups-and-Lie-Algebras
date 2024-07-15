@@ -1,0 +1,573 @@
+\chapter{representations of semisimple Lie algebras}
+\section{weights of representations}
+\begin{itemize}
+	\item \textbf{def.:} $(\pi, V)$ is a (possibly infinite dimensional) rep. of semisimple Lie algebra $\mathfrak{g}$, then $\lambda \in \mathfrak{h}$ is the \textbf{weight} of $\pi$ if there \textbf{exists} a $v \neq 0 \in V$ s.t.,
+	\begin{equation} \label{8.1.1}
+		\pi(H) v = \braket{\lambda, H} v, \forall H \in \mathfrak{h} \iff \det(\pi(H) - \braket{\lambda, H} I) = 0, \forall H \in \mathfrak{h}
+	\end{equation}
+	the \textbf{weight space} of $\lambda$ (denoted by $V_\lambda$) is the set of all $v \in V$ satisfying \eqref{8.1.1}, and the dimension of the weight space is called the (geometric) \textbf{multiplicity}. (more about weights, see appendix \ref{A.3})
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item $(\pi, V)$ is finite-dimensional $\Longrightarrow$ every weight of $\pi$ is an \textbf{integral element}.
+	
+	\begin{tcolorbox}[title=proof:]
+		$\pi \big|_{\mathfrak{s}^\alpha}$ 可以视为 $\mathfrak{s}^\alpha = \mathrm{span}(H_\alpha, A_\alpha, B_\alpha) \simeq \mathfrak{su}(2)_\mathbb{C}$ 的表示, 那么根据 \eqref{9.1.6}, $\pi(H_\alpha) \equiv \pi(2 J_3)$ 的 eigenvalue 是整数, 所以,
+		\begin{equation}
+			\braket{\lambda, H_\alpha} \in \mathbb{Z}
+		\end{equation}
+	\end{tcolorbox}
+	
+	\item for finite-dimensional rep., for a weight $\lambda$ of $\pi$, $\boldsymbol{w \ket{\lambda}}, \forall w \in W$ is still a weight and $V_{w \ket{\lambda}} \simeq V_\lambda$.
+	
+	\begin{tcolorbox}[title=proof:]
+		注意, 令 $S_\alpha = e^{A_\alpha} e^{- B_\alpha} e^{A_\alpha}$, 那么,
+		\begin{equation}
+			\mathrm{Ad}_{S_\alpha} H_\alpha = - H_\alpha \Longrightarrow \mathcolor{red}{\mathrm{Ad}_{S_\alpha} = s_\alpha}
+		\end{equation}
+		证明见 \eqref{9.1.7}. 所以, 考虑 $s_\alpha \ket{\lambda}$ (注意到 $s_\alpha^{- 1} = s_\alpha$),
+		\begin{align}
+			& \begin{dcases}
+				\pi(s_\alpha^{- 1} H) v = \braket{\lambda, s_\alpha^{- 1} H} v \quad \forall v \in V_\lambda \\
+				\pi(s_\alpha^{- 1} H) = \pi(\mathrm{Ad}_{S_\alpha} H) = \Pi(S_\alpha) \pi(H) \Pi^{- 1}(S_\alpha)
+			\end{dcases} \notag \\
+			\Longrightarrow & \pi(H) (\Pi^{- 1}(S_\alpha) v) = \braket{s_\alpha \lambda, H} (\Pi^{- 1}(S_\alpha) v) \notag \\
+			\Longrightarrow & \mathcolor{red}{\Pi^{- 1}(S_\alpha)[V_\lambda] = V_{s_\alpha \ket{\lambda}}}
+		\end{align}
+		($\Pi(S_\alpha)$ 一定是可逆矩阵, 否则不存在逆元, $\Pi$ 就根本不是一个表示)
+	\end{tcolorbox}
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item 考虑半单李代数的正根为 $R^+ = \{\alpha_1, \cdots, \alpha_N\}$, 李代数的基底是 $\Delta \cup \{A_1, \cdots, A_N\} \cup \{B_1, \cdots, B_N\}$, 其中 $\Delta = \{\alpha_1, \cdots, \alpha_r\}$, 且 $A_i \in \mathfrak{g}_{\alpha_i}, B_i \in \mathfrak{g}_{- \alpha_i}$.
+	\begin{itemize}
+		\item 那么, $\forall \alpha \in R$,
+		\begin{equation} \label{8.1.5}
+			\begin{dcases}
+				\pi(H) \pi(A_\alpha) v = \braket{\lambda + \alpha, H} \pi(A_\alpha) v \\
+				\pi(H) \pi(B_\alpha) v = \braket{\lambda - \alpha, H} \pi(B_\alpha) v
+			\end{dcases} \Longrightarrow \begin{dcases}
+				\pi(A_\alpha)[V_\lambda] \subseteq V_{\lambda + \alpha} \\
+				\pi(B_\alpha)[V_\lambda] \subseteq V_{\lambda - \alpha}
+			\end{dcases}
+		\end{equation}
+		
+		\item 对于所有的不可约表示, $\pi(H), \forall H \in \mathfrak{h}$ 都可以被对角化, 因此也可以被同时对角化.
+		
+		\begin{tcolorbox}[title=proof:]
+			$U$ 是 $V$ 的子空间, 由 $\mathfrak{h}$ 的 simultaneous eigenvectors 构成, 根据 \eqref{8.1.5}, $\pi(A_\alpha)[U] \subseteq U$, 所以 $U$ 是不变子空间 (且不为零, 因为 $\mathfrak{h}$ 是 Abelian, 至少存在一个权, 见 appendix \ref{A.3}). 又因为 $(\pi, V)$ 不可约, 所以 $V = U = \bigoplus_\lambda V_\lambda$.
+		\end{tcolorbox}
+	\end{itemize}
+	
+	\item 三个关于 \textbf{highest weight} 的定理:
+	\begin{itemize}
+		\item every irreducible, finite-dim. rep. of $\mathfrak{g}$ has a highest weight. (最高权存在)
+		
+		\item two irreducible, finite-dim. rep. with the same highest weight are isomorphic. (一一对应)
+		
+		\item the \textbf{highest weight} $\boldsymbol{\mu}$ of a irreducible, finite-dim. rep. is a \textbf{dominant integral element}.
+	\end{itemize}
+	
+	\begin{tcolorbox}[title=proof:]
+		\textbf{reordering lemma:} 考虑李代数 $\mathfrak{g}$ 及其表示 $\pi$, $\{A_1, \cdots, A_n\}$ 是李代数的一组基底, 那么下式,
+		\begin{equation}
+			\pi(A_{i_1}) \cdots \pi(A_{i_N})
+		\end{equation}
+		可以表示成,
+		\begin{equation} \label{8.1.7}
+			\pi(A_n)^{j_n} \cdots \pi(A_1)^{j_1}
+		\end{equation}
+		的线性组合, 其中 $j_1 + \cdots + j_n \leq N$.
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		\textbf{proof:}
+		
+		用数学归纳法证明, $N = 1$ 时显然成立, 假设 $N - 1$ 时成立, 那么 $N$ 时,
+		\begin{equation}
+			\pi(A_{i_1}) \cdots \pi(A_{i_N}) = \pi(A_{i_1}) \Big( \sum_{j_1 + \cdots + j_N \leq N - 1} C_{j_1, \cdots, j_N} \pi(A_n)^{j_n} \cdots \pi(A_1)^{j_1} \Big)
+		\end{equation}
+		用对易关系改变 $\pi(A_{i_1})$ 的位置,
+		\begin{equation}
+			\pi(A_{i_1}) \pi(A_k) = \pi(A_k) \pi(A_{i_1}) + \underbrace{\pi([A_{i_1}, A_k])}_{= \sum_l - {f_{i_1 k}}^l A_l}
+		\end{equation}
+		右边的一项最多含 $N - 1$ 个基矢, 所以命题得证.
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		\begin{itemize}
+			\item 令 (dominant) integral element $\mu$ 为 $(\pi, V)$ 的 \textbf{highest weight}, 那么 (根据 \eqref{8.1.5}) 一定有 $\pi(A_{\alpha_i})[V_\mu] = \{0\}, \forall \alpha_i \in R^+$.
+			
+			\item 选取 $\{B_1, \cdots, B_N\} \cup \Delta \cup \{A_1, \cdots, A_N\}$ 为 $\mathfrak{g}$ 的基底 (其中 $N$ 是正根的个数), 那么考虑 some $v \in V_\mu$,
+			\begin{equation}
+				\pi(B_{i_1}) \cdots \pi(B_{i_M}) v = \text{linear combination of} \ \pi(B_N)^{j_N} \cdots \pi(B_1)^{j_1} v
+			\end{equation}
+			(注意到 $v$ 是 $\pi(H_i)$ 的本征向量, 而 $\pi(A_i) v = 0$)
+			
+			另外, 一定有 $\mu - j_1 \alpha_1 - \cdots - j_N \alpha_N \in \mathrm{Conv}(W \ket{\mu})$, 否则 $\pi(B_N)^{j_N} \cdots \pi(B_1)^{j_1} v = 0$.
+			
+			\item 考虑,
+			\begin{equation} \label{8.1.11}
+				\text{linear combinations of} \ \pi(B_{i_1}) \cdots \pi(B_{i_M}) v \ \text{with} \ M \geq 0, \ \text{for some} \ v \in V_\mu
+			\end{equation}
+			这是 $V$ 的不变子空间, 考虑到 irreducibility, \colorbox{yellow}{\eqref{8.1.11} 等于 $V$}. 同时也证明了 $\dim V_\mu = 1$, 且 $\mu$ 是唯一的最高权, 因此它一定是 dominant.
+		\end{itemize}
+	\end{tcolorbox}
+	
+	\item if $\mu$ is a \textbf{dominant integral element}, there exists an irreducible, finite-dim. rep. of $\mathfrak{g}$ with \textbf{highest weight} $\mu$.
+	
+	本 chapter 的剩余部分将用来证明这个定理.
+\end{itemize}
+
+\section{the highest weight cyclic representations \& an introduction to Verma modules} \label{8.2}
+\begin{itemize}
+	\item \textbf{def.:} for a (maybe infinite-dim.) rep. $(\pi, V)$ of $\mathfrak{g}$ with highest weight $\mu \in \mathfrak{h}$ (不一定是 integral), if there \textbf{exists} $v \neq 0 \in V$ s.t.,
+	\begin{enumerate}
+		\item $\pi(H) v = \braket{\mu, H} v, \forall H \in \mathfrak{h}$ (simultaneously diagonalizable, 见 appendix \ref{A.3.2}),
+		
+		\item $\pi(A) v = 0, \forall A \in \mathfrak{g}_\alpha$, with $\alpha \in R^+$,
+		
+		\item the smallest invariant subspace (见 section \ref{5.2} 第三点, $\pi(A)[W] \subseteq W, \forall A \in \mathfrak{g}$) containing $v$ is $V$,
+	\end{enumerate}
+	then it is said to be \textbf{highest weight cyclic}.
+	
+	\begin{itemize}
+		\item \textbf{有限维}情况下, highest weight cyclic rep. 是 irreducible, 且最高权相同 $\mu$ 的... 互相 isomorphic.
+	\end{itemize}
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item 下面初步介绍构造 Verma module $(\pi_\mu, V^\mu)$ 的思路 ($V^\mu$ 选择上标, 以区分 weight space $V_\mu$).
+	
+	\item 依旧是选取,
+	\begin{equation}
+		\{B_1, \cdots, B_N\} \cup \Delta \cup \{A_1, \cdots, A_N\} \quad \text{with} \quad \begin{dcases}
+			R^+ = \{\underbrace{\alpha_1, \cdots, \alpha_r}_{= \Delta}, \alpha_{r + 1}, \cdots, \alpha_N\} \\
+			A_i \in \mathfrak{g}_{\alpha_i} \quad i = 1, \cdots, N \\
+			B_i \in \mathfrak{g}_{- \alpha_i} \quad i = 1, \cdots, N
+		\end{dcases}
+	\end{equation}
+	作为 $\mathfrak{g}$ 的基底.
+	
+	\item 由于对于 $(\pi_\mu, V^\mu)$, $\mu$ 是最高权, 所以一定存在,
+	\begin{equation}
+		v_0 \in V^\mu, \ \text{s.t.} \ \pi_\mu(A) v_0 = 0, \forall A \in \mathfrak{g}_\alpha, \ \text{with} \ \alpha \in R^+
+	\end{equation}
+	
+	\item 根据 \eqref{8.1.11}, 考虑具有以下形式的向量,
+	\begin{equation}
+		\pi_\mu(B_1)^{n_1} \cdots \pi_\mu(B_N)^{n_N} v_0 \in V_{\mu - \sum_{i = 1}^N n_i \alpha_i} \subset V^\mu, \ \text{with} \ n_i \in \mathbb{Z}^+
+	\end{equation}
+	它们的线性组合张成 $V^\mu$.
+	\begin{itemize}
+		\item Verma module 中的 weights 仅具有如下形式,
+		\begin{equation}
+			\mu - \sum_{i = 1}^N n_i \alpha_i
+		\end{equation}
+		其中 $n_i$ 是非负整数.
+		
+		\item 这样定义后, 我们就能 (通过对易关系) 计算 $\mathfrak{g}$ 中每个元素的表示如何作用于任何一个 $V^\mu$ 中的向量.
+	\end{itemize}
+\end{itemize}
+
+\section{universal enveloping algebras}
+\begin{itemize}
+	\item \textbf{def.: 李代数 $\boldsymbol{\mathfrak{g}}$ 嵌入的 associative algebra} (对 algebra 的一般定义见 appendix \ref{A} 开头), $\mathcal{A}$, 是:
+	\begin{itemize}
+		\item 存在乘法单位元 $e$, 且满足结合律 (unital, associative algebra).
+		
+		\item $\mathfrak{g}$ 嵌入于 $\mathcal{A}$ ($\hat{j} : \mathfrak{g} \rightarrow \mathcal{A}$).
+		
+		(例如: 对于矩阵李群 $G \subseteq \mathrm{GL}(n, \mathbb{C})$, 那么 $\mathfrak{g}$ 就是 $\mathcal{M}_n(\mathbb{C})$ 的子空间)
+		
+		\item 李括号简化为,
+		\begin{equation}
+			\hat{j}([A, B]) = \hat{j}(A) \cdot \hat{j}(B) - \hat{j}(B) \cdot \hat{j}(A)
+		\end{equation}
+		
+		\item $\mathcal{A}$ 由单位元 $e$ 和如下元素张成,
+		\begin{equation} \label{8.3.2}
+			\hat{j}(A_1) \cdots \hat{j}(A_k)
+		\end{equation}
+		其中 $k \geq 1$.
+	\end{itemize}
+	另外, 对于 $\mathfrak{g}$ 一般来说 $\mathcal{A}$ 不唯一.
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item \textbf{def.:} a pair $\boldsymbol{(U(\mathfrak{g}), \hat{i})}$ (需要满足结合律) with the following properties is called a \textbf{universal enveloping algebra},
+	\begin{enumerate}
+		\item $\hat{i}([A, B]) = \hat{i}(A) \cdot \hat{i}(B) - \hat{i}(B) \cdot \hat{i}(A), \forall A, B$,
+		
+		\item the \textbf{smallest subalgebra} with \textbf{identity} $\boldsymbol{e} \in U(\mathfrak{g})$ \textbf{containing} $\boldsymbol{\{\hat{i}(A), A \in \mathfrak{g}\}}$ is $U(\mathfrak{g})$,
+		
+		(这个条件称为 $U(\mathfrak{g})$ 由 $\hat{i}(A), A \in \mathfrak{g}$ 生成)
+		
+		\item 考虑 $\mathfrak{g}$ 嵌入的某个 associative algebra $\mathcal{A}$ with identity, 那么 $U(\mathfrak{g})$ 和 $\mathcal{A}$ 之间存在 a \textbf{unique} algebra homomorphism $\phi : U(\mathfrak{g}) \rightarrow \mathcal{A}$, s.t.,
+		\begin{equation}
+			\begin{dcases}
+				\phi(e) = e' \in \mathcal{A} \\
+				\phi \circ \hat{i} = \hat{j} : \mathfrak{g} \rightarrow \mathcal{A}
+			\end{dcases}
+		\end{equation}
+		即 $\mathcal{A} \simeq U(\mathfrak{g}) / \ker(\phi)$, (只需要说明这个 $\ker(\phi)$ 是唯一的就行).
+	\end{enumerate}
+	
+	\item $\mathfrak{g}$ 的任意两个 universal enveloping algebras 互相同构.
+	
+	(由于 $U(\mathfrak{g})$ 本身也是 associated algebra, 再利用性质 3)
+	
+	\item \textbf{theorem:} 任何李代数都存在一个 universal enveloping algebra.
+	
+	\begin{tcolorbox}[title=proof:]
+		\begin{itemize}
+			\item \textbf{def.:} the \textbf{tensor algebra} $T(\mathfrak{g}) = \bigoplus_{k = 0}^\infty \mathfrak{g}^{\otimes k}$, (notation $\mathfrak{g}^{\otimes k} = \mathfrak{g} \otimes \cdots \otimes \mathfrak{g}$).
+			\begin{itemize}
+				\item $T(\mathfrak{g})$ 是对于 $B(\cdot, \cdot) = \otimes$ 满足\textbf{结合律}的代数.
+				
+				\item 且存在\textbf{单位元} $1 \in \mathbb{C} \equiv \mathfrak{g}^{\otimes 0}$.
+			\end{itemize}
+		\end{itemize}
+		
+		$(T(\mathfrak{g}), \otimes)$ 满足 $U(\mathfrak{g})$ 的第两个条件, 但是, 对于第三个条件, 考虑,
+		\begin{equation}
+			\begin{dcases}
+				\psi(1) = e \in \mathcal{A} \\
+				\psi : T(\mathfrak{g}) \rightarrow \mathcal{A}, \ A \mapsto \hat{j}(A)
+			\end{dcases}
+		\end{equation}
+		显然, 这样的 homomorphism $\psi$ 不唯一, 实际上 $U(\mathfrak{g})$ 是 $T(\mathfrak{g})$ 的一个商空间 (见下文).
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		现在, 我们来构造 $U(\mathfrak{g})$. 考虑双向不变子空间 (two-sided ideal) $J$,
+		\begin{equation}
+			J = \Big\{ \sum_i \alpha_i \otimes (A_i \otimes B_i - B_i \otimes A_i - [A_i, B_i]) \otimes \beta_i \Big| A_i, B_i \in \mathfrak{g}, \alpha_i, \beta_i \in T(\mathfrak{g}) \Big\}
+		\end{equation}
+		那么 $U(\mathfrak{g}) = T(\mathfrak{g}) / J$.
+		\begin{itemize}
+			\item 注意, $J$ 是一个 \textbf{two-sided ideal}, 即 $\forall \alpha \in T(\mathfrak{g}), \beta \in J$, 有 $\alpha \otimes \beta, \beta \otimes \alpha \in J$.
+			
+			\item 且 $J$ 是包含形如 $A \otimes B - B \otimes A - [A, B]$ 的元素的最小的 two-sided ideal.
+			
+			\item 注意, the kernel of an algebra homomorphism is always a two-sided ideal. 考虑 $\phi : U \rightarrow \mathcal{A}$, 那么, $\forall \alpha \in \ker(\phi), \beta \in U$,
+			\begin{equation}
+				\phi(\beta \cdot \alpha) = \phi(\beta) \cdot 0 = 0
+			\end{equation}
+		\end{itemize}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		\textbf{proof:}
+		
+		\begin{itemize}
+			\item 第一条 ($T(\mathfrak{g})$ 不满足, 但 $T(\mathfrak{g}) / J$ 满足),
+			\begin{equation}
+				[A, B] \sim A \otimes B - B \otimes A
+			\end{equation}
+			
+			\item 第二条成立 ($T(\mathfrak{g})$ 和 $T(\mathfrak{g}) / J$ 都满足).
+			
+			\item 第三条 ($T(\mathfrak{g})$ 和 $T(\mathfrak{g}) / J$ 都满足), 考虑 algebra homomorphism $\psi : T(\mathfrak{g}) \rightarrow \mathcal{A}$ s.t.,
+			\begin{equation}
+				\begin{dcases}
+					\psi(1) = e \in \mathcal{A} \\
+					\psi(A_1 \otimes \cdots \otimes A_k) = \hat{j}(A_1) \cdots \hat{j}(A_k)
+				\end{dcases}
+			\end{equation}
+			那么, (考虑到 kernel 一定是 two-sided ideal), 必然有 $J \subset \ker(\psi)$.
+			
+			(令 $\phi = \psi \big|_{U(\mathfrak{g})}$, 有 $\ker(\psi) = J \oplus \ker(\phi)$, 即 $\mathcal{A} = T(\mathfrak{g}) / \ker(\psi) = U(\mathfrak{g}) / \ker(\phi)$.)
+			
+			\noindent\hdashrule[0.5ex]{\linewidth}{0.5pt}{1mm} % horizontal dashed line
+			
+			注意, $\mathcal{A}$ 由 $e$ 和 \eqref{8.3.2} 中的元素张成, $\psi$ 必须满足 $\psi(1) = e$, 考虑第二个条件 $\phi \circ \hat{i} = \hat{j}$, 考虑 $\forall A \in \mathfrak{g}$,
+			\begin{equation}
+				\phi(A) = \hat{j}(A)
+			\end{equation}
+			且 $U(\mathfrak{g})$ 由 $A_1 \oplus \cdots \oplus A_k, k \geq 0$ 张成, 所以 $\phi$ 的选取是唯一的.
+		\end{itemize}
+	\end{tcolorbox}
+	
+	\item $(\pi, V)$ 是李代数 $\mathfrak{g}$ 的一个表示 (不一定是有限维), 那么存在一个 unique algebra homomorphism,
+	\begin{equation} \label{8.3.10}
+		\tilde{\pi} : U(\mathfrak{g}) \rightarrow \mathrm{End}(V) \quad \text{s.t.} \quad \begin{dcases}
+			\tilde{\pi}(1) = I \\
+			\tilde{\pi}(A) = \pi(A), \forall A \in \mathfrak{g} \subset U(\mathfrak{g})
+		\end{dcases}
+	\end{equation}
+	
+	\begin{tcolorbox}[title=proof:]
+		可以认为 $\mathcal{A} = \mathrm{End}(V), \hat{j} = \pi$, 那么, 存在 unique $\tilde{\pi} = \phi : U(\mathfrak{g}) \rightarrow \mathcal{A}$, ...
+	\end{tcolorbox}
+\end{itemize}
+
+\section{Poincaré-Birkhoff-Witt theorem}
+\begin{itemize}
+	\item \textbf{PBW theorem:} 对于有限维李代数 $\mathfrak{g}$ (不一定半单), 其基矢为 $\{A_1, \cdots, A_k\}$, 那么,
+	\begin{equation} \label{8.4.1}
+		\hat{i}(A_1)^{n_1} \cdots \hat{i}(A_k)^{n_k}
+	\end{equation}
+	其中 $n_i$ 是非负整数, 构成 $U(\mathfrak{g})$ 的基矢 (张成并线性独立).
+	\begin{itemize}
+		\item 同时意味着 $\hat{i} : \mathfrak{g} \rightarrow U(\mathfrak{g})$ 是 injective (one-to-one).
+	\end{itemize}
+	
+	\begin{tcolorbox}[title=proof:]
+		证明方法类似于 reordering lemma (见 \eqref{8.1.7}).
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		首先 \eqref{8.4.1} 中的向量显然能张成 $U(\mathfrak{g})$, 我需要证明它们线性独立, 方法如下:
+		
+		考虑一个向量空间 $D$, 其基底为 $\{v_{i_1, \cdots, i_N}\}$, 其中 $1 \leq i_1 \leq \cdots \leq i_N \leq k$. 我们的目标是证明存在一个线性映射 $\gamma : U(\mathfrak{g}) \rightarrow D$, (这个映射不必是同构), 使得,
+		\begin{equation}
+			\hat{i}(A_{i_1}) \cdots \hat{i}(A_{i_N}) \mapsto v_{i_1, \cdots, i_N}
+		\end{equation}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		为此, 我们希望能构造一个线性映射 $\delta : T(\mathfrak{g}) \rightarrow D$, s.t.,
+		\begin{enumerate}
+			\item $\delta(A_{i_1} \otimes \cdots \otimes A_{i_N}) = v_{i_1, \cdots, i_N}$ if $1 \leq i_1 \leq \cdots \leq i_N \leq k$,
+			
+			\item $\delta[J] = \{0\}$, 因此 $\delta$ 自然能给出线性映射 $\gamma : U(\mathfrak{g}) \rightarrow D$.
+		\end{enumerate}
+		构造方法如下.
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		考虑 $n$ 阶单项式 $A_{j_1} \otimes \cdots \otimes A_{j_n}$, 令逆序的下标对数为其 index, (显然 $0, 1$ 阶的单项式的 index 都是零), $n \leq k$ 阶单项式的 index 最高为 $\frac{n (n - 1)}{2}$. 下面用归纳法来确定 $\delta$.
+		\begin{itemize}
+			\item 假设 $\delta$ 的定义 (已经在 index 小于等于 $p$, 或者阶数小于等于 $n - 1$ 下做出了定义) 使得, 下式在: 等号左边两相的 index 都不超过 $p \geq 1$ 时, 且 $n \leq N$ 时, 成立,
+			\begin{equation} \label{8.4.3}
+				\delta(A_{i_1} \cdots (A_{i_j} A_{i_{j + 1}} - A_{i_{j + 1}} A_{i_j}) \cdots A_{i_n}) = \delta(A_{i_1} \cdots [A_{i_j}, A_{i_{j + 1}}] \cdots A_{i_n})
+			\end{equation}
+			($p = 0$ 一定成立, 因为 $i_j = i_{j + 1}$, 等号两边为零)
+			
+			\item 考虑等号左侧第一项的 index 为 $p + 1$, 且 $i_j > i_{j + 1}$ 是逆序, 那么, 定义 $\delta$ 在 \eqref{8.4.3} 下依然成立. 这样我们就把 $\delta$ 的定义拓展到了 $n$ 阶, index 为 $p + 1$ 的情况,
+			\begin{equation} \label{8.4.4}
+				\delta(A_{i_1} \cdots \underbrace{A_{i_j} A_{i_{j + 1}}}_{\text{逆序}} \cdots A_{i_n}) = \delta(A_{i_1} \cdots A_{i_{j + 1}} A_{i_j} \cdots A_n) + \delta(\cdots [A_{i_j}, A_{i_{j + 1}}] \cdots)
+			\end{equation}
+			
+			\item 由于 \eqref{8.4.4} 左侧至少有两处逆序 (假设另一个逆序对为 $i_l > i_{l + 1}$ 且 $j < l$), 那么还需要证明等式右侧与逆序对的选取无关, 我们通过分类讨论证明这一点.
+		\end{itemize}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		分类讨论:
+		\begin{itemize}
+			\item 如果 $j + 1 \leq l - 1$.
+			
+			考虑,
+			\begin{align}
+				& \delta(\cdots A_{i_j} A_{i_{j + 1}} \cdots A_{i_l} A_{i_{l + 1}} \cdots) \notag \\
+				=& \delta(\cdots A_{i_j} A_{i_{j + 1}} \cdots A_{i_{l + 1}} A_{i_l} \cdots) + \delta(\cdots A_{i_j} A_{i_{j + 1}} \cdots [A_{i_l}, A_{i_{l + 1}}] \cdots) \notag \\
+				=& \delta(\cdots A_{i_{j + 1}} A_{i_j} \cdots A_{i_{l + 1}} A_{i_l} \cdots) + \delta(\cdots [A_{i_j}, A_{i_{j + 1}}] \cdots A_{i_{l + 1}} A_{i_l} \cdots) \notag \\
+				& + \delta(\cdots A_{i_{j + 1}} A_{i_j} \cdots [A_{i_l}, A_{i_{l + 1}}] \cdots) + \delta(\cdots [A_{i_j}, A_{i_{j + 1}}] \cdots [A_{i_l}, A_{i_{l + 1}}] \cdots) \notag \\
+				=& \cdots
+			\end{align}
+			最后一个等号右侧的第一, 三项和第二, 四项结合, 就得到 \eqref{8.4.4} 右侧.
+			
+			(要注意, 证明过程中每一个单项式的 index 都小于等于 $p$, 或者阶数小于等于 $n - 1$)
+			
+			\item 如果 $j + 1 = l$.
+			
+			为了简洁, 用 $A = A_{i_j}, B = A_{i_{j + 1 = l}}, C = A_{i_{l + 1}}$, 那么,
+			\begin{align}
+				& \delta(\cdots B A C \cdots) + \delta(\cdots [A, B] C \cdots) \notag \\
+				=& \delta(\cdots C B A \cdots) + \delta(\cdots [B, C] A \cdots) + \delta(\cdots B [A, C] \cdots) + \delta(\cdots [A, B] C \cdots)
+			\end{align}
+			同时,
+			\begin{align}
+				& \delta(\cdots A C B \cdots) + \delta(\cdots A [B, C] \cdots) \notag \\
+				=& \delta(\cdots C B A \cdots) + \delta(\cdots [A, C] B \cdots) + \delta(\cdots C [A, B] \cdots) + \delta(\cdots A [B, C] \cdots)
+			\end{align}
+			那么, 只需要证明,
+			\begin{equation}
+				[[B, C], A] + \underbrace{[B, [A, C]]}_{= [[C, A], B]} + [[A, B], C] = 0
+			\end{equation}
+			而这就是 Jacobi identity.
+		\end{itemize}
+	\end{tcolorbox}
+\end{itemize}
+
+\section{construction of Verma modules}
+\begin{itemize}
+	\item \textbf{def.:} a \textbf{left ideal} of $U(\mathfrak{g})$ generated by $\{\alpha_i\}$ is,
+	\begin{equation}
+		I = \Big\{ \sum_i \beta_i \alpha_i \Big| \forall \beta_i \in U(\mathfrak{g}) \Big\}
+	\end{equation}
+	
+	\item 用 $I_\mu$ 表示一个 left ideal generated by,
+	\begin{equation} \label{8.5.2}
+		\{H - \braket{\mu, H}, \forall H \in \mathfrak{h}\} \cup \bigcup_{\alpha \in R^+} \mathfrak{g}_\alpha
+	\end{equation}
+	(第一个集合中的元素是一个一阶向量减一个零阶向量)
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item \textbf{def.:} the \textbf{Verma module} with highest weight $\mu$ is,
+	\begin{equation}
+		W_\mu = U(\mathfrak{g}) / I_\mu
+	\end{equation}
+	用 $[\alpha]$ 表示 $\alpha \in U(\mathfrak{g})$ 在 $W_\mu$ 中的像 (等价类).
+	\begin{itemize}
+		\item $(\pi_\mu, W_\mu)$ 是 universal enveloping algebra 的一个表示,
+		\begin{equation}
+			\pi_\mu(\alpha) [\beta] = [\alpha \beta]
+		\end{equation}
+		
+		\begin{tcolorbox}[title=proof:]
+			\begin{equation}
+				\pi_\mu(\alpha_1) \pi_\mu(\alpha_2) [\beta] = [\alpha_1 \alpha_2 \beta] = \pi_\mu(\alpha_1 \alpha_2) [\beta]
+			\end{equation}
+			且如果 $\beta \sim \beta'$, 那么 $\alpha \beta \sim \alpha \beta'$.
+		\end{tcolorbox}
+		
+		\item 所以, (其中 $A \in \mathfrak{g}_{\alpha \in R^+}$),
+		\begin{equation}
+			\begin{dcases} \label{8.5.6}
+				\pi_\mu(H) [1] = \braket{\mu, H} [1] \\
+				\pi_\mu(A) [1] = 0
+			\end{dcases}
+		\end{equation}
+		但要注意, 一般 $[A \alpha] \neq 0$, 所以 $\pi_\mu(A) \neq [A] = 0$, (不过 $[\alpha A] = 0$).
+	\end{itemize}
+	
+	\item $\mathfrak{n}^\pm = \bigoplus_{\alpha \in R^\pm} \mathfrak{g}_\alpha$, 由于 $[\mathfrak{g}_\alpha, \mathfrak{g}_\beta] \subseteq \mathfrak{g}_{\alpha + \beta}$, 所以 $\mathfrak{n}^+, \mathfrak{n}^-$ 都是 $\mathfrak{g}$ 的子代数.
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item \textbf{theorem:}
+	\begin{itemize}
+		\item $(\pi_\mu, W_\mu)$ 是一个 highest weight cyclic rep. (定义见 section \ref{8.2} 开头), 且最高权为 $\mu$ (不过, 由于 $W_\mu$ 一定是无限维, 最高权不一定是 dominant), 最高权向量为 $v_0 = [1]$.
+		
+		\item $\{B_1, \cdots, B_k\}$ 是 $\mathfrak{n}^-$ 的一组基底, 那么,
+		\begin{equation} \label{8.5.7}
+			\mathcolor{red}{\pi_\mu(B_1)^{n_1} \cdots \pi_\mu(B_k)^{n_k} v_0}
+		\end{equation}
+		(其中 $n_i \in \mathbb{Z}^+$), 组成 $W_\mu$ 的一组基底.
+	\end{itemize}
+	结合 PBW theorem, 可见有向量空间同构 $W_\mu \simeq U(\mathfrak{n}^-)$, 且 $\alpha \mapsto \pi_\mu(\alpha) v_0$.
+	
+	\begin{tcolorbox}[title=proof:]
+		\textbf{lemma:} 令 $J_\mu$ 是 $U(\mathfrak{n}^+ \oplus \mathfrak{h})$ 上的, 由 \eqref{8.5.2} 中的元素生成的 left ideal, 那么 $v_0 = [1] \notin J_\mu$.
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		\textbf{proof:}
+		
+		考虑一维表示,
+		\begin{equation}
+			\sigma_\mu : \mathfrak{n}^+ \oplus \mathfrak{h} \rightarrow \underbrace{\mathrm{End}(\mathbb{C})}_{= \mathbb{C}} \quad \text{s.t.} \quad \begin{dcases}
+				\sigma_\mu(A) = 0 & A \in \mathfrak{n}^+ \\
+				\sigma_\mu(H) = \braket{\mu, H} & H \in \mathfrak{h}
+			\end{dcases}
+		\end{equation}
+		对比 \eqref{8.3.10}, 可知存在一个唯一的 $\tilde{\sigma}_\mu : U(\mathfrak{n}^+ \oplus \mathfrak{h}) \rightarrow \mathbb{C}$, s.t.,
+		\begin{equation}
+			\begin{dcases}
+				\tilde{\sigma}_\mu(1) = 1 \\
+				\tilde{\sigma}_\mu(A + H) = \braket{\mu, H}
+			\end{dcases} \quad \text{and} \quad \ker(\tilde{\sigma}_\mu) \supset \{0\} \cup \mathfrak{n}^+ \cup \{H \perp \mu\} \cup \{H - \braket{\mu, H}\}
+		\end{equation}
+		且 $\ker(\tilde{\sigma}_\mu)$ 是 $U(\mathfrak{n}^+ \oplus \mathfrak{h})$ 上的一个 two-sided ideal, 所以 $J_\mu \subset \ker(\tilde{\sigma}_\mu)$, 所以 ...
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		含有 $v_0$ 的不变子空间 $U = W_\mu$, 因为 $\pi_\mu(\alpha) v_0 = [\alpha]$, 那么证明第一个 theorem 只需要再说明 $[1] \neq [0]$, (highest weight cyclic rep. 的前两个性质见 \eqref{8.5.6}).
+		
+		\noindent\hdashrule[0.5ex]{\linewidth}{0.5pt}{1mm} % horizontal dashed line
+		
+		要说明 $[1] \neq [0]$, 只需要证明 $1 \notin I_\mu$.
+		
+		考虑 $I_\mu$ 中的元素按照 PBW theorem 展开,
+		\begin{align}
+			I_\mu \ni \alpha &= \sum \overbrace{\beta_1}^{\in U(\mathfrak{g})} (H - \braket{\mu, H}) + \overbrace{\beta_2}^{\in U(\mathfrak{g})} A_\alpha \notag \\
+			&= \sum (B_{\alpha_1})^{n_1} \cdots (B_{\alpha_N})^{n_N} \underbrace{\gamma_{n_1, \cdots, n_N}}_{\in U(\mathfrak{n}^+)} (H - \braket{\mu, H}) + \cdots \notag \\
+			&= \sum (B_{\alpha_1})^{n_1} \cdots (B_{\alpha_N})^{n_N} \underbrace{\delta_{n_1, \cdots, n_N}}_{\in J_\mu} \label{8.5.10}
+		\end{align}
+		如果 $\alpha = 1 \in I_\mu$, 那么 $n_1 = \cdots = n_N = 0$, 且 $\alpha = 1 = \delta_{0, \cdots, 0} \in J_\mu$, 与引理的结论矛盾, 所以 $1 \notin I_\mu$.
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		现在来证明第二个 theorem. 已经说明了 $W_\mu$ 是含 $v_0$ 的最小的不变子空间, 所以 \eqref{8.5.7} 中的向量一定张成 $W_\mu$, 我们还需要证明它们线性独立.
+		
+		考虑, 如果它们线性相关,
+		\begin{align}
+			& \sum \overbrace{C_{n_1, \cdots, n_k}}^{\in \mathbb{C}} [(B_1)^{n_1} \cdots (B_k)^{n_k}] = 0 \notag \\
+			\Longrightarrow & \alpha = \sum C_{n_1, \cdots, n_k} (B_1)^{n_1} \cdots (B_k)^{n_k} \in I_\mu
+		\end{align}
+		但是, 对照 \eqref{8.5.10} (注意, 利用 PBW theorem 得到的展开式是唯一的), 可见 $C_{n_1, \cdots, n_k} \in J_\mu$, 而这不成立.
+	\end{tcolorbox}
+\end{itemize}
+
+\section{irreducible quotient modules}
+\begin{itemize}
+	\item 本节我们将证明 Verma module $W_\mu$ 有一个 largest nonzero invariant subspace $U_\mu$, 而商空间 $V^\mu = W_\mu / U_\mu$ 是最高权为 $\mu$ 的不可约表示. 且如果 $\mu$ 是 dominant integral, 那么 $V^\mu$ 是有限维.
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item \textbf{def.:} $U_\mu$ 由如下向量 $v \in W_\mu$ 组成 (注意, \eqref{8.5.7} 是 $W_\mu$ 的一组基底):
+	\begin{enumerate}
+		\item $v$ 的 $v_0 = [1]$ 分量为零,
+		\begin{itemize}
+			\item 注意, 并不是所有由低于 $\mu$ 的权对应的权向量组成的矢量都属于 $U_\mu$, 例如 $[B_\alpha] \notin U_\mu, \alpha \in R^+$, 因为 $\pi_\mu(A_\alpha) [B_\alpha] = \braket{\mu, H_\alpha} v_0$, 见第二个条件.
+		\end{itemize}
+		
+		\item $\pi_\mu(A_1) \cdots \pi(A_k) v, k \geq 1$ 的 $v_0$ 分量也为零, 其中 $A_1, \cdots, A_k \in \mathfrak{n}^+$,
+	\end{enumerate}
+	也就是所有通过升算符无法达到 $v_0$ 的向量.
+	
+	\item $U_\mu$ 是一个不变子空间.
+	
+	\begin{tcolorbox}[title=proof:]
+		\begin{itemize}
+			\item 首先 $\pi_\mu(A)[U_\mu] \subseteq U_\mu, \forall A \in \mathfrak{n}^+$.
+			
+			\item $\pi_\mu(A_1) \cdots \pi(A_k) v, k \geq 0$ 是由低于 $\mu$ 的权对应的权向量组成, 考虑,
+			\begin{equation} \label{8.6.1}
+				\pi_\mu(A_1) \cdots \pi(A_k) \pi_\mu(C) v
+			\end{equation}
+			其中 $C \in \mathfrak{h} \oplus \mathfrak{n}^-$, reordering lemma 告诉我们 \eqref{8.6.1} 等于下列形式的向量的线性组合, 
+			\begin{equation}
+				\pi_\mu^{n_1}(B_1) \cdots \pi_\mu^{n_N}(B_N) \pi_\mu^{n'_1}(H_1) \cdots \pi_\mu^{n'_r}(H_r) \pi_\mu^{n''_1}(A_1) \cdots \pi_\mu^{n''_N}(A_N) v
+			\end{equation}
+			只能让这些权向量对应的权保持不变或降低, 所以...
+		\end{itemize}
+	\end{tcolorbox}
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item 商空间 $V^\mu = W_\mu / U_\mu$ 构成 $\mathfrak{g}$ 的一个\textbf{不可约}表示.
+	
+	\begin{tcolorbox}[title=proof:]
+		
+	\end{tcolorbox}
+\end{itemize}
+
+\section{Casimir operators}
+\begin{itemize}
+	\item \textbf{\textbf{def.:}} the 2nd-order Casimir operator is,
+	\begin{equation}
+		C_2 = - B^{i j} A_i \otimes A_j
+	\end{equation}
+	where $B^{i j} = B^{- 1}_{i j}$.
+	\begin{itemize}
+		\item the 2nd-order Casimir operator commutes with all the generators.
+		
+		\begin{tcolorbox}[title=proof:]
+			\begin{align}
+				[C_2, A_k] &= - B^{i j} [A_i A_j, A_k] \notag \\
+				&= - B^{i j} (- {f_{j k}}^l A_i A_l - {f_{i k}}^l A_l A_j)
+			\end{align}
+			notice that $B^{i j}$ is symmetric, so,
+			\begin{align}
+				[C_2, A_k] &= - B^{i j} (- {f_{i k}}^l A_j A_l - {f_{i k}}^l A_l A_j) \notag \\
+				&= B^{i j} {f_{i k}}^l (A_j A_l + A_l A_j) \notag \\
+				&= \underbrace{B^{i j} B^{l m} (A_j A_l + A_l A_j)}_{\text{symmetric about } (i, m)} f_{i k m} = 0
+			\end{align}
+		\end{tcolorbox}
+	\end{itemize}
+\end{itemize}

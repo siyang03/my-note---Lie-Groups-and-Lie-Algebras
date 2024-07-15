@@ -1,0 +1,347 @@
+\chapter{exponential maps}
+\section{one-parameter subgroups}
+\begin{itemize}
+	\item a $C^\infty$ (Lie group) homomorphism $\gamma: \mathbb{R} \rightarrow G$, with $\gamma(s) \gamma(t) = \gamma(s + t)$.
+	
+	\item $\{\gamma(s) | s \in \mathbb{R}\}$ is an \textbf{integral curve} (passing through $e$) of a \textbf{left-invariant vector field}.
+	
+	\begin{itemize}
+		\item the integral curve of a left-invariant vector field is complete, i.e. it’s homomorphism to $\mathbb{R}$.
+		
+		\begin{tcolorbox}[title=proof:]
+			notation: $\frac{d}{dt} \gamma(t) \equiv \frac{\partial}{\partial t} (\equiv \frac{d x^i(\mu(t))}{dt} \frac{\partial}{\partial x^i})$
+			
+			let $\mu : (- \epsilon, \epsilon) \rightarrow G$ be an integral curve of $\bar{A}$, with $\mu(0) = e$, then,
+			\begin{equation}
+				\frac{d}{dt} \Big|_s \mu(t) = A_{\mu(s)} = L_{\mu(s) *} (A_e) = L_{\mu(s) *} \frac{d}{dt} \Big|_0 \mu(t) = \frac{d}{dt} \Big|_{t = 0} (\mu(s) \mu(t))
+			\end{equation}
+			
+			\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+			
+			\textbf{calculation:}
+			
+			\begin{equation}
+				\frac{d x^i(\mu(t))}{dt} \Big|_s = \Big( L_{\mu(s) *} \frac{d}{dt} \Big|_0 \mu(t) \Big) x^i \Big|_{\mu(s)} = \Big( \frac{d}{dt} \Big|_0 \mu(t) \Big) y^i \Big|_e
+			\end{equation}
+			where $y^i \big|_g \equiv L_{\mu(s)}^* x^i \big|_g = x^i \big|_{\mu(s) g}$
+			so,
+			\begin{equation}
+				\Big( \frac{d}{dt} \Big|_0 \mu(t) \Big) y^i \Big|_e = \frac{d y^i(\mu(t))}{dt} \Big|_e = \frac{d x^i(\mu(s) \mu(t))}{dt} \Big|_{t = 0}
+			\end{equation}
+			
+			\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+			
+			so, as we can see, $\nu : (- \epsilon + s, \epsilon + s) \rightarrow G, t \mapsto \mu(s) \mu(t - s)$ is also an integral curve of $\bar{A}$, with at least one intersection with $\mu$, $\nu(s) = \mu(s)$.
+			
+			since a vector field only has one integral curve through a fixed point,
+			
+			\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+			
+			\textbf{proof:}
+			
+			for a vector field $A$, the integral curve $\mu$ through point $p$ must satisfy,
+			\begin{equation}
+				\frac{d x^i(\mu(t))}{dt} \Big|_s = A^i \Big|_{\mu(s)}
+			\end{equation}
+			which is a linear differential equation of order one, consequently, the solution can be determined by $x^i(\mu(t)) = \text{Const}$.
+			
+			\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+			
+			we can conclude that $\mu$ and $\nu$ is all part of one complete integral curve through $e$, $\gamma : \mathbb{R} \rightarrow G$.
+		\end{tcolorbox}
+		
+		\item the integral curve of $\bar{A}$ through $e$ is a one-parameter subgroup.
+		
+		\begin{tcolorbox}[title=proof:]
+			we have already proved that $\nu(s + t) = \mu(s) \mu(t)$ and $\mu = \nu = \gamma$.
+			
+			so $\gamma(s + t) = \gamma(s) \gamma(t)$.
+		\end{tcolorbox}
+		
+		\item the tangent vector of $\gamma$ is left-invariant.
+		
+		\begin{tcolorbox}[title=proof:]
+			\begin{equation}
+				\Big( L_{\gamma(t_2) *} \frac{d}{dt} \Big|_{t_1} \gamma(t) \Big) x^i \Big|_{\gamma(t_2 + t_1)} = \frac{d x^i(\gamma(t_2 + t))}{dt} \Big|_{t_1} = \Big( \frac{d}{dt} \gamma(t) \Big) x^i \Big|_{\gamma(t_2 + t_1)}
+			\end{equation}
+		\end{tcolorbox}
+	\end{itemize}
+	
+	\item a useful lemma: for a curve $\gamma$ on manifold $M_1$, and a map $\psi : M_1 \rightarrow M_2$, then,
+	\begin{equation}
+		\psi_* \Big( \frac{d}{dt} \Big|_{p \in M_1} \gamma \Big) = \frac{d}{dt} \Big|_{\psi(p) \in M_2} \psi \circ \gamma
+	\end{equation}
+	the proof is in appendix \ref{B.1.4}.
+\end{itemize}
+
+\section{exponential maps}
+\begin{itemize}
+	\item \textbf{def.:} exp. map on a \textbf{Riemann manifold}, $\exp_p: V_p \text{(or its subspace)} \rightarrow M$.
+	\begin{itemize}
+		\item $\exp_p(v) = \gamma(1)$, where $\gamma$ is the geodesic determined by $v$ and $p$.
+	\end{itemize}
+	
+	\item \textbf{def.:} exp. map on a \textbf{Lie group}, $\exp: V_e \rightarrow G$.
+	\begin{itemize}
+		\item $\exp(A) = \gamma(1)$ where $\gamma$ is the one-para. subgroup determined by $\bar{A}$.
+		
+		\item def. for physicists: $\exp: \mathfrak{g} \rightarrow G$, with $\exp(i X) = \exp(A) = \gamma(1)$.
+	\end{itemize}
+	
+	\item \textbf{theorem:} for \textbf{compact} Lie group, the exponential map, $\exp : V_e \rightarrow G$, is \textbf{onto}.
+\end{itemize}
+
+\subsection{matrix exponential and logarithm}
+\begin{itemize}
+	\item properties of exp. function of matrices (in general linear group):
+	\begin{itemize}
+		
+		\item $(e^A)^\dag = e^{A^\dag}$.
+		
+		\item if $\det e^A \neq 0$, then $(e^A)^{-1} = e^{- A}$.
+		
+		\item $\det e^A = e^{\mathrm{tr} A}$.
+		
+		\begin{tcolorbox}[title=proof:]
+			\begin{itemize}
+				\item if $A$ is diagonalizable,
+				
+				diagonalize $A$ by $T$, $T A T^{- 1} = D = \mathrm{diag}(\lambda_1, \cdots, \lambda_m)$, then,
+				\begin{equation}
+					\det e^A = \det(T e^A T^{- 1}) = \det e^D = e^{\lambda_1 + \cdots + \lambda_m} = e^{\mathrm{tr} A}
+				\end{equation}
+				
+				\item otherwise, it is still can be proved as follow,
+				\begin{equation}
+					\frac{d}{dt} \Big|_t \det(e^{t A}) = \frac{d}{ds} \Big|_{s = 0} \det(e^{(s + t) A}) = \det(e^{t A}) \frac{d}{ds} \Big|_{s = 0} \det(e^{s A})
+				\end{equation}
+				and,
+				\begin{align}
+					\frac{d}{ds} \Big|_{s = 0} \det(e^{s A}) &= \frac{d}{ds} \Big|_{s = 0} \det(I + s A) \notag \\
+					&= \frac{d}{ds} \Big|_{s = 0} \epsilon_{i j \cdots k} (\delta^i_1 + s {A^i}_1) \cdots (\delta^k_m + s {A^k}_m) \notag \\
+					&= \epsilon_{i 2 \cdots m} {A^i}_1 + \cdots + \epsilon_{1 2 \cdots k} {A^k}_m = \mathrm{tr} A
+				\end{align}
+				so we have,
+				\begin{equation}
+					\begin{dcases}
+						\frac{1}{\det(e^{t A})} \frac{d}{dt} \Big|_t \det(e^{t A}) = \mathrm{tr} A \\
+						\det(e^{t A}) \Big|_{t = 0} = 1
+					\end{dcases} \Longrightarrow \det(e^{t A}) = e^{t \, \mathrm{tr} A}
+				\end{equation}
+			\end{itemize}
+		\end{tcolorbox}
+		
+		\item Baker-Campbell-Hausdorff formula,
+		\begin{equation}
+			e^A e^B = \exp \Big( A + B + \frac{1}{2} [A, B] + \frac{1}{12} \Big( [A, [A, B]] + [B, [B, A]] \Big) + \cdots \Big)
+		\end{equation}
+	\end{itemize}
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item the Hilbert-Schmidt norm of $A \in \mathcal{M}_m(\mathbb{C})$ is,
+	\begin{equation}
+		\|A\| = \Big( \sum_{i, j = 1}^m |A_{i j}|^2 \Big)^{1 / 2}
+	\end{equation}
+	
+	\item matrix logarithm is,
+	\begin{equation}
+		\ln M = \sum_{n = 1}^\infty (- 1)^{n + 1} \frac{(M - I)^n}{n}
+	\end{equation}
+	where $M$ is a complex matrix with $\|M - I\| < 1$.
+	
+	\begin{itemize}
+		\item $\forall M$ with $\|M - I\| < 1$, $e^{\ln M} = M$.
+		
+		\item $\forall A$ with $\|A\| < \ln 2$ then $\|e^A - I\| < 1$ and $\ln e^A = A$.
+	\end{itemize}
+	
+	\item for a \textbf{connected} Lie group $G$, every element $g \in G$ can be written in the form,
+	\begin{equation} \label{4.2.8}
+		g = \exp(A_1) \exp(A_2) \cdots \exp(A_N)
+	\end{equation}
+	for some $A_1, A_2, \cdots, A_N \in \mathfrak{g}$.
+	
+	\begin{tcolorbox}[title=proof:]
+		曲线 $\gamma : [0, 1] \rightarrow G, \gamma(0) = I, \gamma(1) = g$.
+		
+		选取 $N$ 足够大, 使得 $\gamma^{- 1}(\frac{i - 1}{N}) \gamma(\frac{i}{N})$ 在 $I$ 的邻域, 那么, 存在 $A_i \in \mathfrak{g}$ 使得,
+		\begin{equation}
+			\gamma^{- 1}(\frac{i - 1}{N}) \gamma(\frac{i}{N}) = \exp(A_i)
+		\end{equation}
+		所以,
+		\begin{equation}
+			g = \gamma^{- 1}(0) \gamma(1) = \exp(A_1) \cdots \exp(A_N)
+		\end{equation}
+	\end{tcolorbox}
+	
+	错误的推断:
+	
+	combined with BCH formula, $\exp : \mathfrak{g} \rightarrow G$ is onto for connected Lie groups, i.e. $G \neq \exp[\mathfrak{g}]$.
+	\begin{itemize}
+		\item onto 仅对 \textbf{compact connected} Lie groups 成立,
+		
+		\item 原因: BCH 公式中的级数展开可能不存在.
+	\end{itemize}
+\end{itemize}
+
+\section{Baker-Campbell-Hausdorff formula}
+\subsection{the Campbell's identity}
+\begin{itemize}
+	\item $\mathrm{Ad}_{\exp(A)} = e^{\mathrm{ad}_A} : V_e \rightarrow V_e$.
+	
+	\begin{tcolorbox}[title=proof: (maybe not very rigorously)]
+		consider,
+		\begin{equation}
+			B(s) = \mathrm{Ad}_{\exp(s A)}(B) = \frac{d}{dt} \Big|_0 \exp(s A) \exp(t B) \exp(- s A)
+		\end{equation}
+		the derivative of $B(s)$ is,
+		\begin{equation}
+			\frac{d B(s)}{ds} = \lim_{\Delta s \rightarrow 0} \frac{\text{numerator}}{\Delta s} = [A, \mathrm{Ad}_{\exp(s A)}(B)] = \mathrm{ad}_A B(s)
+		\end{equation}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		\textbf{where the numerator is:}
+		
+		\begin{align}
+			& \text{numerator} \notag \\
+			=& \frac{d}{dt} \Big|_0 \exp(s A) (1 + \Delta s A) \exp(t B) \exp(- s A) (1 - \Delta s A) \notag \\
+			& - \frac{d}{dt} \Big|_0 \exp(s A) \exp(t B) \exp(- s A) \notag \\
+			=& \Delta s [A, \mathrm{Ad}_{\exp(s A)}(B)]
+		\end{align}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		so, the $n$th derivative is $\frac{d^n}{ds^n} B(s) = (\mathrm{ad}_A)^n B(s)$, then naturally,
+		\begin{equation}
+			B(s) = e^{\mathrm{ad}_A} B
+		\end{equation}
+	\end{tcolorbox}
+\end{itemize}
+
+\subsection{BCH formula}
+\begin{itemize}
+	\item theorem 1 (Campbell’s identity in the case of $\mathfrak{gl}(m)$):
+	\begin{equation}
+		e^A B e^{- A} = e^{\mathrm{ad}_A} B
+	\end{equation}
+	
+	\begin{tcolorbox}[title=proof:]
+		consider $F(t) = e^{t A} B e^{- t A}$, so $F(0) = B$, and,
+		\begin{equation}
+			\frac{d}{dt} F(t) = [A, F(t)] = \mathrm{ad}_A F(t) \Longrightarrow \frac{d^n}{dt^n} F(t) = (\mathrm{ad}_A)^n F(t)
+		\end{equation}
+		so it is clear that $F(t) = e^{\mathrm{ad}_A} B$.
+	\end{tcolorbox}
+	
+	\item theorem 2:
+	\begin{equation}
+		e^{A(t)} \frac{d}{dt} e^{- A(t)} = - f(\mathrm{ad}_A) \frac{d A(t)}{dt}
+	\end{equation}
+	where $f(z) = \frac{e^z - 1}{z} = \sum_{n = 0}^\infty \frac{z^n}{(n + 1)!}$.
+	
+	\begin{tcolorbox}[title=proof:]
+		consider $F(s, t) = e^{s A(t)} \frac{d}{dt} e^{- s A(t)}$, with $F(0, t) = 0$, and,
+		\begin{align}
+			\frac{d}{ds} F(s, t) &= A(t) F(s, t) - e^{s A(t)} \frac{d}{dt} \Big( A(t) e^{- s A(t)} \Big) \notag \\
+			&= - e^{s A(t)} \frac{d A(t)}{dt} e^{- s A(t)} \notag \\
+			&= - e^{\mathrm{ad}(s A(t))} \frac{d A(t)}{dt}
+		\end{align}
+		and the $n$th derivative is,
+		\begin{equation}
+			\frac{d^n}{ds^n} F(s, t) = \mathrm{ad}^{n - 1}(A(t)) \frac{d}{ds} F(s, t)
+		\end{equation}
+		when $s = 0$, $\frac{d^n}{ds^n} \big|_{s = 0} F(s, t) = - \mathrm{ad}^{n - 1}(A(t)) \frac{d A(t)}{dt}$, so,
+		\begin{equation}
+			F(s = 1, t) = - \sum_{n = 1}^\infty \frac{\mathrm{ad}^{n - 1}(A(t))}{n!} \frac{d A(t)}{dt}
+		\end{equation}
+		(the 0th order term is $0$)
+	\end{tcolorbox}
+	
+	\item theorem 3:
+	\begin{equation}
+		\frac{d}{dt} e^{- A(t)} = - \int_0^1 e^{- s A(t)} \frac{d A(t)}{dt} e^{- (1 - s) A(t)} ds
+	\end{equation}
+	
+	\begin{tcolorbox}[title=proof:]
+		consider the following equation,
+		\begin{equation}
+			e^{- A} - e^{- B} = \int_0^1 e^{- s A} (B - A) e^{- (1 - s) B} ds
+		\end{equation}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		\textbf{proof:}
+		
+		consider the following equation,
+		\begin{equation}
+			e^{- s A} (B - A) e^{- (1 - s) B} = \frac{d}{ds} \Big( e^{- s A} e^{- (1 - s) B} \Big)
+		\end{equation}
+		integrate both side of the equation,
+		\begin{equation}
+			\int_0^1 \cdots ds = e^{- A} - e^{- B}
+		\end{equation}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		take $A = A(t), B = A(t - \Delta t)$, with $\Delta t \rightarrow 0$, then,
+		\begin{equation}
+			\frac{d}{dt} e^{- A(t)} = - \int_0^1 e^{- s A(t)} \frac{d A(t)}{dt} e^{- (1 - s) A(t)} ds
+		\end{equation}
+	\end{tcolorbox}
+	
+	\item theorem 3 is equivalent to theorem 2.
+	
+	\begin{tcolorbox}[title=calculation:]
+		\begin{align} 
+			\mathcolor{red}{e^{A(t)}} \frac{d}{dt} e^{- A(t)} &= - \int_0^1 e^{\mathcolor{red}{(1 - s)} A(t)} \frac{d A(t)}{dt} e^{- (1 - s) A(t)} ds \notag \\
+			&= - \int_0^1 \underbrace{e^{\mathrm{ad}((1 - s) A(t))}}_{= e^{(1 - s) \mathrm{ad}_{A(t)}}} \frac{d A(t)}{dt} ds \notag \\
+			&= - f(\mathrm{ad}_{A(t)}) \frac{d A(t)}{dt}
+		\end{align}
+		where $f(z)$ is defined in theorem 2.
+	\end{tcolorbox}
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item the Baker-Campbell-Hausdorff formula is,
+	\begin{align}
+		e^A e^B &= \exp \Big( B + \Big( \int_0^1 g(e^{t \, \mathrm{ad}_A} e^{\mathrm{ad}_B}) dt \Big) A \Big) \notag \\
+		&= \exp \Big( A + B + \frac{1}{2} [A, B] + \frac{1}{12} [A, [A, B]] - \frac{1}{12} [B, [A, B]] + \cdots \Big)
+	\end{align}
+	where $g(z) = \frac{\ln z}{z - 1} = \sum_{n = 0}^\infty \frac{(1 - z)^n}{n + 1}$, for $|z - 1| < 1$.
+	
+	\begin{tcolorbox}[title=proof:]
+		consider $e^{C(t)} = e^{t A} e^B$, then,
+		\begin{equation}
+			e^{\mathrm{ad}_{C(t)}} = e^{t \, \mathrm{ad}_A} e^{\mathrm{ad}_B}
+		\end{equation}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		\textbf{proof:}
+		
+		consider the following equation,
+		\begin{align}
+			e^{\mathrm{ad}_{C(t)}} W &= e^{C(t)} W e^{- C(t)} \notag \\
+			&= e^{t A} e^B W e^{- B} e^{- t A} \notag \\
+			&= e^{t A} e^{\mathrm{ad}_B} W e^{- t A} \notag \\
+			&= e^{t \, \mathrm{ad}_A} e^{\mathrm{ad}_B} W
+		\end{align}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		then, let’s consider, (notice that $\mathrm{ad}_A A = 0$),
+		\begin{align}
+			e^{C(t)} \frac{d}{dt} e^{- C(t)} &= - f(\mathrm{ad}_{C(t)}) \frac{d C(t)}{dt} \notag \\
+			&= e^{t A} e^B \frac{d}{dt} e^{- B} e^{- t A} \notag \\
+			&= e^{t A} \frac{d}{dt} e^{- t A} \notag \\
+			&= - f(t \, \mathrm{ad}_A) A = - A \\
+			\Longrightarrow f(\mathrm{ad}_{C(t)}) \frac{d C(t)}{dt} &= A
+		\end{align}
+		notice that $g(e^z) = 1 / f(z)$, so we have,
+		\begin{equation}
+			\frac{d C(t)}{dt} = g(e^{\mathrm{ad}_{C(t)}}) A \Longrightarrow C(1) - \underbrace{C(0)}_{= B} = \Big( \int_0^1 g(e^{t \, \mathrm{ad}_A} e^{\mathrm{ad}_B}) dt \Big) A
+		\end{equation}
+	\end{tcolorbox}
+\end{itemize}

@@ -1,0 +1,373 @@
+\chapter{finite groups}
+\begin{itemize}
+	\item a useful reference: \url{https://sites.ualberta.ca/~vbouchar/MAPH464/notes.html}.
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item def. of groups (Abelian groups, cyclic groups, symmetry groups, permutation groups).
+	
+	\item order of $G$ denoted by $|G|$, order of element $g$.
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item conjugated element $h g h^{- 1} = g'$, conjugacy class.
+	
+	\item subgroup, (left/right) coset of a subgroup (2 theorems + Lagrange theorem).
+	
+	\item conjugacy subgroup $h H h^{- 1}$.
+	
+	\item \textbf{normal subgroup} (i.e. invariant subgroup) $N \triangleleft G$, $g N g^{- 1} \subseteq N, \forall g$.
+	\begin{itemize}
+		\item \textbf{center}, $Z(G) = \{z \in G | g z g^{- 1} = z, \forall g\}$.
+		
+		center is normal, but normal subgroup is not necessarily central.
+		
+		\item the center of a Lie algebra is $\mathfrak{h} = \{A \in \mathfrak{g} | [A, B] = 0, \forall B\} \equiv \{A \in \mathfrak{g} | \mathrm{ad}_A = 0\}$.
+		
+		center is an ideal, but ideal is not necessarily a center.
+	\end{itemize}
+	
+	\item groups without nontrivial normal subgroups are \textbf{simple}.
+	
+	\item \textbf{direct product group} $G \times H$ (Cartesian product, direct product and direct sum).
+	
+	\textbf{def.:} $G \times H = \{(g, h) | g \in G, h \in H\}$ with group product defined by $(g_1, h_1) \circ (g_2, h_2) = (g_1 \circ g_2, h_1 \circ h_2)$.
+	
+	\item factor (quotient) group $G/H_N$.
+	
+	\item isomorphism vs. homomorphism.
+	\begin{itemize}
+		\item kernel $K \mapsto \{e\}$ of a homomorphism.
+	\end{itemize}
+\end{itemize}
+
+\section{representation theory}
+\begin{itemize}
+	\item representation of a group $D(g)$.
+	\item 用 basis of functions 来构建 rep. of $G$,
+	\begin{equation}
+		\Omega_g \psi_i(\vec{x}) = \psi_i(g^{-1} \vec{x})
+	\end{equation}
+	
+	\item trivial rep. (1 dim.) $D_{1 1}(\forall g) = 1$.
+	
+	\item regular rep. $D_{i j}(g) = \braket{g_i | g g_j} \equiv \delta_{g_i, g g_j}$.
+\end{itemize}
+
+\subsection{reducibility}
+\begin{itemize}
+	\item reducible rep. vs. completely reducible (semisimple) rep..
+	
+	completely reducible rep.,
+	\begin{equation}
+		T D(g) T^{- 1} = D^{(1)}(g) \oplus D^{(2)}(g) \oplus \cdots
+	\end{equation}
+	
+	\item completely reducible $\iff$ invariant subspace is trivial.
+\end{itemize}
+
+\section{unitarity theorem} \label{1.2}
+\begin{itemize}
+	\item any \textbf{finite-dim. rep. of a finite group} are equivalent to a \textbf{unitary rep.}.
+	
+	\begin{tcolorbox}[title=proof:]
+		for a finite-dim. rep. $\Gamma = \{D(g), \cdots\}$, consider $H = \sum_g D^\dagger(g) D(g)$, we have,
+		\begin{equation}
+			D^\dagger(h) H D(h) = H
+		\end{equation}
+		$H$ is a Hermitian matrix which can be diagonalized by a unitary matrix,
+		\begin{equation}
+			M \equiv \mathrm{diag}(\lambda_1, \cdots) = U H U^\dagger
+		\end{equation}
+		then let,
+		\begin{equation}
+			B(g) = M^{1 / 2} U D(g) U^\dagger M^{- 1 / 2}
+		\end{equation}
+		where $M^{1 / 2} = \mathrm{diag}(\lambda_1^{1 / 2}, \cdots)$, we can see that,
+		\begin{align}
+			B^\dagger(g) B(g) &= M^{- 1 / 2} U D^\dagger(g) U^\dagger M U D(g) U^\dagger M^{- 1 / 2} \notag \\
+			&= M^{- 1 / 2} M M^{- 1 / 2} = I
+		\end{align}
+		so $\{B(g), \cdots\}$ is a unitary rep..
+	\end{tcolorbox}
+	
+	\item all the \textbf{reducible unitary rep.} are \textbf{completely reducible}.
+	
+	\begin{tcolorbox}[title=proof:]
+		unitary rep. 作用于 $V = W \oplus W^\perp$, 其中 $V$ 是 Hilbert 空间, 内积为 $\braket{\cdot, \cdot}$, $W^\perp$ 与 $W$ 正交, $W$ 是表示的不变子空间, 下面证明 $W^\perp$ 也是不变子空间,
+		\begin{equation}
+			\braket{B(g) w^\perp | w} = \braket{w^\perp | B(- g) w} = \braket{w^\perp | w'} = 0, \forall w^\perp \in W^\perp, w \in W
+		\end{equation}
+		其中, $w' \in W$, 可见 $B(g)[W^\perp] \subseteq W^\perp$
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		其实不需要要求表示幺正, 只需要 $B$ 和 $B^\dag$ 拥有同一个不变子空间 $W$ 就行.
+	\end{tcolorbox}
+	
+	这对 infinite group 也成立.
+\end{itemize}
+
+\section{Schur's lemmas}
+\begin{itemize}
+	\item \textbf{Schur’s 1st lemma}
+	
+	for 2 \textbf{irreducible real or complex rep.} $\Gamma_1 = \{D^{(1)}(g), \cdots\}$ and $\Gamma_2 = \{D^{(2)}(g), \cdots\}$, $\exists A$ s.t. $\forall g$,
+	\begin{equation}
+		A D^{(1)}(g) = D^{(2)}(g) A
+	\end{equation}
+	then, there are only 2 possibilities:
+	\begin{enumerate}
+		\item $A = 0$,
+		
+		\item $A$ is reversible matrix and $\Gamma_1, \Gamma_2$ are equivalent.
+	\end{enumerate}
+	
+	\begin{tcolorbox}[title=proof:]
+		consider,
+		\begin{align}
+			& A D^{(1)}(g)[\ker A] = D^{(2)}(g) A[\ker A] = 0 \notag \\
+			\Longrightarrow & D^{(1)}(g)[\ker A] \subseteq \ker A
+		\end{align}
+		so, $\ker A$ is a invariant subspace of rep. $\Gamma_1$
+		
+		but $\Gamma_1$ is irreducible, so $\ker A$ is trivial, i.e. $\ker A$ is either $0$ or $V$, which implies that...
+	\end{tcolorbox}
+	
+	对 infinite group 也成立.
+	
+	\item \textbf{Schur’s 2nd lemma}
+	
+	for a \textbf{irreducible complex rep.} $\Gamma = \{D(g), \cdots\}$, if $\forall g$,
+	\begin{equation}
+		A D(g) = D(g) A
+	\end{equation}
+	then $A = \lambda I$ for some $\lambda \in \mathbb{C}$.
+	
+	\begin{tcolorbox}[title=proof:]
+		$A$ must have (at least) one eigenvalue $\lambda$, then $\det(A - \lambda I) = 0$ is irreversible matrix,
+		\begin{equation}
+			A D(g) = D(g) A \Longrightarrow (A - \lambda I) D(g) = D(g) (A - \lambda I)
+		\end{equation}
+		by Schur’s 1st lemma, irreversible matrix $A - \lambda I$ must be $0$.
+	\end{tcolorbox}
+	
+	\item \textbf{Schur's 3rd lemma}
+	
+	for 2 \textbf{irreducible complex rep.} $\Gamma_1 = \{D^{(1)}(g), \cdots\}$ and $\Gamma_2 = \{D^{(2)}(g), \cdots\}$, if $\forall g$,
+	\begin{equation}
+		\begin{dcases}
+			A D^{(1)}(g) = D^{(2)}(g) A \\
+			B D^{(1)}(g) = D^{(2)}(g) B
+		\end{dcases}
+	\end{equation}
+	then $B = \lambda A$ for some $\lambda \in \mathbb{C}$.
+	
+	\begin{tcolorbox}[title=proof:]
+		\begin{equation}
+			(A - \lambda B) D^{(1)}(g) = D^{(2)}(g) (A - \lambda B)
+		\end{equation}
+		choose $\lambda$ s.t. $\det(A - \lambda B) = 0$, then, according to Schur's 1st lemma, $A - \lambda B = 0$.
+	\end{tcolorbox}
+\end{itemize}
+
+\section{the great orthogonal theorem}
+\begin{itemize}
+	\item \textbf{the great orthogonality theorem}
+	
+	for 2 inequivalent irreducible rep. $\Gamma^{a} = \{D^{(a)}(g), \cdots\}$ where $a = 1, 2$,
+	\begin{equation}
+		\frac{1}{|G|} \sum_g D^{(a)}_{i j}(g^{-1}) D^{(b)}_{j' i'}(g) = \frac{1}{d} \delta_{i i'} \delta_{j j'} \delta^{a b}
+	\end{equation}
+	or for unitary rep.,
+	\begin{equation}
+		\frac{1}{|G|} \sum_g B^{(a) *}_{i j}(g) B^{(b)}_{i' j'}(g) = \frac{1}{d} \delta_{i i'} \delta_{j j'} \delta^{a b}
+	\end{equation}
+	where $d$ is the dim. of the rep..
+	
+	\begin{tcolorbox}[title=proof:]
+		for $a = b$:
+		
+		consider $A = \sum_g B^{(a) \dagger}(g) X B^{(a)}(g)$ where $B^{(a)}(g) = T D^{(a)}(g) T^{-1}$ is the unitary rep. equivalent to $\Gamma_a$, then,
+		\begin{equation}
+			A B^{(a)}(h) = B^{(a) \dagger}(h^{-1}) A \Longrightarrow A B^{(a)}(h) = B^{(a)}(h) A
+		\end{equation}
+		according to Schur’s 1st lemma, $A = \lambda I$, then,
+		\begin{align}
+			\lambda I &= \sum_g (T^{-1} B^{(a) \dagger}(g) T) (T^{-1} X T) (T^{-1} B^{(a)}(g) T) \notag \\
+			&= \sum_g D^{(a)}(g^{-1}) X' D^{(a)}(g)
+		\end{align}
+		choose $X'_{.,.} = \delta_{.,j} \delta_{j',.}$ then we have $\lambda I = \sum_g D^{(a)}_{.,j}(g^{-1}) D^{(a)}_{j',.}(g)$, calculate the trace of the matrix,
+		\begin{equation}
+			\lambda d_a = \sum_g \delta_{j j'} = |G| \delta_{j j'}
+		\end{equation}
+		so we can conclude that,
+		\begin{equation}
+			\frac{1}{|G|} \sum_g D^{(a)}_{i j}(g^{-1}) D^{(a)}_{j' i'}(g) = \frac{1}{d_a} \delta_{i i'} \delta_{j j'}
+		\end{equation}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		for $a \neq b$:
+		
+		still consider $A = \sum_g B^{(a) \dagger}(g) X B^{(b)}(g)$ then,
+		\begin{equation}
+			A B^{(b)}(h) = B^{(a)}(h) A
+		\end{equation}
+		according to Schur’s 1st lemma, $A = 0$, consequently,
+		\begin{equation}
+			\sum_g D^{(a)}_{i j}(g^{-1}) D^{(b)}_{j' i'}(g) = 0
+		\end{equation}
+	\end{tcolorbox}
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item characters of the rep. $\Gamma_a$ of group $G$ is the set $\{\chi^{(a)}(g) = \mathrm{tr} D^{(a)}(g) | g \in G\}$
+	
+	\item character table is the matrix $X = \{{X^a}_i = \chi^{(a = 1, \cdots, \rho)}(g_{i = 1, \cdots, c})\}$.
+	
+	where $g_i$ is the rep. of the $i$th conjugacy class, and $\rho$ is the number of the irreducible inequivalent rep. of $G$. ($\rho = c$, as to be proved later).
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item \textbf{1st theorem of the orthogonality of the characters}
+	
+	the character of irreducible inequivalent rep. of $G$ are orthogonal to each other, which can be derived easily from the great orthogonality theorem.
+	\begin{equation}
+		\frac{1}{|G|} \sum_g \chi^{(a) *}(g) \chi^{(b)}(g) = \delta^{a b}
+	\end{equation}
+	
+	
+	
+	\item \textbf{2nd theorem of the orthogonality of the characters}
+	\begin{equation}
+		\sum_{a = 1}^\rho \chi^{(a) *}(g_i) \chi^{(a)}(g_j) = \frac{|G|}{n_i} \delta_{i j}
+	\end{equation}
+	where $g_i$ is the rep. of the $i$th conjugacy class, $n_i$ is the number of elements in this conjugacy class, and $\rho$ is the number of the irreducible inequivalent rep. of $G$.
+	
+	\begin{tcolorbox}[title=proof:]
+		by 1st theorem,
+		\begin{equation}
+			X \mathrm{diag}(\frac{n_1}{|G|}, \cdots, \frac{n_c}{|G|}) X^\dagger = I
+		\end{equation}
+		then,
+		\begin{equation}
+			\Longrightarrow \sum_j \Big( X^\dagger X \mathrm{diag}(\frac{n_1}{|G|}, \cdots, \frac{n_c}{|G|}) \Big)_{i j} {{X^\dagger}_j}^a = {{X^\dagger}_i}^a
+		\end{equation}
+		since vectors $({X^a}_1, \cdots, {X^a}_c)$ forms an orthogonal basis of the vector space, then we must have,
+		\begin{equation}
+			\Big( X^\dagger X \mathrm{diag}(\frac{n_1}{|G|}, \cdots, \frac{n_c}{|G|}) \Big)_{i j} = \delta_{i j}
+		\end{equation}
+		then, finally, we have,
+		\begin{equation}
+			\sum_{a = 1}^\rho \chi^{(a) *}(g_i) \chi^{(a)}(g_j) = \frac{|G|}{n_i} \delta_{i j}
+		\end{equation}
+	\end{tcolorbox}
+	
+	\item 群 $G$ 的 irreducible inequivalent rep. 的数量等于其 conjugacy class 的数量 $c$.
+	
+	\begin{tcolorbox}[title=proof:]
+		一个 irreducible inequivalent rep. 由其 characters 表示 $\{\chi^{(a)}(g), \cdots\}$
+		
+		(根据 theorem of the orthogonality of the characters) 不同的 irreducible inequivalent rep. 的 characters 一定不同.
+		
+		且 conjugacy class 内的元素的 character 一定相等, 所以一个 rep. 实际上只有 conjugacy class 的数量 $c$ 个不同的 characters, 所以可以将 characters 视为 $c$ 维向量 $\frac{1}{\sqrt{|G|}} (\chi^{(a)}(g), \cdots)$, 那么 $c$ 维向量空间中互相正交归一的向量最多只有 $c$ 个.
+		
+		利用 2nd theorem of... 可证... 最少有 $c$ 个. 所以... 等于...
+	\end{tcolorbox}
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item characters of completely reducible rep..
+	
+	suppose a completely reducible rep. $\Gamma = \oplus_{a = 1}^c m_a \Gamma_a$, where $m_a = 0, 1, 2, \cdots$, then,
+	\begin{equation}
+		\chi(g) = \sum_a m_a \chi^{(a)}(g)
+	\end{equation}
+	(e.g. for $D(g) = D^{(1)}(g) \oplus D^{(1)}(g)$, $m_1 = 2$).
+	
+	and,
+	\begin{equation}
+		\frac{1}{|G|} \sum_g \chi^*(g) \chi(g) = \sum_a m_a^2 > 1
+	\end{equation}
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item \textbf{Burnside theorem}
+	\begin{equation}
+		\sum_{a = 1}^c d_a^2 = |G|
+	\end{equation}
+	where $d_a$ is the dim. of the $a$th inequivalent irreducible rep. of $G$.
+	
+	\begin{tcolorbox}[title=proof:]
+		by 2nd orthogonality theorem of characters,
+		\begin{equation}
+			\sum_{a = 1}^c \chi^{(a) *}(e) \big( \chi^{(a)}(e) = d_a \big) = \frac{|G|}{(n_e = 1)} \Longrightarrow \sum_{a = 1}^c d_a^2 = |G|
+		\end{equation}
+	\end{tcolorbox}
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item rep. of \textbf{direct product group} $G = H \times F$ is derived from \textbf{irreducible rep.} of $H$ and $F$ by $\Gamma = \Gamma_H \times \Gamma_F = \{D(hf) = D_H(h) \otimes D_F(f)\}$, then $\Gamma$ \textbf{is also an irreducible rep.}.
+	
+	\begin{tcolorbox}[title=proof:]
+		利用 characters of completely reducible rep. 的性质.
+	\end{tcolorbox}
+	
+	\item direct product of group rep.: $\Gamma = \Gamma_a \times \Gamma_b$, then $\chi(g) = \chi^{(a)}(g) \chi^{(b)}(g)$
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item projection operator is,
+	\begin{equation}
+		P_a = \frac{d_a}{|G|} \sum_g \chi^{(a) *}(g) T^{-1} \begin{pmatrix}
+			\ddots & & \\
+			& D^{(b)}(g) & \\
+			& & \ddots
+		\end{pmatrix} T = T^{-1} \begin{pmatrix}
+			\ddots & & \\
+			& \delta^{a b} I & \\
+			&  & \ddots
+		\end{pmatrix} T
+	\end{equation}
+	i.e.,
+	\begin{equation}
+		P_a = \frac{d_a}{|G|} \sum_g \chi^{(a) *}(g) D(g) = T^{-1} \begin{pmatrix}
+			\ddots & & \\
+			& \delta^{a b} I & \\
+			&  & \ddots
+		\end{pmatrix} T
+	\end{equation}
+	where $T D(g) T^{-1} = \cdots \oplus D^{(b)}(g) \oplus \cdots$.
+	
+	notice that $P_a$ is not necessarily a diagonal matrix, unless $T$ consists of orthogonal column vectors.
+	
+	
+	\item how to use a projection operator:
+	\begin{equation}
+		P_a D(g) = T^{-1} \begin{pmatrix} \ddots & & \\ & \delta^{a b} D^{(a)}(g) & \\ & & \ddots \end{pmatrix} T
+	\end{equation}
+	and $\mathrm{tr}(P_a) = m_a d_a$.
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item about 1-dim. rep. $\Gamma_1 = \{D^{(1)}(g), \cdots\}$:
+	
+	1-dim. rep. must be \textbf{irreducible} and \textbf{unitary}, so,
+	\begin{equation}
+		\chi^{(1)}(g) = D^{(1)}(g) \qquad \chi^{(1)}(g^{-1}) = \chi^{(1) *}(g)
+	\end{equation}
+	so we can conclude that,
+	\begin{equation}
+		|\chi^{(1)}(g)| = |D^{(1)}(g)| = 1
+	\end{equation}
+	
+	\item $\Gamma_a$ is a n-dim. irreducible rep., then $\Gamma_1 \times \Gamma_a$ is also an irreducible rep..
+	
+	\begin{tcolorbox}[title=proof:]
+		let $\Gamma = \Gamma_1 \times \Gamma_a = \{D^{(1)}(g) \otimes D^{(a)}(g), \cdots\}$, then,
+		\begin{equation}
+			\frac{1}{|G|} \sum_g |\chi(g)|^2 = \frac{1}{|G|} \sum_g \underbrace{|\chi^{(1)}(g)|^2}_{= 1} |\chi^{(a)}(g)|^2 = 1
+		\end{equation}
+	\end{tcolorbox}
+\end{itemize}

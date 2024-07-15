@@ -1,0 +1,346 @@
+\chapter{\texorpdfstring{$\mathfrak{su}(2)_\mathbb{C}$}{su(2)\_C} algebra}
+\begin{itemize}
+	\item $\mathfrak{su}(2) = \{A \in \mathcal{M}_2(\mathbb{C}) | A^\dag = - A \text{ and } \mathrm{tr} A = 0\}$.
+	\begin{itemize}
+		\item $\dim \mathfrak{su}(2) = 2^2 - 1 = 3$.
+		
+		\item $\mathfrak{su}(2) = \mathrm{span} \{i J_1, i J_2, i J_3\}$ is a real vector space.
+	\end{itemize}
+	
+	\item its structure is,
+	\begin{equation}
+		[J_i, J_j] = i \epsilon_{i j k} J_k
+	\end{equation}
+	where $i, j, k = 1, 2, 3$.
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item ladder operators,
+	\begin{equation}
+		\begin{dcases}
+			J_\pm = \frac{1}{\sqrt{2}} (J_1 \pm i J_2) \in \mathfrak{su}(2)_{\mathbb{C}} \\
+			\mathcolor{red}{[J_3, J_\pm] = \pm J_\pm} \\
+			\mathcolor{red}{[J_+, J_-] = J_3} \\
+			J^2 = J_+ J_- + J_- J_+ + J_3^2
+		\end{dcases}
+	\end{equation}
+	
+	\item another basis is $H = 2 J_3, A = \sqrt{2} J_+, B = \sqrt{2} J_-$, and,
+	\begin{equation}
+		\begin{dcases}
+			[H, A] = 2 A \\
+			[H, B] = - 2 B \\
+			[A, B] = H
+		\end{dcases} \quad \mathrm{ad}_H = \begin{pmatrix}
+			0 & & \\
+			& 2 & \\
+			& & - 2
+		\end{pmatrix} \quad \mathrm{ad}_A = \begin{pmatrix}
+			0 & 0 & 1 \\
+			- 2 & 0 & 0 \\
+			0 & 0 & 0
+		\end{pmatrix} \quad \mathrm{ad}_B = \begin{pmatrix}
+			0 & - 1 & 0 \\
+			0 & 0 & 0 \\
+			2 & 0 & 0
+		\end{pmatrix}
+	\end{equation}
+	so, the Killing form is,
+	\begin{equation}
+		B = \begin{pmatrix}
+			8 & 0 & 0 \\
+			0 & 0 & 4 \\
+			0 & 4 & 0
+		\end{pmatrix}
+	\end{equation}
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item its Killing form is $B_{i j} = \epsilon_{i k l} \epsilon_{j k l} = 2 \delta_{i j}$.
+	
+	\item its 2nd order Casimir operator is,
+	\begin{equation}
+		C_2 = - B^{i j} A_i A_j = \frac{1}{2} \delta_{i j} J_i J_j = \frac{1}{2} J^2
+	\end{equation}
+\end{itemize}
+
+\section{representations of \texorpdfstring{$\mathfrak{su}(2)_\mathbb{C}$}{su(2)\_C} algebra}
+\begin{itemize}
+	\item for each (half-)integer $j$, there exits an $2 j + 1$ dimensional \textbf{irreducible} complex rep.,
+	\begin{equation}
+		\pi_j : \mathfrak{su}(2)_\mathbb{C} \rightarrow \mathrm{span}(\ket{j, m}, m = - j, \cdots, j)
+	\end{equation}
+	and any two irreducible rep. with the same dimension are isomorphic.
+	
+	\begin{tcolorbox}[title=proof:]
+		let $\pi$ be an irreducible rep. of $\mathfrak{su}(2)_\mathbb{C}$ on a finite-dimensional complex vector space $V$, and $\ket{u}$ is a eigenvector of $\pi(J_3)$,
+		\begin{equation}
+			\begin{dcases}
+				\pi(J_3) \ket{u} = \alpha \ket{u} \\
+				\pi(J_3) \pi^k(J_\pm) \ket{u} = (\alpha \pm k) \pi^k(J_\pm) \ket{u}
+			\end{dcases}
+		\end{equation}
+		since $V$ is finite-dimensional, so there is some $N_\pm \geq 0$, s.t.,
+		\begin{equation}
+			\pi^{N_\pm}(J_\pm) \ket{u} \neq 0 \quad \text{but} \quad \pi^{N_\pm + 1}(J_\pm) \ket{u} = 0
+		\end{equation}
+		let's set $\ket{u_0} = \pi^{N_-}(J_-) \ket{u}$ and $\lambda_0 = \alpha - N_-, \ket{u_k} = \pi^k(J_+) \ket{u_0}$, then,
+		\begin{equation}
+			\pi(J_3) \ket{u_k} = (\lambda_0 + k) \ket{u_k}, k = 0, \cdots, 2 j
+		\end{equation}
+		where $j = \frac{N_+ + N_-}{2}$, and,
+		\begin{align}
+			& \pi(J_-) \ket{u_k} = - k (\lambda_0 + \frac{k - 1}{2}) \ket{u_{k - 1}} \notag \\
+			\overset{k - 1 = 2 j}{\Longrightarrow} & 0 = - (2 j + 1) (\lambda_0 + j) \ket{u_{2 j - 1}} \Longrightarrow \lambda_0 = - j
+		\end{align}
+		so, for any \textbf{finite-dimensional} rep. of $\mathfrak{su}(2)_\mathbb{C}$, $\lambda_0 = - j$ must be a \textbf{(half-)integer}.
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		\begin{itemize}
+			\item according to appendix \ref{A.1}, $\ket{u_0}, \cdots, \ket{u_{2 j}}$ are \textbf{linearly independent}.
+			
+			\item $\mathrm{span}(\ket{u_0}, \cdots, \ket{u_{2 j}})$ is \textbf{invariant} under $\pi(J_3), \pi(J_\pm)$, hence invariant under all $\pi(A), A \in \mathfrak{su}(2)_\mathbb{C}$.
+			
+			\item so every irreducible rep. is of the form as $\mathrm{span}(\ket{u_0}, \cdots, \ket{u_{2 j}})$.
+		\end{itemize}
+	\end{tcolorbox}
+	
+	\item for any finite-dim. (not necessarily irreducible) rep. $(\pi, V)$ of $\mathfrak{su}(2)_\mathbb{C}$,
+	\begin{enumerate}
+		\item all eigenvalues of $\pi(J_3)$ are \colorbox{yellow}{(half-)integer},
+		\begin{equation} \label{9.1.6}
+			- j, - j + 1, \cdots, j
+		\end{equation}
+		
+		\item $\pi(J_\pm)$ are nilpotent,
+		
+		\item let $S = e^A e^{- B} e^A \Longrightarrow \Pi(S) = e^{\pi(A)} e^{- \pi(B)} e^{\pi(A)}$, then,
+		\begin{equation} \label{9.1.7}
+			\mathrm{Ad}_S H = - H \Longrightarrow \Pi(S) \pi(H) \Pi(S^{- 1}) = - \pi(H)
+		\end{equation}
+		
+		\begin{tcolorbox}[title=calculation:]
+			use the Campbell's identity,
+			\begin{align}
+				\mathrm{Ad}_{\Pi(S)} \pi(H) &= \pi(\mathrm{Ad}_{e^A} \mathrm{Ad}_{e^{- B}} \mathrm{Ad}_{e^A} H) \notag \\
+				&= \pi(e^{\mathrm{ad}_A} e^{- \mathrm{ad}_B} e^{\mathrm{ad}_A} H)
+			\end{align}
+			and,
+			\begin{align}
+				e^{\mathrm{ad}_A} H &= H - 2 A \notag \\
+				e^{- \mathrm{ad}_B} (H - 2 A) &= H - 2 B - 2 (A + H - B) = - H - 2 A \notag \\
+				e^{\mathrm{ad}_A} (- H - 2 A) &= - (H - 2 A) - 2 A = - H
+			\end{align}
+			
+			\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+			
+			and,
+			\begin{align}
+				\mathrm{Ad}_S^{- 1} H &= e^{- \mathrm{ad}_A} e^{\mathrm{ad}_B} e^{- \mathrm{ad}_A} H \notag \\
+				&= e^{- \mathrm{ad}_A} e^{\mathrm{ad}_B} (H + 2 A) \notag \\
+				&= e^{- \mathrm{ad}_A} (\underbrace{(H + 2 B) + 2 (A - H - B)}_{= - H + 2 A}) = - H
+			\end{align}
+			
+			\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+			
+			but,
+			\begin{align}
+				e^{\mathrm{ad}_{J_+}} J_3 &= J_3 - J_+ \notag \\
+				e^{- \mathrm{ad}_{J_-}} (J_3 + J_+) &= (J_3 - J_-) - (J_+ + J_3 - \frac{1}{2} J_-) = - J_+ - \frac{1}{2} J_- \notag \\
+				e^{\mathrm{ad}_{J_+}} (- J_+ - \frac{1}{2} J_-) &= - J_+ - \frac{1}{2} (J_- + J_3 - \frac{1}{2} J_+)
+			\end{align}
+		\end{tcolorbox}
+	\end{enumerate}
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item the eigenstates $\ket{j, m}$ of the operators $J_3, J^2$ are,
+	\begin{equation}
+		\begin{dcases}
+			J_3 \ket{j, m} = m \ket{j, m} \\
+			J^2 \ket{j, m} = j (j + 1) \ket{j, m} \\
+			J_\pm \ket{j, m} = \frac{1}{\sqrt{2}} \sqrt{j (j + 1) - m (m \pm 1)} \ket{j, m \pm 1}
+		\end{dcases}
+	\end{equation}
+	when $J_1 = \frac{1}{\sqrt{2}} (J_+ + J_-)$ and $J_2 = \frac{1}{i \sqrt{2}} (J_+ - J_-)$ act on $\ket{s, m}$,
+	\begin{equation}
+		\begin{dcases}
+			J_1 \ket{j, m} = \lambda_+(j, m) \ket{j, m + 1} + \lambda_-(j, m) \ket{j, m - 1} \\
+			J_2 \ket{j, m} = - i \lambda_+(j, m) \ket{j, m + 1} + i \lambda_-(j, m) \ket{j, m - 1}
+		\end{dcases}
+	\end{equation}
+	where $\lambda_\pm(j, m) = \sqrt{\frac{j (j + 1) - m (m \pm 1)}{2}}$.
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item \textbf{spin-}$\boldsymbol{\frac{1}{2}, \frac{3}{2}, \frac{5}{2}, \cdots}$ rep. are \textbf{faithful}, and \textbf{spin-}$\boldsymbol{0, 1, 2, \cdots}$ rep. are \textbf{not faithful}.
+\end{itemize}
+
+\subsection{spin-\texorpdfstring{$\frac{1}{2}$}{1 / 2} representation}
+\begin{itemize}
+	\item choose $s = 1 / 2$, and $\ket{\frac{1}{2}, \frac{1}{2}} = (1, 0)^T, \ket{\frac{1}{2}, - \frac{1}{2}} = (0, 1)^T$, then $J_i = \frac{1}{2} \sigma_i$, where,
+	\begin{equation}
+		\sigma_1 = \begin{pmatrix}
+			0 & 1 \\
+			1 & 0
+		\end{pmatrix} \quad \sigma_2 = \begin{pmatrix}
+			0 & - i \\
+			i & 0
+		\end{pmatrix} \quad \sigma_3 = \begin{pmatrix}
+			1 & 0 \\
+			0 & - 1
+		\end{pmatrix}
+	\end{equation}
+	and the ladder operators are,
+	\begin{equation}
+		J_+ = \frac{1}{\sqrt{2}} \begin{pmatrix}
+			0 & 1 \\
+			0 & 0
+		\end{pmatrix} \quad J_- = \frac{1}{\sqrt{2}} \begin{pmatrix}
+			0 & 0 \\
+			1 & 0
+		\end{pmatrix}
+	\end{equation}
+\end{itemize}
+
+\subsection{spin-\texorpdfstring{$1$}{1} representation}
+\begin{itemize}
+	\item choose $s = 1$, and $\ket{1, 1} = (1, 0, 0)^T, \ket{1, 0} = (0, 1, 0)^T, \ket{1, - 1} = (0, 0, 1)^T$, then,
+	\begin{equation}
+		J_1 = \frac{1}{\sqrt{2}} \begin{pmatrix}
+			0 & 1 & 0 \\
+			1 & 0 & 1 \\
+			0 & 1 & 0
+		\end{pmatrix} \quad J_2 = \frac{1}{\sqrt{2}} \begin{pmatrix}
+			0 & - i & 0 \\
+			i & 0 & - i \\
+			0 & i & 0
+		\end{pmatrix} \quad J_3 = \begin{pmatrix}
+			1 & 0 & 0 \\
+			0 & 0 & 0 \\
+			0 & 0 & - 1
+		\end{pmatrix}
+	\end{equation}
+\end{itemize}
+
+\section{direct product representation}
+\begin{itemize}
+	\item the direct product representation of the $\mathrm{SU}(2)$ group is,
+	\begin{equation}
+		D^{1 \otimes 2}_{i i' j j'}(g) = D^1_{i j}(g) D^2_{i' j'}(g)
+	\end{equation}
+	
+	\item consider a group element near the identity,
+	\begin{align}
+		(1 + i \alpha_i J^{1 \otimes 2}_i)_{i i' j j'} &= (\delta^1_{i j} + i \alpha_i (J^1_i)_{i j}) (\delta^2_{i' j'} + i \alpha_i (J^2_i)_{i' j'}) \notag \\
+		&= \delta^1_{i j} \delta^2_{i' j'} + i \alpha_i (J^{1 \otimes 2}_i)_{i i' j j'}
+	\end{align}
+	where $(J^{1 \otimes 2}_i)_{i i' j j'} = (J^1_i)_{i j} \delta^2_{i' j'} + \delta^1_{i j} (J^2_i)_{i' j'}$ or more compactly,
+	\begin{equation}
+		J^{1 \otimes 2}_i = J^1_i \otimes I^2 + I^1 \otimes J^2_i
+	\end{equation}
+	
+	\item the eigenstates are,
+	\begin{equation}
+		J^{1 \otimes 2}_3 \ket{j_1, m_1} \otimes \ket{j_2, m_2} = (m_1 + m_2) \ket{j_1, m_1} \otimes \ket{j_2, m_2}
+	\end{equation}
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item the $(J^2)^{j_1 \otimes j_2}$ is,
+	\begin{align}
+		(J^2)^{j_1 \otimes j_2} &= \sum_i (J^{j_1}_i \otimes I^{j_2} + I^{j_1} \otimes J^{j_2}_i)^2 \notag \\
+		&= (J^2)^{j_1} \otimes I^{j_2} + I^{j_1} \otimes (J^2)^{j_2} + 2 \sum_i J^{j_1}_i \otimes J^{j_2}_i
+	\end{align}
+	
+	\begin{tcolorbox}[title=when $(J^2)^{j_1 \otimes j_1}$ acts on $\ket{j_1, m_1} \otimes \ket{j_2, m_2}$:]
+		\begin{align}
+			& (J^2)^{j_1 \otimes j_1} \ket{j_1, m_1} \otimes \ket{j_2, m_2} \notag \\
+			=& (j_1 (j_1 + 1) + j_2 (j_2 + 1) + 2 m_1 m_2) \ket{j_1, m_1} \otimes \ket{j_2, m_2} \notag \\
+			& + 2 (J^{j_1}_1 \otimes J^{j_2}_1 + J^{j_1}_2 \otimes J^{j_2}_2) \ket{j_1, m_1} \otimes \ket{j_2, m_2}
+		\end{align}
+		where,
+		\begin{align}
+			& 2 (J^{j_1}_1 \otimes J^{j_2}_1 + J^{j_1}_2 \otimes J^{j_2}_2) \ket{j_1, m_1} \otimes \ket{j_2, m_2} \notag \\
+			=& 4 \lambda_+(j_1, m_1) \lambda_-(j_2, m_2) \ket{j_1, m_1 + 1} \otimes \ket{j_2, m_2 - 1} \notag \\
+			& + 4 \lambda_-(j_1, m_1) \lambda_+(j_2, m_2) \ket{j_1, m_1 - 1} \otimes \ket{j_2, m_2 + 1}
+		\end{align}
+	\end{tcolorbox}
+\end{itemize}
+
+\subsection{Clebsch-Gordan coefficients}
+\begin{itemize}
+	
+	\item direct product representation and direct sum representation,
+	\begin{equation}
+		\{j_1\} \otimes \{j_2\} = \bigoplus_{j = |j_1 - j_2|}^{j_1 + j_2} \{j\}
+	\end{equation}
+	where $\{j\}$ means spin-$j$ representation.
+	
+	\begin{tcolorbox}[title=proof:]
+		the eigenvalue and corresponded eigenspace of $J^{j_1 \otimes j_2}_3$ is (assuming $j_1 \geq j_2$),
+		
+		\begin{center}
+			\newcolumntype{K}{>{\centering\arraybackslash}X}
+			\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+			\begin{tabularx}{\linewidth}{KC{8cm}K}
+				\toprule 
+				eigenvalue & basis of the eigenspace & dimension \\
+				\midrule 
+				$j_1 + j_2$ & $\ket{j_1, j_1, j_2, j_2}$ & $1$ \\
+				$j_1 + j_2 - 1$ & $\ket{j_1, j_1 - 1, j_2, j_2}, \ket{j_1, j_1, j_2, j_2 - 1}$ & $2$ \\
+				$\vdots$ & $\vdots$ & $\vdots$ \\
+				$j_1 + j_2 - 2 j_2$ & $\ket{j_1, j_1 - 2 j_2, j_2, j_2}, \cdots, \ket{j_1, j_1, j_2, - j_2}$ & $1 + 2 j_2$ \\
+				$j_1 - j_2 - 1$ & $\ket{j_1, j_1 - 2 j_2 - 1, j_2, j_2}, \cdots, \ket{j_1, j_1 - 1, j_2, - j_2}$ & $1 + 2 j_2$ \\
+				$\vdots$ & $\vdots$ & $\vdots$ \\
+				$j_1 + j_2 - 2 j_1$ & $\ket{j_1, - j_1, j_2, j_2}, \cdots, \ket{j_1, - j_1 + 2 j_2, j_2, - j_2}$ & $1 + 2 j_2$ \\
+				$- j_1 + j_2 - 1$ & $\ket{j_1, - j_1, j_2, j_2 - 1}, \cdots, \ket{j_1, - j_1 + 2 j_2 - 1, j_2, - j_2}$ & $2 j_2$ \\
+				$\vdots$ & $\vdots$ & $\vdots$ \\
+				$- j_1 - j_2$ & $\ket{j_1, - j_1, j_2, - j_2}$ & $1$ \\
+				\bottomrule
+			\end{tabularx}
+		\end{center}
+		
+		so, it is clear that we can use $\ket{j_1, j_1, j_2, j_2}$ and $J^{j_1 \otimes j_2}_-$ to produce $\{j_1 + j_2\}$, and among the rest of the vectors, the highest eigenvalue of $J^{j_1 \otimes j_2}_3$ is $j_1 + j_2 - 1$ and there is only one vector with this eigenvalue is remained.
+		
+		hence,
+		\begin{equation}
+			\{j_1\} \otimes \{j_2\} = \bigoplus_{j = |j_1 - j_2|}^{j_1 + j_2} \{j\}
+		\end{equation}
+	\end{tcolorbox}
+	
+	\begin{itemize}
+		\item example: $\{\frac{1}{2}\} \otimes \{\frac{1}{2}\} = \underbrace{\{1\}}_{\text{spin triplet}} \oplus \underbrace{\{0\}}_{\text{spin singlet}}$
+	\end{itemize}
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item the Clebsch-Gordan coefficients are,
+	\begin{equation}
+		\braket{j_1, m_1, j_2, m_2 | j_1, j_2, j, m}
+	\end{equation}
+	where $\ket{j_1, j_2, j, m}$ (it is common to write $\ket{j, m}$ for short) are the coupled eigenstates of $J^{j_1 \otimes j_2}_3$ and $(J^2)^{j_1 \otimes j_2}$.
+	
+	\item the recursion relations are,
+	\begin{align}
+		& \lambda_\pm(j_1, \mathcolor{red}{m_1 \mp 1}) \braket{j_1, \mathcolor{red}{m_1 \mp 1}, j_2, m_2 | j, m} \notag \\
+		& + \lambda_\pm(j_2, \mathcolor{red}{m_2 \mp 1}) \braket{j_2, m_2, j_2, \mathcolor{red}{m_2 \mp 1} | j, m} \notag \\
+		&= \lambda_\pm(j, m) \braket{j_1, m_1, j_2, m_2 | j, \mathcolor{red}{m \mp 1}}
+	\end{align}
+	
+	\begin{tcolorbox}[title=proof:]
+		just consider the ladder operators $J^{j_1 \otimes j_2}_\pm = J^{j_1}_\pm \otimes I^{j_2} + I^{j_1} \otimes J^{j_2}_\pm$,
+		\begin{equation}
+			\sum_{j_1, m_1, j_2, m_2} J^{j_1 \otimes j_2}_\pm \ket{j_1, m_1, j_2, m_2} \braket{j_1, m_1, j_2, m_2 | j, m} = \cdots
+		\end{equation}
+	\end{tcolorbox}
+	
+	taking $m = j$ gives the initial recursion relation,
+	\begin{align}
+		& \lambda_+(j_1, \mathcolor{red}{m_1 - 1}) \braket{j_1, \mathcolor{red}{m_1 - 1}, j_2, m_2 | j, j} \notag \\
+		& + \lambda_+(j_2, \mathcolor{red}{m_2 - 1}) \braket{j_2, m_2, j_2, \mathcolor{red}{m_2 - 1} | j, j} = 0
+	\end{align}
+	
+	\item use the phase convention that $\braket{j_1, m_1, j_2, m_2 | j, j} \in \mathbb{R}$ and $> 0$, combined with the recursion relations, we can conclude that $\braket{j_1, m_1, j_2, m_2 | j, m} \in \mathbb{R}$.
+\end{itemize}

@@ -1,0 +1,246 @@
+\chapter{maps between manifolds} \label{B}
+\section{pushforward \& pullback}
+\begin{itemize}
+	\item 對於一個 $m\text{-}\dim$ 李群 $G$ 和 $n\text{-}\dim$ 流形 $M$, 它們之間存在映射 $\sigma : G \times M \rightarrow M$, 滿足,
+	\begin{equation}
+		\begin{dcases}
+			\sigma_g : M \rightarrow M \text{ is diffeomorphism} \\
+			\sigma_g \circ \sigma_h = \sigma_{g h}
+		\end{dcases}
+	\end{equation}
+	
+	\item 可見, $\{ \sigma_g : M \rightarrow M | g \in G \}$ is homomorphic to $G$, 且 $\sigma_p : G \rightarrow M$ is $C^\infty$ and preserves the topology.
+	
+	\item 我們用 $\{ x^\mu | \mu = 1,\cdots m \}$ 表示李群 $G$ 上的坐標, 用 $\{ y^\nu | \nu = 1,\cdots n \}$ 表示流形 $M$ 上的坐標.
+\end{itemize}
+
+\subsection{pullback}
+\begin{itemize}
+	\item 流形 $M$ 上有坐標 $\{ y^\mu | \mu = 1,\cdots n \}$, 那麽通過 pullback 可以得到李群 $G$ 上的 $n$ 個標量塲,
+	\begin{equation}
+		\sigma^*_p : \mathcal{F}_M \rightarrow \mathcal{F}_G \quad (\sigma^*_p y^\mu)(g) = y^\mu(\sigma_p(g))
+	\end{equation}
+	
+	\item 不能 pushforward 的原因:
+	\begin{equation}
+		\sigma_{p *} x^\mu(\underline{\underline{\sigma_p(g)}}) = x^\mu(g)
+	\end{equation}
+	$\sigma_p(g)$ 這個 $M$ 上的點可能對應不同的 $g$, 那麽標量塲 $\sigma_{p *} x^\mu$ 在此處的取值也就無法確定.
+	
+	\item 注意: $\{ \sigma^*_p y^\mu \}$ 是 $G$ 上的一組 $n$ 個標量塲, 但是 $(\sigma^*_p y) : G \rightarrow n'\text{-}\dim \text{Surface} \subset \mathbb{R}^n$, 其中,
+	\begin{equation}
+		\begin{dcases}
+			n' \leq m & \text{one-to-one 時取等 ($\dim \sigma_p [G] = \dim G$)} \\
+			n' \leq n & \text{onto 時取等 ($\dim \sigma_p [G] = n$)}
+		\end{dcases}
+	\end{equation}
+\end{itemize}
+
+\subsection{pushforward}
+\begin{itemize}
+	\item 將李群 $G$ 上的矢量場 pushforward 到流形 $M$ 上,
+	\begin{equation}
+		\sigma_{p *} : \mathcal{T}_G(1,0) \rightarrow \mathcal{T}_M(1,0) \quad \Big( \sigma_{p *} \frac{\partial}{\partial x^\mu} \Big)(\underline{\underline{y^\nu}}) \Big|_{\sigma_p(g)} = \Big( \frac{\partial}{\partial x^\mu} \Big)(\sigma^*_p y^\nu) \Big|_g
+	\end{equation}
+	我們可以得到 pushforward 后的矢量場的全部 $n$ 個分量.
+	
+	\item 但是由於 $\sigma^*_p y^\nu$ 只有 $n'$ 個獨立變量 ($\dim \sigma^*_p y [G] = n'$), 所以 pushforward 后得到的 $m$ 個矢量場中, 也只有 $n'$ 個是綫性獨立的.
+	
+	\item 不能 pullback 的原因: 顯然無法確定 pullback 后的矢量場的 $m$ 個分量, 最多 $n'$ 個.
+\end{itemize}
+
+\subsection{pullback}
+\begin{itemize}
+	\item 將流形 $M$ 上的對偶矢量場 pullback 到李群 $G$ 上,
+	\begin{equation}
+		(\sigma^*_p dy^\mu)_a \Big( \frac{\partial}{\partial x^\nu} \Big)^a \Big|_g = (dy^\mu)_a \Big( \sigma_{p *} \frac{\partial}{\partial x^\nu} \Big)^a \Big|_{\sigma_p(g)}
+	\end{equation}
+	同樣, pullback 得到的 $n$ 個矢量場中, 綫性獨立的有 $n'$ 個.
+\end{itemize}
+
+\subsection{曲綫像的切矢等於曲綫切矢的像} \label{B.1.4}
+\begin{itemize}
+	\item 對於一個曲綫 $\gamma : \mathbb{R} \rightarrow M_1$, 流形間的映射 $\psi : M_1 \rightarrow M_2$ 將其映射為 $\psi \circ \gamma : \mathbb{R} \rightarrow M_2$.
+	
+	\item 曲綫 $\gamma$ 的切矢為 $\frac{\partial}{\partial t} = \frac{d x^\mu(\gamma(t))}{dt} \frac{\partial}{\partial x^\mu}$, 那麽,
+	\begin{equation} \label{B.1.7}
+		\psi_* \Big( \frac{\partial}{\partial t} \Big) = \frac{d x^\mu(\gamma(t))}{dt} \psi_* \Big( \frac{\partial}{\partial x^\mu} \Big)
+	\end{equation}
+	是曲綫 $\psi \circ \gamma$ 的切矢.
+	
+	\item 證明的方法是將 \eqref{B.1.7} 式兩邊作用于 $M_2$ 上的坐標 $y^\nu$,
+	\begin{align}
+		& \psi_* \Big( \frac{\partial}{\partial t} \Big) (y^\nu) = \frac{d x^\mu(\gamma(t))}{dt} \frac{\partial}{\partial x^\mu} (\psi^* y^\nu) \notag \\
+		\Longrightarrow & \psi_* \Big( \frac{\partial}{\partial t} \Big) = \frac{d x^\mu(\gamma(t))}{dt} \frac{\partial}{\partial x^\mu} (\psi^* y^\nu) \frac{\partial}{\partial y^\nu} = \frac{d \psi^* y^\nu(\gamma(t))}{dt} \frac{\partial}{\partial y^\nu} = \frac{d y^\nu(\psi \circ \gamma(t))}{dt} \frac{\partial}{\partial y^\nu}
+	\end{align}
+\end{itemize}
+
+\section{diffeomorphisms \& Lie derivatives}
+\begin{itemize}
+	\item 在流形 $M$ 上有個 one-parameter group of diffeomorphism, 即,
+	\begin{equation}
+		\begin{dcases}
+			\phi_t : M \rightarrow M \text{ is diffeomorphism} \\
+			\phi_s \circ \phi_t = \phi_{s + t}
+		\end{dcases}  \label{B.2.1}
+	\end{equation}
+	且對應矢量場 $\xi^a \Big|_p = \frac{d}{dt} \Big|_{t = 0} \phi_t(p)$.
+\end{itemize}
+
+\subsection{Lie derivatives}
+\begin{itemize}
+	\item 對於流形 $M$ 上的任意 $(k , l)$ 型張量場,
+	\begin{align}
+		\mathcal{L}_\xi {T^{a \cdots}}_{b \cdots} \Big|_p &= \lim_{t \rightarrow 0} \frac{1}{t} \Big( {T^{a \cdots}}_{b \cdots} \Big|_{\phi_t(p)} - \phi_{t *} \big( {T^{a \cdots}}_{b \cdots} \Big|_p \big) \Big) \\
+		&= \lim_{t \rightarrow 0} \frac{1}{t} \Big( \phi^*_t \big( {T^{a \cdots}}_{b \cdots} \Big|_{\phi_t(p)} \big) - {T^{a \cdots}}_{b \cdots} \Big|_p \Big) \\
+		&= \xi^c \nabla_c {T^{a \cdots}}_{b \cdots} - (\nabla_c \xi^a) {T^{c \cdots}}_{b \cdots} - \cdots + (\nabla_b \xi^c) {T^{a \cdots}}_{c \cdots} + \cdots
+	\end{align}
+	
+	\begin{tcolorbox}[title=proof:]
+		\begin{itemize}
+			\item 選取滿足如下要求的坐標,
+			\begin{equation}
+				\{ x^\mu | \mu = 0,\cdots n \} \quad \xi = \frac{\partial}{\partial x^0}
+			\end{equation}
+			也就是說,
+			\begin{equation}
+				\phi^*_t x^\mu(p) = x^\mu(\phi_t(p)) = \begin{cases}
+					x^0(p) + t & \mu = 0 \\
+					x^\mu(p) & \mu \neq 0
+				\end{cases}
+			\end{equation}
+			
+			\item 那麽, 對矢量場和對偶矢量場的 pullback 和 pushforward 分別如下, 
+			\begin{equation}
+				\begin{dcases}
+					\phi^*_t \Big( dx^\mu \Big|_{\phi_t(p)} \Big) = dx^\mu \Big|_p & \text{and} \quad \phi^*_t \Big( \frac{\partial}{\partial x^\mu} \Big|_{\phi_t(p)} \Big) = \frac{\partial}{\partial x^\mu} \Big|_p \\
+					\phi_{t *} \Big( dx^\mu \Big|_p \Big) = dx^\mu \Big|_{\phi_t(p)} & \text{and} \quad \phi_{t *} \Big( \frac{\partial}{\partial x^\mu} \Big|_p \Big) = \frac{\partial}{\partial x^\mu} \Big|_{\phi_t(p)}
+				\end{dcases}
+			\end{equation}
+			所以,
+			\begin{align}
+				\mathcal{L}_\xi {T^{a \cdots}}_{b \cdots} \Big|_p &= (\partial_0 {T^{a \cdots}}_{b \cdots}) \Big|_p \notag \\
+				&= \xi^c \Big( \nabla_c {T^{a \cdots}}_{b \cdots} - \Gamma^a_{d c} {T^{d \cdots}}_{b \cdots} - \cdots + \Gamma^d_{b c} {T^{a \cdots}}_{d \cdots} + \cdots \Big)
+			\end{align}
+			由於,
+			\begin{equation}
+				(\nabla_d \xi^a) {T^{d \cdots}}_{b \cdots} = \partial_d \Big( \frac{\partial}{\partial x^0} \Big)^a + \Gamma^a_{c d} \Big( \frac{\partial}{\partial x^0} \Big)^c {T^{d \cdots}}_{b \cdots}
+			\end{equation}
+			代入,
+			\begin{equation}
+				\mathcal{L}_\xi {T^{a \cdots}}_{b \cdots} \Big|_p = \xi^c \nabla_c {T^{a \cdots}}_{b \cdots} - (\nabla_c \xi^a) {T^{c \cdots}}_{b \cdots} - \cdots + (\nabla_b \xi^c) {T^{a \cdots}}_{c \cdots} + \cdots
+			\end{equation}
+		\end{itemize}
+	\end{tcolorbox}
+\end{itemize}
+
+\section{consider two maps, \texorpdfstring{$\psi \circ \phi$}{psi circ phi}}
+\begin{itemize}
+	\item 三個流形 $M_1, M_2, M_3$, 維數分別爲 $n_1, n_2, n_3$, 其上分別有坐標 $\{ x^\mu \}, \{ y^\mu \}, \{ z^\mu \}$.
+	
+	\item 它們之間存在兩個 $C^\infty$ 的 homomorphism, $\phi : M_1 \rightarrow M_2$ 和 $\psi : M_2 \rightarrow M_3$.
+\end{itemize}
+
+\subsection{pullback}
+\begin{itemize}
+	\item 考慮,
+	\begin{equation}
+		\begin{dcases}
+			\psi^* z^\mu(p_2) = z^\mu(\psi(p_2)) \\
+			\underbrace{\phi^* \circ \psi^*}_{(\psi \circ \phi)^*} z^\mu(p_1) = z^\mu(\psi \circ \phi(p_1))
+		\end{dcases}
+	\end{equation}
+	所以, $\phi^* \circ \psi^* = (\psi \circ \phi)^*$.
+\end{itemize}
+
+\subsection{pushforward}
+\begin{itemize}
+	\item 考慮,
+	\begin{equation}
+		\frac{\partial}{\partial x^\mu} \big( (\psi \circ \phi)^* z^\nu \big) \Big|_{p_1} = \Big( (\psi \circ \phi)_* \frac{\partial}{\partial x^\mu} \Big) (z^\nu) \Big|_{\psi \circ \phi(p_1)}
+	\end{equation}
+	并且,
+	\begin{align}
+		\frac{\partial}{\partial x^\mu} \big( \phi^* y^\nu \big) \Big|_{p_1} &= \phi_* \frac{\partial}{\partial x^\mu} (y^\nu) \Big|_{\phi(p_1)} \\
+		\frac{\partial}{\partial x^\mu} \big( \phi^* \circ \psi^* z^\nu \big) \Big|_{p_1} &= \phi_* \frac{\partial}{\partial x^\mu} (\psi^* z^\nu) \Big|_{\phi(p_1)} = \psi_* \circ \phi_* \frac{\partial}{\partial x^\mu} (z^\nu) \Big|_{\psi \circ \phi(p_1)}
+	\end{align}
+	所以, $(\psi \circ \phi)_* = \psi_* \circ \phi_*$.
+\end{itemize}
+
+\subsection{pullback}
+\begin{itemize}
+	\item 考慮,
+	\begin{equation}
+		\big( (\psi \circ \phi)^* dz^\mu \big)_a \Big( \frac{\partial}{\partial x^\nu} \Big)^a \Big|_{p_1} = (dz^\mu)_a \Big( (\psi \circ \phi)_* \frac{\partial}{\partial x^\nu} \Big)^a \Big|_{\psi \circ \phi(p_1)}
+	\end{equation}
+	且,
+	\begin{equation}
+		(\phi^* \circ \psi^* dz^\mu)_a \Big( \frac{\partial}{\partial x^\nu} \Big)^a \Big|_{p_1} = (\psi^* dz^\mu)_a \Big( \phi_* \frac{\partial}{\partial x^\nu} \Big)^a \Big|_{\phi(p_1)} = (dz^\mu)_a \Big( \psi_* \circ \phi_* \frac{\partial}{\partial x^\nu} \Big)^a \Big|_{\psi \circ \phi(p_1)}
+	\end{equation}
+	所以, 依舊有 $\phi^* \circ \psi^* = (\psi \circ \phi)^*$.
+\end{itemize}
+
+\section{Weyl transformations \& conformal transformations}
+\subsection{Weyl transformations}
+\begin{itemize}
+	\item Weyl 變換在保持流形不變的情況下, 改變流形上配備的度規, 此時, 流形的曲率等幾何性質也會發生改變.
+	
+	\item 背景流形上選取坐標 $\{ x^\mu \}$, 那麽新度規與舊度規的關係為,
+	\begin{equation}
+		\tilde{g}_{\mu \nu} = e^{\Phi(x)} g_{\mu \nu}
+	\end{equation}
+	其中, $\Phi(x)$ 是流形上的一個標量塲.
+	
+	\item 在 Weyl 變換下, 仿射聯絡係數, 曲率張量都會發生變化, 但 Weyl 張量不會發生變換 (具体變換形式及计算过程见 GoodNotes 筆記: Weyl Transformation and Conformal Transformation).
+\end{itemize}
+
+\subsection{conformal isometries}
+\begin{itemize}
+	\item 流行 $M$ 上配備有兩套度規 $g_{a b}$ 和 $\tilde{g}_{a b}$ (可見 Weyl 變換和共形變換都會改變流形的度規場).
+	
+	\item 映射 $\phi$ 是 conformal isometry, 其生成的拉回映射 $\phi^*$ 滿足,
+	\begin{equation}
+		(\phi^* (\tilde{g} \Big|_{\phi(p)}))_{a b} = \Omega^2 g_{a b} \Big|_p
+	\end{equation}
+	其中 $\Omega$ 是流形上的標量塲.
+	
+	\item conformal transformations preserve both angles and the shapes of infinitesimally small figures, but not necessarily their size or curvature.
+	
+	\item 用坐標的拉回映射來表示這個變換, 那麽是, 對於流形上的坐標 $\{ y^\mu \}$ 其拉回映射的像為 $\{ x^\mu \}$, 即,
+	\begin{equation}
+		\begin{dcases}
+			(\phi^* y^\mu)(p) \equiv x^\mu(p) = y^\mu(\phi(p)) \\
+			\phi^* dy^\mu = dx^\mu
+		\end{dcases}
+	\end{equation}
+	那麽, conformal isometry $\phi$ 即滿足,
+	\begin{align}
+		& \tilde{g}_{\mu \nu}\Big|_{\phi(p)} \phi^*(dy^\mu \otimes dy^\nu) = \Omega^2 g_{\mu \nu} (dx^\mu \otimes dx^\nu) \\
+		\Longrightarrow & \tilde{g}_{\mu \nu}\Big|_{\phi(p)} = (\Omega^2 g_{\mu \nu})\Big|_{p}
+	\end{align}
+	其中 $\tilde{g}_{\mu \nu}$ 是度規 $\tilde{g}_{a b}$ 在 $\{ y^\mu \}$ 坐標系下的分量.
+\end{itemize}
+
+\subsection{conformal Killing vector fields}
+\begin{itemize}
+	\item 流形上的一個 one-parameter group of conformal isometry $\{ \phi_t , t \in \mathbb{R} \}$, 其中每個 $\phi_t$ 都是 conformal isometry 且滿足如 \eqref{B.2.1} 式的群乘法, 且,
+	\begin{equation}
+		(\phi^*_t g)_{a b} = a(t) g_{a b}
+	\end{equation}
+	$a(t)$ 顯然要滿足某些性質, 目前可以確認 $a(0) = 1$.
+	
+	\item 矢量場 $\psi^a\big|_{\phi_s(p)} = \frac{d}{dt}\big|_s \phi_t(p)$ 稱爲 conformal Killing vector field, 相應的度規的李導數為,
+	\begin{equation}
+		(\mathcal{L}_\psi g)_{a b} = 2 \nabla_{(a} \psi_{b)} = \alpha g_{a b}
+	\end{equation}
+	其中 $\alpha = \frac{d}{dt}\big|_{t = 0} a(t)$, 對上式兩端求 trace, 得到,
+	\begin{equation}
+		2 \nabla^a \psi_a = n \alpha \Longrightarrow \alpha = \frac{2}{n} \nabla^a \psi_a
+	\end{equation}
+	其中 $n$ 是流形維數.
+	
+	\item 得到 conformal Killing vector field 滿足的方程,
+	\begin{equation}
+		\nabla_{(a} \psi_{b)} = \frac{1}{n} (\nabla^c \psi_c) g_{a b}
+	\end{equation}
+\end{itemize}

@@ -1,0 +1,615 @@
+\chapter{basic representation theory}
+\section{Lie group and Lie algebra homomorphisms}
+\begin{itemize}
+	\item $\Phi : G \rightarrow H$ is a \textbf{Lie group homomorphism}, then there exists a unique real-linear map $\phi = \Phi_* : \mathfrak{g} \rightarrow \mathfrak{h}$ s.t.,
+	\begin{equation}
+		\Phi \circ \exp(A) = \exp(\phi A)
+	\end{equation}
+	
+	$\phi$ has the following properties:
+	\begin{enumerate}
+		\item $\phi \mathrm{Ad}_g(A) = \mathrm{Ad}_{\Phi(g)}(A), \forall A, g$,
+		
+		\item $\phi$ is \textbf{Lie algebra homomorphism},
+		
+		\item $\phi(A) = \frac{d}{dt} \big|_0 \Phi \circ \exp(t A)$.
+	\end{enumerate}
+	
+	\begin{tcolorbox}[title=proof:]
+		let's prove the 3rd identity first,
+		\begin{align}
+			& \Big( \Phi_* \frac{d}{dt} \Big|_s \gamma(t) \Big) y^i = \Big( \frac{d}{dt} \Big|_s \gamma(t) \Big) \Phi^* y^i = \frac{d \Phi^* y^i(\gamma(t))}{dt} \Big|_s = \frac{d y^i(\Phi \gamma(t))}{dt} \Big|_s \notag \\
+			\Longrightarrow & \Phi_* \circ L_{\exp(s A) *} A = \frac{d}{dt} \Big|_s \Phi \exp(t A)
+		\end{align}
+		and,
+		\begin{equation}
+			\begin{dcases}
+				L_{\Phi(g) *} \circ \Phi_* A = (L_{\Phi(g)} \circ \Phi)_* A \\
+				L_{\Phi(g)} \circ \Phi = \Phi \circ L_g
+			\end{dcases} \Longrightarrow L_{\Phi(g) *} \circ \Phi_* A = \Phi_* \circ L_{g *} A
+		\end{equation}
+		so,
+		\begin{equation}
+			\frac{d}{dt} \Big|_s \Phi \exp(t A) = L_{\Phi \exp(s A) *} \circ \Phi_* A \Longrightarrow \exp(\Phi_* A) = \Phi \exp(A)
+		\end{equation}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		the 1st identity is easy to prove,
+		\begin{equation}
+			\mathrm{Ad}_g \equiv I_{g *} \Longrightarrow \begin{dcases}
+				\Phi_* \circ I_{g *} = (\Phi \circ I_g)_* \\
+				\Phi \circ I_g = I_{\Phi(g)} \circ \Phi
+			\end{dcases} \Longrightarrow \cdots
+		\end{equation}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		now let's prove the 2nd identity,
+		\begin{align}
+			& L_{\Phi(g) *} \circ \Phi_* A = \Phi_* \circ L_{g *} A \Longrightarrow (\Phi_* A)_{\Phi(g)} = \Phi_* A_g \\
+			\Longrightarrow & ((\Phi_* A)_{\Phi(g)})^i \Phi_* \frac{\partial}{\partial x^i} = (A_g)^i \Phi_* \frac{\partial}{\partial x^i} \\
+			\Longrightarrow & A^i \Big|_g = \Phi^*((\Phi_* A)^i \Big|_{\Phi(g)})
+		\end{align}
+		where $A^i$ and $(\Phi_* A)^i$ are treated as functions on $G$ and $H$.
+		
+		so, 
+		\begin{equation}
+			(\Phi_* [A, B]_g)^i \Phi_* \frac{\partial}{\partial x^i} = \Big( (A_g)^j \frac{\partial}{\partial x^j} (B_g)^i - \cdots \Big) \Phi_* \frac{\partial}{\partial x^i}
+		\end{equation}
+		and,
+		\begin{equation}
+			([\Phi_* A, \Phi_* B]_{\Phi(g)})^i \Phi_* \frac{\partial}{\partial x^i} = \Big( (\Phi_* A)^a \nabla_a (\Phi_* B)^i - \cdots \Big) \Big|_{\Phi(g)} \Phi_* \frac{\partial}{\partial x^i}
+		\end{equation}
+		where,
+		\begin{align}
+			(\Phi_* A)^a \nabla_a (\Phi_* B)^i \Big|_{\Phi(g)} &= (A_g)^i \Phi_* \frac{\partial}{\partial x^i} (\Phi_* B)^i \notag \\
+			&= (A_g)^i \frac{\partial}{\partial x^i} \Big|_{\Phi(g)} \Phi^* (\Phi_* B)^i \notag \\
+			&= (A_g)^i \frac{\partial}{\partial x^i} \Big|_g B^i
+		\end{align}
+		so, we proved that $\Phi_* [A, B] = [\Phi_* A, \Phi_* B]$.
+	\end{tcolorbox}
+	
+	\item for a Lie group homomorphism $\Phi : G \rightarrow H$ and $\phi = \Phi_*$,
+	\begin{equation} \label{5.1.12}
+		\mathrm{Lie}(\ker \Phi) = \ker \phi
+	\end{equation}
+	
+	\begin{tcolorbox}[title=proof:]
+		\begin{itemize}
+			\item $\ker \Phi = \{g \in G | \Phi(g) = I\}$ is a \textbf{closed normal subgroup} of $G$.
+			\begin{itemize}
+				\item $G (\ker \Phi) G^{- 1} \subseteq \ker \Phi$.
+				
+				\item $\{I\}$ is a closed subgroup, and $\Phi$ is continuous.
+			\end{itemize}
+			
+			\item $\mathrm{Lie}(\ker \Phi) \subseteq \ker \phi$.
+			
+			for all $A \in \mathrm{Lie}(\ker \Phi)$,
+			\begin{equation}
+				\Phi \exp(t A) \in \Phi(\ker \Phi) = \{I\} \Longrightarrow \phi A = \frac{d}{dt} \Big|_0 \Phi \exp(t A) = 0
+			\end{equation}
+			so, $A \in \ker \phi$.
+			
+			\item $\mathrm{Lie}(\ker \Phi) \supseteq \ker \phi$.
+			
+			for all $A \in \ker \phi$,
+			\begin{equation}
+				\exp(\phi A) = \Phi \exp(A) = I \Longrightarrow \exp(A) \in \ker \Phi
+			\end{equation}
+			so, $A \in \mathrm{Lie}(\ker \Phi)$.
+		\end{itemize}
+	\end{tcolorbox}
+\end{itemize}
+
+\subsection{simply connected Lie groups} \label{5.1.1}
+\begin{itemize}
+	\item Lie algebra homomorphism $\Longrightarrow$ Lie group homomorphism, when $G$ is \textbf{simply connected}.
+	
+	$\phi : \mathfrak{g} \rightarrow \mathfrak{h}$ is a Lie algebra homomorphism, (if $G$ is simply connected) then there \textbf{exist} a \textbf{unique} Lie group homomorphism $\Phi : G \rightarrow H$ s.t. $\Phi(\exp(A)) = \exp(\phi A)$ and $\phi = \Phi_*$.
+	
+	\begin{tcolorbox}[title=proof:]
+		$G$ is \textbf{connected}, so, for all $g \in G$ there exists a path $g(t)$ s.t. $g(0) = I, g(1) = g$
+		
+		$N$ is large enough that,
+		\begin{equation}
+			g^{- 1}(\frac{i - 1}{N}) g(\frac{i}{N}) \in U
+		\end{equation}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		where $U \subset G$ is a neighborhood of $I$ s.t. there exists an isomorphism,
+		\begin{align}
+			\ln : U & \rightarrow \ln[U] \subset \mathfrak{g} \notag \\
+			g = \exp(A) & \mapsto A, \forall g \in U
+		\end{align}
+		which implies that there exists a unique local homomorphism,
+		\begin{align}
+			f : U & \rightarrow H \notag \\
+			g & \mapsto \exp(\phi \ln g), \forall g \in U
+		\end{align}
+		where,
+		\begin{align}
+			f(g_1 g_2) &= \exp(\phi \ln(\exp(A_1) \exp(A_2))) \notag \\
+			&= \exp \Big(\phi \ln \exp( A + B + \frac{1}{2} [A, B] + \frac{1}{12} \cdots) \Big) \notag \\
+			&= \exp(\phi A) \exp(\phi B) \notag \\
+			&= f(g_1) f(g_2)
+		\end{align}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		so, there \textbf{exists} a homomorphism,
+		\begin{align}
+			\Phi : G & \rightarrow H \notag \\
+			g & \mapsto f \Big( g^{- 1}(0) g(\frac{1}{N}) \Big) \cdots f \Big( g^{- 1}(\frac{N - 1}{N}) g(1) \Big), \forall g \in G
+		\end{align}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		finally, the \textbf{uniqueness}:
+		
+		$\Phi$ is independent from the choice of path $g(t)$ and the choice of partition $0 = t_0 < t_1 < \cdots t_N = 1$.
+		\begin{itemize}
+			\item independence of the partition:
+			
+			for any good partition (partition that guarantees $g^{- 1}(t_{i - 1}) g(t_i) \in U$) insert $s$ between $t_{i - 1}$ and $t_i$, since $f$ is a local homomorphism,
+			\begin{equation}
+				f(g^{- 1}(t_{i - 1}) g(s)) f(g^{- 1}(s) g(t_i)) = f(g^{- 1}(t_{i - 1}) g(t_i))
+			\end{equation}
+			
+			\item independence of the path:
+			
+			since $G$ is \textbf{simply connected}, there exists a continuous map,
+			\begin{align}
+				g : [0, 1] \times [0, 1] & \rightarrow G \notag \\
+				g(s, t) &= g_s(t) \notag \\
+				g(s, 0) &= I, g(s, 1) = g
+			\end{align}
+			and choose a good partition that $g_{s_{j - 1}}^{- 1}(t) g_{s_j}(t) \in U$, so,
+			\begin{equation}
+				\begin{dcases}
+					\Phi_{s_{j - 1}}(g) = \cdots f(g_{s_{j - 1}}^{- 1}(t_{i - 1}) g_{s_{j - 1}}(t_i)) \cdots \\
+					\Phi_{s_j}(g) = \cdots f(\mathcolor{red}{g_{s_j}^{- 1}(t_{i - 1}) g_{s_{j - 1}}(t_{i - 1})} g_{s_{j - 1}}^{- 1}(t_{i - 1}) g_{s_{j - 1}}(t_i) \mathcolor{red}{g_{s_{j - 1}}^{- 1}(t_i) g_{s_j}(t_i)}) \cdots
+				\end{dcases}
+			\end{equation}
+			the red terms will be canceled due to $f$ is homomorphism.
+			
+			so $\Phi_{s_{j - 1}} = \Phi_{s_j}$ which implies that $\Phi_0 = \Phi_1$.
+		\end{itemize}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		显然, 根据上述选择,
+		\begin{equation}
+			\begin{dcases}
+				\Phi \circ \exp(A) = \exp(\phi A) \\
+				\Phi(g) = \exp(\phi A_1) \cdots \exp(\phi A_N)
+			\end{dcases}
+		\end{equation}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		now, let's prove $\phi = \Phi_*$.
+		
+		consider,
+		\begin{equation}
+			\exp(\Phi_* A) = \exp(\phi A)
+		\end{equation}
+		and if $A$ is close to $0$ enough, $\exp$ is one-to-one, moreover, $\Phi_*$ and $\phi$ is linear, so $\phi = \Phi_*$.
+	\end{tcolorbox}
+	
+	\item for 2 \textbf{simply connected} Lie groups $G, H$, there exists a Lie algebra \textbf{isomorphism} $\phi : \mathfrak{g} \rightarrow \mathfrak{h}$, then $G, H$ are \textbf{isomorphic} to each other.
+	
+	换句话说: simply connected Lie groups are determined by their Lie algebra.
+	\begin{itemize}
+		\item but, exponential maps, $\exp : \mathfrak{g} \rightarrow G$, are \textbf{not} one-to-one even for simply connected Lie groups.
+		
+		e.g. in $\mathrm{SU}(2)$, $\exp(4 \pi i J_3) = I$.
+	\end{itemize}
+	
+	\begin{tcolorbox}[title=proof:]
+		let $\Phi, \Psi$ correspond to $\phi, \phi^{- 1}$ respectively, then,
+		\begin{equation}
+			\Phi \circ \Psi(\exp(A_1) \cdots \exp(A_N)) = \exp(\phi \circ \phi^{- 1} A_1) \cdots \exp(\phi \circ \phi^{- 1} A_N)
+		\end{equation}
+		which means $\Phi \circ \Psi = I$ similarly, $\Psi \circ \Phi = I$.
+		
+		so $\Phi$ is a reversible homomorphism, i.e. an isomorphism.
+	\end{tcolorbox}
+	
+	\item for a simply connected Lie group $G$, its Lie algebra $\mathfrak{g} = \mathfrak{h}_1 \oplus \mathfrak{h}_2$, then, there exist 2 \textbf{closed, simply connected} subgroups $H_1, H_2$ corresponded to $\mathfrak{h}_1, \mathfrak{h}_2$ and $G \simeq H_1 \times H_2$.
+	
+	\begin{tcolorbox}[title=proof:]
+		consider the projection map $\phi_1 \in \mathrm{End}(\mathfrak{g})$, s.t. $\phi_1(A + B) = A, \forall A \in \mathfrak{h}_1, B \in \mathfrak{h}_2$.
+		\begin{itemize}
+			\item since $G$ is simply connected, $\Phi_1$ is the corresponding Lie group homomorphism.
+			
+			\item according to \eqref{5.1.12}, $\ker{\phi_1} = \mathfrak{h}_2 = \mathrm{Lie}(\ker \Phi_1)$.
+			
+			\item let $H_2$ be the identity component of $\ker \Phi_1$, thus $H_2$ is a \textbf{closed connected} Lie subgroup.
+			
+			\item construct $H_1$ in a similar way.
+		\end{itemize}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		$\phi_1$ is the identity on $\mathfrak{h}_1$, so $\Phi_1$ is the identity on $H_1$.
+		\begin{itemize}
+			\item consider a loop $h(t)$ on $H_1$.
+			
+			\item there is a way to shrink $h(t)$ into a point on $G$, say $g(s, t)$ with $g(0, t) = h(t)$ and $g(1, t)$ is a point.
+			
+			\item define $h(s, t) = \Phi_1(g(s, t))$, then $h(0, t) = h(t)$ and $h(1, t)$ is a point.
+		\end{itemize}
+		so, $H_1$ is \textbf{simply connected}.
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		finally, let's prove $G \simeq H_1 \times H_2$.
+		\begin{itemize}
+			\item since $\mathfrak{g} = \mathfrak{h}_1 \oplus \mathfrak{h}_2$, $[\mathfrak{h}_1, \mathfrak{h}_2] = \{0\}$, so $h_1 h_2 = h_2 h_1, \forall h_1 \in H_1, h_2 \in H_2$.
+			
+			\item $\Psi : H_1 \times H_2 \rightarrow G, (h_1, h_2) \mapsto h_1 h_2$ is a Lie group homomorphism.
+			
+			(we don't know $H_1 \times H_2$ is simply connected yet)
+			
+			\item $\psi = \Psi_* : \mathfrak{h}_1 \oplus \mathfrak{h}_2 \rightarrow \mathfrak{g}$ is the original isomorphism.
+			\begin{equation}
+				\exp(\psi(A + B)) = \Psi \circ \exp(A + B) = \exp(A + B) \Longrightarrow \psi(A + B) = A + B
+			\end{equation}
+			
+			\item so the homomorphism $\Psi' : G \rightarrow H_1 \times H_2$ associated with $\psi^{- 1}$ is an isomorphism.
+		\end{itemize}
+	\end{tcolorbox}
+\end{itemize}
+
+\subsection{universal covers} \label{5.1.2}
+\begin{itemize}
+	\item $G$ is a \textbf{connected} Lie group, $H$ is a \textbf{simply connected} Lie group with $\mathfrak{g} \simeq \mathfrak{h}$.
+	
+	then, $H$ is the \textbf{universal cover} of $G$ and the homomorphism $\Phi : H \rightarrow G$ associated to the isomorphism $\phi : \mathfrak{h} \rightarrow \mathfrak{g}$ is called the \textbf{covering map}.
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item the universal cover of $\mathrm{SO}(3)$ is $\mathrm{SU}(2)$, and $\ker \Phi = \{\pm I\}$.
+	
+	\item the universal cover of $\mathrm{SO}(n \geq 3)$ is $\mathrm{Spin}(n)$ and may be constructed as a certain group of invertible elements in the \textbf{Clifford algebra} over $\mathbb{R}^n$.
+	\begin{itemize}
+		\item the covering map is two-to-one.
+		
+		\item and $\mathrm{Spin}(4) \simeq \mathrm{SU}(2) \times \mathrm{SU}(2)$.
+	\end{itemize}
+\end{itemize}
+
+\section{basic representation theory} \label{5.2}
+\begin{itemize}
+	\item \textbf{def.:} a \textbf{finite-dimensional representation} of a Lie group $G$ (or a Lie algebra $\mathfrak{g}$) is a \textbf{Lie group} (or a \textbf{Lie algebra}) \textbf{homomorphism},
+	\begin{equation}
+		\begin{dcases}
+			\Pi : G \rightarrow \mathrm{GL}(V) \\
+			\pi : \mathfrak{g} \rightarrow \mathfrak{gl}(V)
+		\end{dcases}
+	\end{equation}
+	where $\mathrm{GL}(V)$ is the group of invertible linear transformations of $V$ and $\mathfrak{gl}(V) = \mathrm{End}(V)$ is the space of all linear operators from $V$ to itself with Lie bracket $[A, B] = A B - B A$.
+	
+	\item for a finite-dimensional representation of $G$,
+	\begin{equation}
+		\pi(A) = \frac{d}{dt} \Big|_0 \Pi(e^{t A})
+	\end{equation}
+	then $\Pi(\exp(A)) = e^{\pi(A)}$ and $\pi$ is the representation of $\mathfrak{g}$ on the same vector space.
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item subspace $W \subset V$ is \textbf{invariant} if $\Pi(g)[W] \subseteq W, \forall g \in G$.
+	
+	\item \textbf{def.:} a representation without nontrivial invariant subspaces ($\{0\}, V$) is called \textbf{irreducible}.
+	
+	对 Lie algebra 的 irreducible rep. 的定义是一样的.
+	
+	\item $\Pi, \pi$ are associated representations of \textbf{connected} Lie group $G$ and its Lie algebra $\mathfrak{g}$, then:
+	\begin{itemize}
+		\item $\Pi$ is \textbf{irreducible} $\iff \pi$ is \textbf{irreducible}.
+		
+		\begin{tcolorbox}[title=proof:]
+			\begin{itemize}
+				\item $\Pi$ is irreducible $\Longrightarrow \pi$ is irreducible.
+				
+				设 $W \subseteq V$ 是 $\pi$ 的不变子空间, 那么 $\forall g$,
+				\begin{equation}
+					\Pi(g)[W] = e^{\pi(A_1)} \cdots e^{\pi(A_N)}[W] \subseteq W
+				\end{equation}
+				(其中用到了 \eqref{4.2.8} 式), 而 $\Pi$ 是不可约表示, 所以 $W = \{0\}$ or $V$
+				
+				\item $\Pi$ is irreducible $\Longleftarrow \pi$ is irreducible.
+				
+				设 $W \subseteq V$ 是 $\Pi$ 的不变子空间, 那么 $\forall A$,
+				\begin{equation}
+					\pi(A)[W] = \frac{d}{dt} \Big|_0 \Pi(\exp(t A))[W] \subseteq W
+				\end{equation}
+				所以...
+			\end{itemize}
+		\end{tcolorbox}
+		
+		\item $\Pi_1, \Pi_2$ are \textbf{isomorphic} $\iff \pi_1, \pi_2$ are \textbf{isomorphic}.
+	\end{itemize}
+	
+	\item $\pi$ is a \textbf{irreducible} rep. of $\mathfrak{g}_\mathbb{C} \iff \pi$ is a (complex) \textbf{irreducible} rep. of $\mathfrak{g}$.
+	
+	where the rep. of $\mathfrak{g}_\mathbb{C}$ is $\pi(A + i B) = \pi(A) + i \pi(B)$ which is the unique extension of the rep. of $\mathfrak{g}$, $\pi$.
+\end{itemize}
+
+\subsection{new representations from old}
+\begin{itemize}
+	\item three ways to obtain new rep. from old:
+	\begin{enumerate}
+		\item direct sums,
+		
+		\item tensor products,
+		
+		\item dual representations.
+	\end{enumerate}
+\end{itemize}
+
+\subsubsection{direct sums}
+\begin{itemize}
+	\item \textbf{def.:} the direct sum of $\Pi_1, \cdots, \Pi_m$ is a rep. of $G$ on $V_1 \oplus \cdots \oplus V_m$, defined by,
+	\begin{equation}
+		\Pi_1 \oplus \cdots \oplus \Pi_m(g)(v_1, \cdots, v_m) = (\Pi_1(g) v_1, \cdots, \Pi_m(g) v_m)
+	\end{equation}
+	对 Lie algebra rep. $\pi_1, \cdots, \pi_m$ 的直和的定义是一样的.
+\end{itemize}
+
+\subsubsection{tensor products}
+\begin{itemize}
+	\item $\Pi_1, \Pi_2$ are rep. of $G, H$ respectively. then, the tensor product rep. $\Pi_1 \otimes \Pi_2$ of $G \times H$ is defined to be,
+	\begin{equation}
+		(\Pi_1 \otimes \Pi_2)(g, h) = \Pi_1(g) \otimes \Pi_2(h)
+	\end{equation}
+	
+	\item the tensor product rep. $\pi_1 \otimes \pi_2$ of $\mathfrak{g} \oplus \mathfrak{h}$ is,
+	\begin{equation}
+		(\pi_1 \otimes \pi_2)(A, B) = \pi_1(A) \otimes I + I \otimes \pi_2(B)
+	\end{equation}
+	
+	\begin{tcolorbox}[title=proof:]
+		令 $\pi_1 : \mathfrak{g} \rightarrow \mathrm{End}(U), \pi_2 : \mathfrak{h} \rightarrow \mathrm{End}(V)$, 那么,
+		\begin{align}
+			(\pi_1 \otimes \pi_2)(A, B)(u \otimes v) &= \Big( \frac{d}{dt} \Big|_0 (\Pi_1 \otimes \Pi_2)(\exp(t A), \exp(t B)) \Big) (u \otimes v) \notag \\
+			&= \frac{d}{dt} \Big|_0 \underbrace{\Pi_1(\exp(t A)) u}_{= u(t)} \otimes \underbrace{\Pi_2(\exp(t B)) v}_{= v(t)}
+		\end{align}
+		其中, $u(t), v(t)$ 是 $U, V$ 中的两条 $C^\infty$ 的曲线,
+		\begin{equation}
+			(u + du) \otimes (v + dv) - u \otimes v = du \otimes v + u \otimes dv
+		\end{equation}
+		代入, 所以,
+		\begin{equation}
+			(\pi_1 \otimes \pi_2)(A, B)(u \otimes v) = \pi_1(A) u \otimes v + u \otimes \pi_2(B) v
+		\end{equation}
+	\end{tcolorbox}
+\end{itemize}
+
+\subsubsection{dual representations}
+\begin{itemize}
+	\item 对于 $\Pi : G \rightarrow \mathrm{End}(V)$, dual rep. 就是 $\Pi^\dag : G \rightarrow \mathrm{End}(V^*)$, 其中 $V^*$ 是 $V$ 的对偶空间.
+\end{itemize}
+
+\subsection{complete reducibility}
+\begin{itemize}
+	\item 参见有限群中的定义 (group 和 Lie algebra 的定义都一样).
+	
+	\item a group or Lie algebra is said to have the \textbf{complete reducibility property} if every finite-dim. rep. of it is completely reducible.
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item \textbf{unitary} rep. of $G, \mathfrak{g}$ is \textbf{completely reducible}.
+	
+	notice, the 'unitary' (skew self-adjoint) rep. of $\mathfrak{g}$ is $\pi^\dag(A) = - \pi(A)$
+	
+	证明参见有限群.
+	
+	\item \textbf{compact} Lie groups have the \textbf{complete reducibility property}.
+	
+	\begin{tcolorbox}[title=proof:]
+		for an $n$-dim. Lie group $G$,
+		\begin{equation}
+			\epsilon = A^1 \wedge \cdots \wedge A^n
+		\end{equation}
+		is a \textbf{right-invariant} $\boldsymbol{n}$\textbf{-form} composed of the dual vectors of a basis of $\mathfrak{g}$.
+		
+		if $G$ is \textbf{compact}, we can integrate any smooth function over all $G$, denoted by,
+		\begin{equation}
+			\int_G f(g) \epsilon(g)
+		\end{equation}
+		and, since $\epsilon$ is right-invariant,
+		\begin{equation}
+			\int_G f(g h) \epsilon(g) = \int_G f(g) \epsilon(g)
+		\end{equation}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		for a rep. of $G$, $\Pi : G \rightarrow \mathrm{End}(V)$, define an arbitrary inner product $\braket{\cdot, \cdot}$ on $V$, then define another inner product on $V$ by,
+		\begin{align}
+			\braket{\cdot, \cdot}_G : V \times V & \rightarrow \mathbb{C} \notag \\
+			\braket{u, v}_G &= \int_G \braket{\Pi(g) u | \Pi(g) v} \epsilon(g) \label{5.2.14}
+		\end{align}
+		then,
+		\begin{equation}
+			\braket{u, v}_G = \braket{\Pi(h) u, \Pi(h) v}_G
+		\end{equation}
+		and $\braket{v, v}_G > 0$ for all $v \neq 0$.
+		
+		so, $\Pi(g)$ is \textbf{unitary} with respect to $\braket{\cdot, \cdot}_G$.
+	\end{tcolorbox}
+	
+	\begin{itemize}
+		\item $\mathrm{SU}(m)$ are compact, hence have the complete reducibility property.
+	\end{itemize}
+\end{itemize}
+
+\subsection{Schur's lemma}
+\begin{itemize}
+	\item \textbf{def.:} an \textbf{intertwining map} of rep. $\Pi_1, \Pi_2$ (or $\pi_1, \pi_2$) is a linear map $\phi : V \rightarrow W$, s.t.,
+	\begin{equation}
+		\begin{dcases}
+			\phi \Pi_1(g) = \Pi_2(g) \phi \\
+			\phi \pi_1(A) = \pi_2(A) \phi
+		\end{dcases} \in \mathrm{End}(W)
+	\end{equation}
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item \textbf{Schur's 1st lemma}
+	
+	for 2 \textbf{irreducible real or complex rep.} $\Pi_1, \Pi_2$ (or $\pi_1, \pi_2$) on $V, W$, the intertwining map $\phi$ is either $0$ or an isomorphism.
+	
+	证明参见有限群.
+	
+	\item \textbf{Schur's 2nd lemma}
+	
+	for a \textbf{irreducible complex rep.} $\Pi$ (or $\pi$) on $V$, the intertwining map $\phi : V \rightarrow V$ is $\lambda I$ for some $\lambda \in \mathbb{C}$.
+	
+	\item \textbf{Schur's 3rd lemma}
+	
+	for 2 \textbf{irreducible complex rep.} $\Pi_1, \Pi_2$ (or $\pi_1, \pi_2$) on $V, W$, and 2 intertwining map $\phi_1, \phi_2 : V \rightarrow V$, then $\phi_1 = \lambda \phi_2$ for some $\lambda \in \mathbb{C}$.
+\end{itemize}
+
+\section{Lie's third theorem}
+\begin{itemize}
+	\item \textbf{Lie's third theorem:} every \textbf{finite-dimensional} Lie algebra $\mathfrak{g}$ over $\mathbb{R}$ is associated to a Lie group $G$.
+	
+	\item every \textbf{finite-dimensional} Lie algebra is isomorphic to the Lie algebra of some \textbf{matrix} Lie group.
+\end{itemize}
+
+\section{adjoint representations}
+\subsection{adjoint rep. of Lie groups}
+\begin{itemize}
+	\item consider the adjoint diffeomorphism on $G$,
+	\begin{equation}
+		I_g : G \rightarrow G, h \mapsto g h g^{- 1}
+	\end{equation}
+	
+	\item $\mathrm{Ad}_g = I_{g *} : V_e \rightarrow V_e$ is the pushforward,
+	\begin{equation}
+		\mathrm{Ad}_g \Big( \frac{d}{dt} \Big|_0 \gamma(t) \Big) x^i \Big|_e = \frac{d y^i(\gamma(t))}{dt} \Big|_0
+	\end{equation}
+	where $y^i(h) = x^i(g h g^{- 1})$, so we have,
+	\begin{equation}
+		\mathrm{Ad}_g \Big( \frac{d}{dt} \Big|_0 \gamma(t) \Big) = \frac{d}{dt} \Big|_0 g \gamma(t) g^{- 1}
+	\end{equation}
+	i.e. $\exp(\mathrm{Ad}_g(A)) = I_g \exp(A)$.
+	\begin{itemize}
+		\item as we can see, $\mathrm{Ad}_g \in \mathrm{Aut}(V_e)$ is a linear and reversible automorphism on $V_e$, since $\mathrm{Ad}_g \circ \mathrm{Ad}_{g^{- 1}} = I$.
+	\end{itemize}
+	
+	\item $\mathrm{Ad} : G \rightarrow \mathrm{Aut}(V_e) \simeq \mathrm{GL}(m, \mathbb{R})$ is the \textbf{adjoint representation of the Lie group}, $G$.
+	\begin{itemize}
+		\item $\mathrm{Ad}$ is a homomorphism.
+		
+		\begin{tcolorbox}[title=proof:]
+			\begin{equation}
+				\mathrm{Ad}_g \circ \mathrm{Ad}_h = I_{g *} \circ I_{h *} = (I_g \circ I_h)_* = \mathrm{Ad}_{g h}
+			\end{equation}
+		\end{tcolorbox}
+	\end{itemize}
+\end{itemize}
+
+\subsection{adjoint rep. of Lie algebras}
+\begin{itemize}
+	\item The \textbf{structure constants} themselves generate a \textbf{representation of the Lie algebra}, called the \textbf{adjoint representation}.
+	
+	\item the Jacob identity written in the structure constants is,
+	\begin{equation}
+		{f_{i l}}^m {f_{j k}}^l + {f_{k l}}^m {f_{i j}}^l + {f_{j l}}^m {f_{k i}}^l = 0
+	\end{equation}
+	consider the structure constants as the components of matrices, $\mathcolor{red}{- i} {f_{i j}}^k = {(T_i)_j}^k$, since ${f_{i j}}^k = - {f_{j i}}^k$, the matrices have the property that ${(T_i)_j}^k = -{(T_j)_i}^k$, then,
+	\begin{align}
+		& i {f_{j k}}^l {(T_l)_i}^m + \underbrace{{(T_i T_k)_j}^m}_{= - {(T_j T_k)_i}^m} + {(T_k T_j)_i}^m = 0 \notag \\
+		\Longrightarrow & {[T_j, T_k]_i}^m = i {f_{j k}}^l {(T_l)_i}^m
+	\end{align}
+	or, more compactly, $[T_i, T_j] = i {f_{i j}}^k T_k$.
+	
+	\item $\{{(T_i)_j}^k = - i {f_{i j}}^k\}$ is called the adjoint representation of the Lie algebra $\{X_i\}$.
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item more formally, adjoint representation is a map, $\mathrm{ad}_A : \mathfrak{g} \rightarrow \mathfrak{g}$, where $\mathfrak{g}$ is the Lie algebra of the group $G$,
+	\begin{equation}
+		\mathrm{ad}_A(B) = [A, B]
+	\end{equation}
+	as one can see, ${(\mathrm{ad}_A)^a}_b = - {f_{c b}}^a A^c \in \mathcal{L}(\mathfrak{g})$, or written in components,
+	\begin{equation}
+		\mathcolor{red}{{(\mathrm{ad}_{A_i})^k}_j = - {f_{i j}}^k} \Longrightarrow \mathrm{ad}_{A_i} = (i T_i)^T
+	\end{equation}
+	and $[\mathrm{ad}_{A_i}, \mathrm{ad}_{A_j}] = \mathrm{ad}_{[A_i, A_j]} = - {f_{i j}}^k \mathrm{ad}_{A_k}$.
+	
+	\item $\mathrm{ad} : \mathfrak{g} \rightarrow \mathcal{L}(\mathfrak{g})$ is a homomorphism, i.e.,
+	\begin{equation}
+		\mathrm{ad}_{[A, B]} = [\mathrm{ad}_A, \mathrm{ad}_B]
+	\end{equation}
+	
+	\begin{tcolorbox}[title=proof:]
+		\begin{align}
+			(\mathrm{ad}_A \mathrm{ad}_B - \mathrm{ad}_B \mathrm{ad}_A) C &= [A, [B, C]] - [B, [A, C]] \notag \\
+			&= [[A, B], C] = \mathrm{ad}_{[A, B]} C
+		\end{align}
+	\end{tcolorbox}
+\end{itemize}
+
+\section{Killing forms}
+\begin{itemize}
+	\item $\forall A, B \in \mathfrak{g}$, the Killing form is,
+	\begin{equation}
+		B(A, B) = \mathrm{tr}(\mathrm{ad}_A \circ \mathrm{ad}_B)
+	\end{equation}
+	which can be written in terms of structure constants,
+	\begin{equation}
+		B_{i j} = {f_{i k}}^l {f_{j l}}^k
+	\end{equation}
+	
+	\begin{tcolorbox}[title=proof:]
+		\begin{equation}
+			B(A_i, A_j) = \mathrm{tr}(\mathrm{ad}_{A_i} \mathrm{ad}_{A_j}) = (- {f_{i k}}^l) (- {f_{j l}}^k)
+		\end{equation}
+	\end{tcolorbox}
+	
+	\begin{itemize}
+		\item $B([A, B], C) = B(A, [B, C])$.
+		
+		\begin{tcolorbox}[title=proof:]
+			recall that,
+			\begin{equation}
+				\mathrm{ad}_{[A, B]} = [\mathrm{ad}_A, \mathrm{ad}_B]
+			\end{equation}
+			so,
+			\begin{align}
+				B([A, B], C) &= \mathrm{tr}([\mathrm{ad}_A, \mathrm{ad}_B] \mathrm{ad}_C) \notag \\
+				&= \mathrm{tr}(\mathrm{ad}_A \mathrm{ad}_B \mathrm{ad}_C) - \mathrm{tr}(\mathrm{ad}_A \mathrm{ad}_C \mathrm{ad}_B) \notag \\
+				&= B(A, [B, C])
+			\end{align}
+		\end{tcolorbox}
+	\end{itemize}
+	
+	\item two basis-independent properties of the Killing form:
+	\begin{itemize}
+		\item the \textbf{number} of zero eigenvalues.
+		
+		\item the \textbf{sign} of the non-zero eigenvalues.
+	\end{itemize}
+	
+	\item the structure constants with lowered indices are \textbf{completely antisymmetric},
+	\begin{equation}
+		{f_{i j}}^l B_{l k} = - f_{i j k} = - f_{[i j k]}
+	\end{equation}
+	
+	\begin{tcolorbox}[title=proof:]
+		\begin{equation}
+			{f_{i j}}^l B_{l k} = {f_{i j}}^l {f_{l m}}^n {f_{k n}}^m
+		\end{equation}
+		notice that, according to Jacob identity, ${f_{i j}}^l {f_{l m}}^n = 2 {f_{[i| l}}^n {f_{|j] m}}^l$, then,
+		\begin{equation}
+			f_{i j k} = - 2 {f_{[i| \mathcolor{red}{l}}}^{\mathcolor{green}{n}} {f_{|j] \mathcolor{blue}{m}}}^{\mathcolor{red}{l}} {f_{k \mathcolor{green}{n}}}^{\mathcolor{blue}{m}}
+		\end{equation}
+		we can see that the equation holds under index permutation like $(i, j, k) \rightarrow (k, i, j) \rightarrow (j, k, i)$, and consequently, all three indices of $f_{i j k}$ are antisymmetric.
+	\end{tcolorbox}
+\end{itemize}
