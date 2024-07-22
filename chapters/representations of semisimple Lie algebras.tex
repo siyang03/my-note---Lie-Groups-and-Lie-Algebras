@@ -244,7 +244,7 @@
 		\begin{equation}
 			J = \Big\{ \sum_i \alpha_i \otimes (A_i \otimes B_i - B_i \otimes A_i - [A_i, B_i]) \otimes \beta_i \Big| A_i, B_i \in \mathfrak{g}, \alpha_i, \beta_i \in T(\mathfrak{g}) \Big\}
 		\end{equation}
-		那么 $U(\mathfrak{g}) = T(\mathfrak{g}) / J$.
+		那么 \colorbox{yellow}{$U(\mathfrak{g}) = T(\mathfrak{g}) / J$}.
 		\begin{itemize}
 			\item 注意, $J$ 是一个 \textbf{two-sided ideal}, 即 $\forall \alpha \in T(\mathfrak{g}), \beta \in J$, 有 $\alpha \otimes \beta, \beta \otimes \alpha \in J$.
 			
@@ -407,7 +407,7 @@
 	
 	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
 	
-	\item \textbf{def.:} the \textbf{Verma module} with highest weight $\mu$ is,
+	\item \textbf{def.:} the \colorbox{yellow}{\textbf{Verma module}} with highest weight $\mu$ is,
 	\begin{equation}
 		W_\mu = U(\mathfrak{g}) / I_\mu
 	\end{equation}
@@ -447,7 +447,7 @@
 		\begin{equation} \label{8.5.7}
 			\mathcolor{red}{\pi_\mu(B_1)^{n_1} \cdots \pi_\mu(B_k)^{n_k} v_0}
 		\end{equation}
-		(其中 $n_i \in \mathbb{Z}^+$), 组成 $W_\mu$ 的一组基底.
+		(其中 $n_i \in \mathbb{Z}^+$), 组成 \colorbox{yellow}{$W_\mu$ 的一组基底}.
 	\end{itemize}
 	结合 PBW theorem, 可见有向量空间同构 $W_\mu \simeq U(\mathfrak{n}^-)$, 且 $\alpha \mapsto \pi_\mu(\alpha) v_0$.
 	
@@ -518,7 +518,7 @@
 		
 		\item $\pi_\mu(A_1) \cdots \pi(A_k) v, k \geq 1$ 的 $v_0$ 分量也为零, 其中 $A_1, \cdots, A_k \in \mathfrak{n}^+$,
 	\end{enumerate}
-	也就是所有通过升算符无法达到 $v_0$ 的向量.
+	也就是\textbf{所有通过升算符无法达到 $\boldsymbol{v_0}$ 的向量}.
 	
 	\item $U_\mu$ 是一个不变子空间.
 	
@@ -540,11 +540,55 @@
 	
 	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
 	
-	\item 商空间 $V^\mu = W_\mu / U_\mu$ 构成 $\mathfrak{g}$ 的一个\textbf{不可约}表示.
+	\item 商空间 \colorbox{yellow}{$V^\mu = W_\mu / U_\mu$} 构成 $\mathfrak{g}$ 的一个\textbf{不可约}表示 (见 section \ref{5.2}).
 	
 	\begin{tcolorbox}[title=proof:]
+		显然, 对于 $V_\mu$ 的不变子空间 $V'$, 有 $V' \oplus U_\mu \subset W_\mu$ 也是一个不变子空间 (因为已经证明了 $U_\mu$ 是不变子空间).
 		
+		那么, 现在只需要证明: $W_\mu$ 中, 包含子集 $U_\mu$ 的不变子空间要么是 $U_\mu$, 要么是 $W_\mu$.
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		考虑不变子空间 $U'$ 满足 $U_\mu \subset U' \subset W_\mu$, 且 $U' \neq U_\mu$, 那么,
+		\begin{itemize}
+			\item 有 $v \in U'$ 且 $v \notin U_\mu$.
+			
+			\item 由于 $v \notin U_\mu$, 一定存在一些组合 $A_1, \cdots, A_k$ 使得 $u = \pi_\mu(A_1) \cdots \pi_\mu(A_k) v$ 的 $v_0$ 分量不为零.
+			
+			\item 由于 $U'$ 是不变子空间,
+			\begin{equation}
+				\prod_{\lambda \neq \mu} (\pi_\mu(H) - \braket{\lambda, H} I) u \in U'
+			\end{equation}
+			对于 $u$ 在 \eqref{8.5.7} 中的其它 (非 $v_0$) 分量, 经过上式都被化为零 (注意 $\mathfrak{h}$ 是 Abelian), 所剩的只有 $v_0$ 分量, 因此 $\boldsymbol{v_0 \in U'}$.
+			
+			\item $U'$ 含有 $v_0$, 因此必然有 $U' = W_\mu$.
+		\end{itemize}
 	\end{tcolorbox}
+	
+	\item $(\pi_\mu, V^\mu)$ 是最高权为 $\mu$, 对应权向量为 $v_0$ 的 highest weight cyclic rep..
+	
+	\noindent\hdashrule[0.5ex]{\linewidth}{0.5pt}{1mm} % horizontal dashed line
+	
+	\item 一些计算: 对于 $\alpha \in \Delta$ (这一点对 \eqref{8.6.6} 中的分析很重要, 因为 $\alpha$ 无法表示为 $R^+$ 中其它元素的线性组合) 有,
+	\begin{equation}
+		\pi_\mu(A_\alpha) \pi_\mu^i(B_\alpha) v_0 = i (\braket{\mu, H_\alpha} - (i - 1)) \pi_\mu^{i - 1}(B_\alpha) v_0
+	\end{equation}
+	所以, 如果 $\braket{\mu, H_\alpha} \in \mathbb{Z}^+ \cup \{0\}$, 那么,
+	\begin{equation}
+		\pi_\mu(A_\alpha) \underbrace{\pi_\mu^{\braket{\mu, H_\alpha}}(B_\alpha) v_0}_{\text{令其} = v} = 0
+	\end{equation}
+	且对于 $\forall \beta \in R^+, j \in \mathbb{Z}^+$,
+	\begin{equation} \label{8.6.6}
+		\pi_\mu^j(A_\beta) v \in V_{\mu - \braket{\mu, H_\alpha} \alpha + j \beta}
+	\end{equation}
+	注意到 $\mu - \braket{\mu, H_\alpha} + j \beta \npreceq \mu$, 由于 $\mu$ 是最高权, 所以 $\pi_\mu^j(A_\beta) v = 0$, 所以 $v \in U_\mu$.
+\end{itemize}
+
+\section{finite-dimensional quotient modules}
+\begin{itemize}
+	\item 本 section 将表明, 对于 dominant integral element $\mu$, 不可约表示 $V^\mu = W_\mu / U_\mu$ 是有限维的.
+	
+	\item 
 \end{itemize}
 
 \section{Casimir operators}
