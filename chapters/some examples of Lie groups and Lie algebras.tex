@@ -1,4 +1,156 @@
 \chapter{some examples of Lie groups and Lie algebras}
+\section{general linear groups and algebras}
+\begin{itemize}
+	\item $\mathrm{GL}(n, \mathbb{C}) = \{M \in \mathcal{M}_n(\mathbb{C}) | \det M \neq 0\}$.
+	\begin{itemize}
+		\item $\dim \mathrm{GL}(n, \mathbb{C}) = n^2$.
+		
+		\item $\mathrm{GL}(n, \mathbb{R})$ 有两个连通分支,
+		\begin{equation}
+			\mathrm{GL}(n, \mathbb{R}) = {\det}^{- 1}[(- \infty, 0)] \sqcup {\det}^{- 1}[(0, \infty)]
+		\end{equation}
+	\end{itemize}
+	
+	\item $\mathfrak{gl}(n, \mathbb{C}) = \mathcal{M}_n(\mathbb{C})$.
+	
+	\item the left-invariant vector field at $g$ is,
+	\begin{equation}
+		{(A_g)^i}_j = {x^i}_k(g) {(A_e)^k}_j
+	\end{equation}
+	and the Lie bracket is,
+	\begin{equation}
+		[A, B] = A B - B A
+	\end{equation}
+	
+	\begin{tcolorbox}[title=proof:]
+		for general linear group, ${x^i}_j(g h) = {x^i}_k(g) {x^k}_j(h)$.
+		
+		so, the pushforward of the left transformation is,
+		\begin{equation}
+			L_{g *} (A \Big|_e) {x^i}_j \Big|_g = A({y^i}_j) \Big|_e
+		\end{equation}
+		where ${y^i}_j(h) = (L_g^* {x^i}_j)(h) = {x^i}_k(g) {x^k}_j(h)$, so we have,
+		\begin{equation}
+			A({y^i}_j) \Big|_e = A \Big|_e ({x^k}_l) \underbrace{\frac{\partial {y^i}_j}{\partial {x^k}_l} \Big|_e}_{= {x^i}_m(g) \delta^m_k \delta^l_j} = {x^i}_k(g) A \Big|_e ({x^k}_j)
+		\end{equation}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		\begin{align}
+			{[A, B]^i}_j &= (d{x^i}_j)_a (A^b \partial_b B^a - B^b \partial_b A^a) \notag \\
+			&= {A^k}_l \frac{\partial}{\partial {x^k}_l} {B^i}_j - {B^k}_l \frac{\partial}{\partial {x^k}_l} {A^i}_j
+		\end{align}
+		注意 ${(A_g)^i}_j = {x^i}_k(g) {(A_e)^k}_j$, 所以,
+		\begin{equation}
+			\frac{\partial}{\partial {x^k}_l} ({A^i}_j) \Big|_g = \underbrace{\frac{\partial}{\partial {x^k}_l} ({{x^i}_m}(g))}_{= \delta^i_k \delta^l_m} {(A_e)^m}_j = \delta^i_k {(A_e)^l}_j
+		\end{equation}
+		代入得到,
+		\begin{align}
+			{[A, B]^i}_j \Big|_g &= {(A_g)^k}_l \delta^i_k {(B_e)^l}_j - {(B_g)^k}_l \delta^i_k {(A_e)^l}_j \notag \\
+			&= {x^i}_k(g) ({A^k}_l {B^l}_j - {B^k}_l {A^l}_j)
+		\end{align}
+	\end{tcolorbox}
+\end{itemize}
+
+\section{special linear groups and algebras}
+\begin{itemize}
+	\item $\mathrm{SL}(n, \mathbb{C}) = \{M \in \mathrm{GL}(n, \mathbb{C}) | \det M = 1\}$.
+	
+	\item $\mathfrak{sl}(n, \mathbb{C}) = \{A \in \mathcal{M}_n(\mathbb{C}) | \mathrm{tr} A = 0\}$.
+\end{itemize}
+
+\section{the Lorentz group and the Lorentz algebra}
+\subsection{indefinite orthogonal groups}
+\begin{itemize}
+	\item $\mathrm{O}(p, q) = \{\Lambda \in \mathcal{M}_n(\mathbb{R}) | \Lambda^T \eta \Lambda = \eta\}$ is called the \href{https://en.wikipedia.org/wiki/Indefinite_orthogonal_group}{indefinite orthogonal group}, where $n = p + q$ and,
+	\begin{equation}
+		\eta = \mathrm{diag}(\underbrace{+ 1, \cdots, + 1}_{p}, \underbrace{- 1, \cdots, - 1}_{q})
+	\end{equation}
+	\begin{itemize}
+		\item 将 $\lambda$ 视作一组列向量 $(\lambda_1, \cdots, \lambda_n)$, 那么,
+		\begin{equation}
+			\eta(\lambda_\mu, \lambda_\nu) = \eta_{\mu \nu}
+		\end{equation}
+		即 $n$ 个互相正交的向量.
+		
+		\item $\dim \mathrm{O}(p, q) = \frac{n (n - 1)}{2}$.
+		
+		\item 可以证明, 对于,
+		\begin{equation}
+			\Lambda = \begin{pmatrix}
+				A & B \\
+				C & D
+			\end{pmatrix}
+		\end{equation}
+		有 $\det \Lambda = \frac{\det A}{\det D}$, 且 $|\det A|, |\det D| \geq 1$.
+	\end{itemize}
+	
+	\item $\mathrm{O}(p, q)$ 具有如下子群,
+	\begin{equation}
+		\begin{dcases}
+			\mathrm{SO}(p, q) = \{\Lambda \in \mathrm{O}(p, q) | \det \Lambda = 1\} \\
+			\mathrm{SO}_+(p, q) = \{\Lambda \in \mathrm{SO}(p, q) | \det A \geq 1\} \\
+			\mathrm{O}_+(p, q) = \{\Lambda \in \mathrm{O}(p, q) | \det A \geq 1\} \\
+			\mathrm{O}_-(p, q) = \{\Lambda \in \mathrm{O}(p, q) | \det D \geq 1\}
+		\end{dcases}
+	\end{equation}
+	且有如下四个连通分支,
+	\begin{equation}
+		\mathrm{SO}_\pm(p, q) \quad \text{and} \quad \mathrm{O'}_\pm(p, q) = \{\det \Lambda = - 1, \det A \geq 1 \ \text{or} \ \det A \leq - 1\}
+	\end{equation}
+\end{itemize}
+
+\subsection{the Lorentz group}
+\begin{itemize}
+	\item $\mathrm{L} = \mathrm{O}(3, 1)$ is called the Lorentz group.
+\end{itemize}
+
+\subsection{the Lorentz algebra}
+\begin{itemize}
+	\item $\mathfrak{so}(3, 1) = \{A \in \mathcal{M}_4(\mathbb{R}) | A^T = - \eta A \eta\} \simeq \mathfrak{so}(4)$.
+	
+	\item 考虑 $\mathfrak{so}(4, \mathbb{C})$ 的 Dynkin diagram, $D_2$, (见 section \ref{6.7}), 可见 $\mathfrak{so}(4, \mathbb{C}) \simeq \mathfrak{sl}(2, \mathbb{C}) \oplus \mathfrak{sl}(2, \mathbb{C})$.
+	\begin{itemize}
+		\item 因此, $\mathfrak{so}(3, 1)$ 的 irreducible rep. 是 $\text{spin-} j_1 \oplus \text{spin-} j_2$, 用 $(j_1, j_2)$ 表示.
+	\end{itemize}
+\end{itemize}
+
+\section{unitary groups and algebras}
+\begin{itemize}
+	\item $\mathrm{U}(n) = \{U \in \mathrm{GL}(n, \mathbb{C}) | U^\dag U = I\}$.
+	\begin{itemize}
+		\item $\dim \mathrm{U}(n) = n^2$.
+		
+		\item $\mathrm{U}(n)$ is connected.
+	\end{itemize}
+	
+	\item $\mathfrak{u}(n) = \{A \in \mathcal{M}_n(\mathbb{C}) | A^\dag = - A\}$.
+\end{itemize}
+
+\section{special unitary groups and algebras}
+\begin{itemize}
+	\item $\mathrm{SU}(n) = \{U \in \mathrm{GL}(n, \mathbb{C}) | U^\dag U = I, \det U = 1\}$.
+	\begin{itemize}
+		\item $\dim \mathrm{SU}(n) = n^2 - 1$.
+	\end{itemize}
+	
+	\item $\mathfrak{su}(n) = \{A \in \mathcal{M}_n(\mathbb{C}) | A^\dag = - A, \mathrm{tr} A = 0\}$.
+\end{itemize}
+
+\section{symplectic groups}
+\begin{itemize}
+	\item $\mathrm{Sp}(2 n, \mathbb{C}) = \{A \in \mathcal{M}_{2 n}(\mathbb{C}) | - \Omega A^T \Omega = A^{- 1}\}$, where,
+	\begin{equation}
+		\Omega = \begin{pmatrix}
+			0 & I \\
+			- I & 0
+		\end{pmatrix}
+	\end{equation}
+	\begin{itemize}
+		\item $\dim \mathrm{Sp}(2 n, \mathbb{C}) = 2 n (2 n + 1)$.
+	\end{itemize}
+\end{itemize}
+
 \section{the representations of \texorpdfstring{$\mathfrak{sl}(3, \mathbb{C})$}{sl(3, C)}}
 \begin{itemize}
 	\item this section, we are going to discuss the classification of the irreducible rep. of $\mathrm{SU}(3)$ and $\mathfrak{sl}(2, \mathbb{C})$.
