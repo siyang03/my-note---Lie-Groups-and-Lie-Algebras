@@ -83,6 +83,33 @@
 			\end{pmatrix}
 		\end{equation}
 		有 $\det \Lambda = \frac{\det A}{\det D}$, 且 $|\det A|, |\det D| \geq 1$.
+		
+		\begin{tcolorbox}[title=proof:]
+			分块矩阵满足,
+			\begin{equation} \label{10.3.4}
+				\begin{dcases}
+					A^T B = C^T D \\
+					A^T A - C^T C = I_{p \times p} \\
+					D^T D - B^T B = I_{q \times q}
+				\end{dcases}
+			\end{equation}
+			如果 $\det A \neq 0$, 那么,
+			\begin{equation}
+				\det \Lambda = \det(A) \det(D - C A^{- 1} B)
+			\end{equation}
+			对 \eqref{10.3.4} 的第一行做变换, 得到,
+			\begin{equation}
+				A^{- 1} = C^{- 1} (D^T)^{- 1} B^T \Longrightarrow C A^{- 1} B = (D^T)^{- 1} B^T B
+			\end{equation}
+			再代入 \eqref{10.3.4} 的第三行, 得到 $C A^{- 1} B = D - (D^T)^{- 1}$, 所以...
+			
+			\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+			
+			由 \eqref{10.3.4} 的第二行,
+			\begin{equation}
+				{\det}^2 A = \det(I + C^T C) \overset{\textcolor{red}{(?)}}{\geq} 1
+			\end{equation}
+		\end{tcolorbox}
 	\end{itemize}
 	
 	\item $\mathrm{O}(p, q)$ 具有如下子群,

@@ -1,0 +1,29 @@
+\chapter{further properties of the representations}
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\section{Casimir operators}
+\begin{itemize}
+	\item \textbf{\textbf{def.:}} the 2nd-order Casimir operator is,
+	\begin{equation}
+		C_2 = - B^{i j} A_i \otimes A_j
+	\end{equation}
+	where $B^{i j} = B^{- 1}_{i j}$.
+	\begin{itemize}
+		\item the 2nd-order Casimir operator commutes with all the generators.
+		
+		\begin{tcolorbox}[title=proof:]
+			\begin{align}
+				[C_2, A_k] &= - B^{i j} [A_i A_j, A_k] \notag \\
+				&= - B^{i j} (- {f_{j k}}^l A_i A_l - {f_{i k}}^l A_l A_j)
+			\end{align}
+			notice that $B^{i j}$ is symmetric, so,
+			\begin{align}
+				[C_2, A_k] &= - B^{i j} (- {f_{i k}}^l A_j A_l - {f_{i k}}^l A_l A_j) \notag \\
+				&= B^{i j} {f_{i k}}^l (A_j A_l + A_l A_j) \notag \\
+				&= \underbrace{B^{i j} B^{l m} (A_j A_l + A_l A_j)}_{\text{symmetric about } (i, m)} f_{i k m} = 0
+			\end{align}
+		\end{tcolorbox}
+	\end{itemize}
+\end{itemize}
