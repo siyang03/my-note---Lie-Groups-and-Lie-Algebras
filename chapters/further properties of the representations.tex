@@ -1,9 +1,43 @@
 \chapter{further properties of the representations}
+\section{the structure of weights}
 \begin{itemize}
-	\item 
+	\item \textbf{theorem:} 对于 semisimple Lie algebra $\mathfrak{g}$ 的一个 irreducible finite-dim. rep. $(\pi_\mu, V^\mu)$, 其 highest weight 为 $\mu$, 那么, integral element $\lambda$ 是其 weight $\iff \lambda$ 满足以下两个条件,
+	\begin{enumerate}
+		\item $\lambda \in \mathrm{Conv}(W \ket{\mu})$,
+		
+		\item $\mu - \lambda$ 可以表示成 roots 的整数线性组合.
+	\end{enumerate}
+	
+	\begin{tcolorbox}[title=proof:]
+		\begin{itemize}
+			\item \textbf{"no holes" lemma:} 对于一个 semisimple Lie algebra $\mathfrak{g}$ 的 finite-dim. rep. $(\pi, V)$, $\lambda$ 是它的一个 weight, 那么, 对于一个 root $\alpha$ 满足 $\braket{\lambda, \alpha} > 0$, 有,
+			\begin{equation}
+				\lambda - i \alpha, i \in \{0, 1, \cdots, \braket{\lambda, H_\alpha}\}
+			\end{equation}
+			都是 weights, (也就是 $\lambda, \lambda - \alpha, \cdots, s_\alpha \ket{\lambda}$).
+			
+			\noindent\hdashrule[0.5ex]{\linewidth}{0.5pt}{1mm} % horizontal dashed line
+			
+			\textbf{proof:}
+			
+			考虑如下 weight spaces 的直和,
+			\begin{equation}
+				V \supset U = \bigoplus_{i \in \mathbb{Z}} V_{\lambda - i \alpha}
+			\end{equation}
+			(线性独立证明见 \eqref{A.3.9}), 那么 $U$ 在 $\mathfrak{s}^\alpha = \mathrm{span}(H_\alpha, A_\alpha, B_\alpha)$ 的作用下保持不变. 并且注意到 $V_{\lambda - i \alpha}$ 是以,
+			\begin{equation}
+				\braket{\lambda, H_\alpha} - 2 i
+			\end{equation}
+			为本征值的 $H_\alpha$ 的本征空间, 根据 \eqref{10.1.6} (不需要 irreducibility) 可知 $\braket{\lambda, H_\alpha}, \cdots, - \braket{\lambda, H_\alpha}$ 都是本征值.
+		\end{itemize}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		首先考虑 $\lambda$ 是 dominant integral (结合条件 1 implies $\lambda \preceq \mu$), 来证明 $\Longleftarrow$ (去除条件 finite-dim.).
+	\end{tcolorbox}
 \end{itemize}
 
-\section{Casimir operators}
+\section{the Casimir element}
 \begin{itemize}
 	\item \textbf{\textbf{def.:}} the 2nd-order Casimir operator is,
 	\begin{equation}
