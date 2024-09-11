@@ -91,9 +91,9 @@
 \begin{itemize}
 	\item 對於流形 $M$ 上的任意 $(k , l)$ 型張量場,
 	\begin{align}
-		\mathcal{L}_\xi {T^{a \cdots}}_{b \cdots} \Big|_p &= \lim_{t \rightarrow 0} \frac{1}{t} \Big( {T^{a \cdots}}_{b \cdots} \Big|_{\phi_t(p)} - \phi_{t *} \big( {T^{a \cdots}}_{b \cdots} \Big|_p \big) \Big) \\
-		&= \lim_{t \rightarrow 0} \frac{1}{t} \Big( \phi^*_t \big( {T^{a \cdots}}_{b \cdots} \Big|_{\phi_t(p)} \big) - {T^{a \cdots}}_{b \cdots} \Big|_p \Big) \\
-		&= \xi^c \nabla_c {T^{a \cdots}}_{b \cdots} - (\nabla_c \xi^a) {T^{c \cdots}}_{b \cdots} - \cdots + (\nabla_b \xi^c) {T^{a \cdots}}_{c \cdots} + \cdots
+		\mathcal{L}_\xi \tensor{T}{^{a \cdots}_{b \cdots}} \Big|_p &= \lim_{t \rightarrow 0} \frac{1}{t} \Big( \tensor{T}{^{a \cdots}_{b \cdots}} \Big|_{\phi_t(p)} - \phi_{t *} \big( \tensor{T}{^{a \cdots}_{b \cdots}} \Big|_p \big) \Big) \\
+		&= \lim_{t \rightarrow 0} \frac{1}{t} \Big( \phi^*_t \big( \tensor{T}{^{a \cdots}_{b \cdots}} \Big|_{\phi_t(p)} \big) - \tensor{T}{^{a \cdots}_{b \cdots}} \Big|_p \Big) \\
+		&= \xi^c \nabla_c \tensor{T}{^{a \cdots}_{b \cdots}} - (\nabla_c \xi^a) \tensor{T}{^{c \cdots}_{b \cdots}} - \cdots + (\nabla_b \xi^c) \tensor{T}{^{a \cdots}_{c \cdots}} + \cdots
 	\end{align}
 	
 	\begin{tcolorbox}[title=proof:]
@@ -119,16 +119,16 @@
 			\end{equation}
 			所以,
 			\begin{align}
-				\mathcal{L}_\xi {T^{a \cdots}}_{b \cdots} \Big|_p &= (\partial_0 {T^{a \cdots}}_{b \cdots}) \Big|_p \notag \\
-				&= \xi^c \Big( \nabla_c {T^{a \cdots}}_{b \cdots} - \Gamma^a_{d c} {T^{d \cdots}}_{b \cdots} - \cdots + \Gamma^d_{b c} {T^{a \cdots}}_{d \cdots} + \cdots \Big)
+				\mathcal{L}_\xi \tensor{T}{^{a \cdots}_{b \cdots}} \Big|_p &= (\partial_0 \tensor{T}{^{a \cdots}_{b \cdots}}) \Big|_p \notag \\
+				&= \xi^c \Big( \nabla_c \tensor{T}{^{a \cdots}_{b \cdots}} - \Gamma^a_{d c} \tensor{T}{^{d \cdots}_{b \cdots}} - \cdots + \Gamma^d_{b c} \tensor{T}{^{a \cdots}_{d \cdots}} + \cdots \Big)
 			\end{align}
 			由於,
 			\begin{equation}
-				(\nabla_d \xi^a) {T^{d \cdots}}_{b \cdots} = \partial_d \Big( \frac{\partial}{\partial x^0} \Big)^a + \Gamma^a_{c d} \Big( \frac{\partial}{\partial x^0} \Big)^c {T^{d \cdots}}_{b \cdots}
+				(\nabla_d \xi^a) \tensor{T}{^{d \cdots}_{b \cdots}} = \partial_d \Big( \frac{\partial}{\partial x^0} \Big)^a + \Gamma^a_{c d} \Big( \frac{\partial}{\partial x^0} \Big)^c \tensor{T}{^{d \cdots}_{b \cdots}}
 			\end{equation}
 			代入,
 			\begin{equation}
-				\mathcal{L}_\xi {T^{a \cdots}}_{b \cdots} \Big|_p = \xi^c \nabla_c {T^{a \cdots}}_{b \cdots} - (\nabla_c \xi^a) {T^{c \cdots}}_{b \cdots} - \cdots + (\nabla_b \xi^c) {T^{a \cdots}}_{c \cdots} + \cdots
+				\mathcal{L}_\xi \tensor{T}{^{a \cdots}_{b \cdots}} \Big|_p = \xi^c \nabla_c \tensor{T}{^{a \cdots}_{b \cdots}} - (\nabla_c \xi^a) \tensor{T}{^{c \cdots}_{b \cdots}} - \cdots + (\nabla_b \xi^c) \tensor{T}{^{a \cdots}_{c \cdots}} + \cdots
 			\end{equation}
 		\end{itemize}
 	\end{tcolorbox}

@@ -153,14 +153,14 @@
 \begin{itemize}
 	\item structure constants,
 	\begin{align}
-		& [X_i, X_j] = i {f_{i j}}^k X_k \iff [X_i, X_j]^a = i {f_{b c}}^a (X_i)^b (X_j)^c \\
-		& [A_i, A_j] = - {f_{i j}}^k A_k \iff [A_i, A_j]^a = - {f_{b c}}^a (A_i)^b (A_j)^c
+		& [X_i, X_j] = i \tensor{f}{_{i j}^k} X_k \iff [X_i, X_j]^a = i \tensor{f}{_{b c}^a} (X_i)^b (X_j)^c \\
+		& [A_i, A_j] = - \tensor{f}{_{i j}^k} A_k \iff [A_i, A_j]^a = - \tensor{f}{_{b c}^a} (A_i)^b (A_j)^c
 	\end{align}
 	where $X_i = - i A_i$ are called the generators.
 	\begin{itemize}
 		\item if the generators are Hermitian, then the structure constants are real,
 		\begin{equation}
-			[X_i, X_j]^\dag = - i {f^*_{i j}}^k X_k = [X_j, X_i] = i \underbrace{{f_{j i}}^k}_{= - {f_{i j}}^k} X_k \Longrightarrow {f^*_{i j}}^k = {f_{i j}}^k
+			[X_i, X_j]^\dag = - i \tensor{f}{^*_{i j}^k} X_k = [X_j, X_i] = i \underbrace{\tensor{f}{_{j i}^k}}_{= - \tensor{f}{_{i j}^k}} X_k \Longrightarrow \tensor{f}{^*_{i j}^k} = \tensor{f}{_{i j}^k}
 		\end{equation}
 	\end{itemize}
 \end{itemize}

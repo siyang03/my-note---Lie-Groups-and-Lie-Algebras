@@ -520,16 +520,16 @@
 	
 	\item the Jacob identity written in the structure constants is,
 	\begin{equation}
-		{f_{i l}}^m {f_{j k}}^l + {f_{k l}}^m {f_{i j}}^l + {f_{j l}}^m {f_{k i}}^l = 0
+		\tensor{f}{_{i l}^m} \tensor{f}{_{j k}^l} + \tensor{f}{_{k l}^m} \tensor{f}{_{i j}^l} + \tensor{f}{_{j l}^m} \tensor{f}{_{k i}^l} = 0
 	\end{equation}
-	consider the structure constants as the components of matrices, $\mathcolor{red}{- i} {f_{i j}}^k = {(T_i)_j}^k$, since ${f_{i j}}^k = - {f_{j i}}^k$, the matrices have the property that ${(T_i)_j}^k = -{(T_j)_i}^k$, then,
+	consider the structure constants as the components of matrices, $\mathcolor{red}{- i} \tensor{f}{_{i j}^k} = \tensor{T}{_{i j}^k}$, since $\tensor{f}{_{i j}^k} = - \tensor{f}{_{j i}^k}$, the matrices have the property that $\tensor{(T_i)}{_j^k} = - \tensor{(T_j)}{_i^k}$, then,
 	\begin{align}
-		& i {f_{j k}}^l {(T_l)_i}^m + \underbrace{{(T_i T_k)_j}^m}_{= - {(T_j T_k)_i}^m} + {(T_k T_j)_i}^m = 0 \notag \\
-		\Longrightarrow & {[T_j, T_k]_i}^m = i {f_{j k}}^l {(T_l)_i}^m
+		& i \tensor{f}{_{j k}^l} \tensor{(T_l)}{_i^m} + \underbrace{\tensor{(T_i T_k)}{_j^m}}_{= - \tensor{(T_j T_k)}{_i^m}} + \tensor{(T_k T_j)}{_i^m} = 0 \notag \\
+		\Longrightarrow & \tensor{[T_j, T_k]}{_i^m} = i \tensor{f}{_{j k}^l} \tensor{(T_l)}{_i^m}
 	\end{align}
-	or, more compactly, $[T_i, T_j] = i {f_{i j}}^k T_k$.
+	or, more compactly, $[T_i, T_j] = i \tensor{f}{_{i j}^k} T_k$.
 	
-	\item $\{{(T_i)_j}^k = - i {f_{i j}}^k\}$ is called the adjoint representation of the Lie algebra $\{X_i\}$.
+	\item $\{ \tensor{(T_i)}{_j^k} = - i \tensor{f}{_{i j}^k}\}$ is called the adjoint representation of the Lie algebra $\{X_i\}$.
 	
 	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
 	
@@ -537,11 +537,11 @@
 	\begin{equation}
 		\mathrm{ad}_A(B) = [A, B]
 	\end{equation}
-	as one can see, ${(\mathrm{ad}_A)^a}_b = - {f_{c b}}^a A^c \in \mathcal{L}(\mathfrak{g})$, or written in components,
+	as one can see, $\tensor{(\mathrm{ad}_A)}{^a_b} = - \tensor{f}{_{c b}^a} A^c \in \mathcal{L}(\mathfrak{g})$, or written in components,
 	\begin{equation}
-		\mathcolor{red}{{(\mathrm{ad}_{A_i})^k}_j = - {f_{i j}}^k} \Longrightarrow \mathrm{ad}_{A_i} = (i T_i)^T
+		\mathcolor{red}{\tensor{(\mathrm{ad}_{A_i})}{^k_j} = - \tensor{f}{_{i j}^k}} \Longrightarrow \mathrm{ad}_{A_i} = (i T_i)^T
 	\end{equation}
-	and $[\mathrm{ad}_{A_i}, \mathrm{ad}_{A_j}] = \mathrm{ad}_{[A_i, A_j]} = - {f_{i j}}^k \mathrm{ad}_{A_k}$.
+	and $[\mathrm{ad}_{A_i}, \mathrm{ad}_{A_j}] = \mathrm{ad}_{[A_i, A_j]} = - \tensor{f}{_{i j}^k} \mathrm{ad}_{A_k}$.
 	
 	\item $\mathrm{ad} : \mathfrak{g} \rightarrow \mathcal{L}(\mathfrak{g})$ is a homomorphism, i.e.,
 	\begin{equation}
@@ -564,12 +564,12 @@
 	\end{equation}
 	which can be written in terms of structure constants,
 	\begin{equation}
-		B_{i j} = {f_{i k}}^l {f_{j l}}^k
+		B_{i j} = \tensor{f}{_{i k}^l} \tensor{f}{_{j l}^k}
 	\end{equation}
 	
 	\begin{tcolorbox}[title=proof:]
 		\begin{equation}
-			B(A_i, A_j) = \mathrm{tr}(\mathrm{ad}_{A_i} \mathrm{ad}_{A_j}) = (- {f_{i k}}^l) (- {f_{j l}}^k)
+			B(A_i, A_j) = \mathrm{tr}(\mathrm{ad}_{A_i} \mathrm{ad}_{A_j}) = (- \tensor{f}{_{i k}^l}) (- \tensor{f}{_{j l}^k})
 		\end{equation}
 	\end{tcolorbox}
 	
@@ -599,16 +599,16 @@
 	
 	\item the structure constants with lowered indices are \textbf{completely antisymmetric},
 	\begin{equation}
-		{f_{i j}}^l B_{l k} = - f_{i j k} = - f_{[i j k]}
+		\tensor{f}{_{i j}^l} B_{l k} = - f_{i j k} = - f_{[i j k]}
 	\end{equation}
 	
 	\begin{tcolorbox}[title=proof:]
 		\begin{equation}
-			{f_{i j}}^l B_{l k} = {f_{i j}}^l {f_{l m}}^n {f_{k n}}^m
+			\tensor{f}{_{i j}^l} B_{l k} = \tensor{f}{_{i j}^l} \tensor{f}{_{l m}^n} \tensor{f}{_{k n}^m}
 		\end{equation}
-		notice that, according to Jacob identity, ${f_{i j}}^l {f_{l m}}^n = 2 {f_{[i| l}}^n {f_{|j] m}}^l$, then,
+		notice that, according to Jacob identity, $\tensor{f}{_{i j}^l} \tensor{f}{_{l m}^n} = 2 \tensor{f}{_{[i| l}^n} \tensor{f}{_{|j] l}^m}$, then,
 		\begin{equation}
-			f_{i j k} = - 2 {f_{[i| \mathcolor{red}{l}}}^{\mathcolor{green}{n}} {f_{|j] \mathcolor{blue}{m}}}^{\mathcolor{red}{l}} {f_{k \mathcolor{green}{n}}}^{\mathcolor{blue}{m}}
+			f_{i j k} = - 2 \tensor{f}{_{[i| \mathcolor{red}{l}}^{\mathcolor{green}{n}}} \tensor{f}{_{|j] \mathcolor{blue}{m}}^{\mathcolor{red}{l}}} \tensor{f}{_{k \mathcolor{green}{n}}^{\mathcolor{blue}{m}}}
 		\end{equation}
 		we can see that the equation holds under index permutation like $(i, j, k) \rightarrow (k, i, j) \rightarrow (j, k, i)$, and consequently, all three indices of $f_{i j k}$ are antisymmetric.
 	\end{tcolorbox}

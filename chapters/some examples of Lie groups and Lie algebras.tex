@@ -23,31 +23,31 @@
 	\end{equation}
 	
 	\begin{tcolorbox}[title=proof:]
-		for general linear group, ${x^i}_j(g h) = {x^i}_k(g) {x^k}_j(h)$.
+		for general linear group, $\tensor{x}{^i_j}(g h) = \tensor{x}{^i_k}(g) \tensor{x}{^k_j}(h)$.
 		
 		so, the pushforward of the left transformation is,
 		\begin{equation}
-			L_{g *} (A \Big|_e) {x^i}_j \Big|_g = A({y^i}_j) \Big|_e
+			L_{g *} (A \Big|_e) \tensor{x}{^i_j} \Big|_g = A(\tensor{y}{^i_j}) \Big|_e
 		\end{equation}
-		where ${y^i}_j(h) = (L_g^* {x^i}_j)(h) = {x^i}_k(g) {x^k}_j(h)$, so we have,
+		where $\tensor{y}{^i_j}(h) = (L_g^* \tensor{x}{^i_j})(h) = \tensor{x}{^i_k}(g) \tensor{x}{^k_j}(h)$, so we have,
 		\begin{equation}
-			A({y^i}_j) \Big|_e = A \Big|_e ({x^k}_l) \underbrace{\frac{\partial {y^i}_j}{\partial {x^k}_l} \Big|_e}_{= {x^i}_m(g) \delta^m_k \delta^l_j} = {x^i}_k(g) A \Big|_e ({x^k}_j)
+			A(\tensor{y}{^i_j}) \Big|_e = A \Big|_e (\tensor{x}{^k_l}) \underbrace{\frac{\partial \tensor{y}{^i_j}}{\partial \tensor{x}{^k_l}} \Big|_e}_{= \tensor{x}{^i_m}(g) \delta^m_k \delta^l_j} = \tensor{x}{^i_k}(g) A \Big|_e (\tensor{x}{^k_j})
 		\end{equation}
 		
 		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
 		
 		\begin{align}
-			{[A, B]^i}_j &= (d{x^i}_j)_a (A^b \partial_b B^a - B^b \partial_b A^a) \notag \\
-			&= {A^k}_l \frac{\partial}{\partial {x^k}_l} {B^i}_j - {B^k}_l \frac{\partial}{\partial {x^k}_l} {A^i}_j
+			\tensor{[A, B]}{^i_j} &= (d\tensor{x}{^i_j})_a (A^b \partial_b B^a - B^b \partial_b A^a) \notag \\
+			&= \tensor{A}{^k_l} \frac{\partial}{\partial \tensor{x}{^k_l}} \tensor{B}{^i_j} - \tensor{B}{^k_l} \frac{\partial}{\partial \tensor{x}{^k_l}} \tensor{A}{^i_j}
 		\end{align}
-		注意 ${(A_g)^i}_j = {x^i}_k(g) {(A_e)^k}_j$, 所以,
+		注意 $\tensor{(A_g)}{^i_j} = \tensor{x}{^i_k}(g) \tensor{(A_e)}{^k_j}$, 所以,
 		\begin{equation}
-			\frac{\partial}{\partial {x^k}_l} ({A^i}_j) \Big|_g = \underbrace{\frac{\partial}{\partial {x^k}_l} ({{x^i}_m}(g))}_{= \delta^i_k \delta^l_m} {(A_e)^m}_j = \delta^i_k {(A_e)^l}_j
+			\frac{\partial}{\partial \tensor{x}{^k_l}} (\tensor{A}{^i_j}) \Big|_g = \underbrace{\frac{\partial}{\partial \tensor{x}{^k_l}} (\tensor{x}{^i_m}(g))}_{= \delta^i_k \delta^l_m} \tensor{(A_e)}{^m_j} = \delta^i_k \tensor{(A_e)}{^l_j}
 		\end{equation}
 		代入得到,
 		\begin{align}
-			{[A, B]^i}_j \Big|_g &= {(A_g)^k}_l \delta^i_k {(B_e)^l}_j - {(B_g)^k}_l \delta^i_k {(A_e)^l}_j \notag \\
-			&= {x^i}_k(g) ({A^k}_l {B^l}_j - {B^k}_l {A^l}_j)
+			\tensor{[A, B]}{^i_j} \Big|_g &= \tensor{(A_g)}{^k_l} \delta^i_k \tensor{(B_e)}{^l_j} - \tensor{(B_g)}{^k_l} \delta^i_k \tensor{(A_e)}{^l_j} \notag \\
+			&= \tensor{x}{^i_k}(g) (\tensor{A}{^k_l} \tensor{B}{^l_j} - \tensor{B}{^k_l} \tensor{A}{^l_j})
 		\end{align}
 	\end{tcolorbox}
 \end{itemize}
