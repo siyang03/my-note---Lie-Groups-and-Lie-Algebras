@@ -931,7 +931,7 @@
 	\end{equation}
 	
 	\item 选择一个内积, 使得 $\mathrm{ad}_X, \forall X \in \mathfrak{su}(n + 1)$ 是 skew self-adjoint,
-	\begin{equation}
+	\begin{equation} \label{6.7.5}
 		\braket{A, B} = \mathrm{tr}(A^\dag B), \forall A, B \in \mathfrak{su}(n + 1)_\mathbb{C}
 	\end{equation}
 	
@@ -980,7 +980,7 @@
 	\end{itemize}
 \end{itemize}
 
-\subsection{the orthogonal algebras, \texorpdfstring{$\mathfrak{so}(2 n, \mathbb{C})$}{so(2 n, C)}, and \texorpdfstring{$D_n$}{D\_n}}
+\subsection{the orthogonal algebras, \texorpdfstring{$\mathfrak{so}(2 n, \mathbb{C})$}{so(2 n, C)}, and \texorpdfstring{$D_n$}{D\_n}} \label{subsection 6.7.2}
 \begin{itemize}
 	\item $\mathfrak{so}(2 n, \mathbb{R}) = \mathfrak{o}(2 n, \mathbb{R}) = \{A \in \mathcal{M}_{2 n}(\mathbb{R}) | A^T = - A\}$, 它的 maximal commutative subalgebra 是,
 	\begin{equation}
@@ -991,9 +991,7 @@
 	\end{equation}
 	
 	\begin{tcolorbox}[title=proof:]
-		任何 $\mathfrak{so}(2 n, \mathbb{C})$ 中的元素都可以展开成 $\mathfrak{h} = \mathfrak{t}_C$ 和 $D^\alpha_{i j}$ (见下文) 的叠加, 那么, 与 $\mathfrak{h}$ 对易的元素一定不含有 $D^\alpha_{i j}$ 分量, 所以... 是 maximal. (总共有 $2 n^2 - 2 n$ 个根, 且 rank 为 $n$, 所以总维数为 $2 n^2 - n = \frac{2 n (2 n - 1)}{2}$)
-		
-		另外, 注意如果 $n = 2$, $D^1_{1 1} = D^2_{1 1} = 0$ 而,
+		任何 $\mathfrak{so}(2 n, \mathbb{C})$ 中的元素都可以展开成 $\mathfrak{h} = \mathfrak{t}_\mathbb{C}$ 和 $D^\alpha_{i j}$ (见下文 \eqref{6.7.11}) 的叠加, 那么, 与 $\mathfrak{h}$ 对易的元素一定不含有 $D^\alpha_{i j}$ 分量, 所以... 是 maximal. (总共有 $2 n^2 - 2 n$ 个根, 且 rank 为 $n$, 所以总维数为 $2 n^2 - n = \frac{2 n (2 n - 1)}{2}$). 另外, 注意如果 $n = 2$, $D^1_{1 1} = D^2_{1 1} = 0$ 而,
 		\begin{equation}
 			D^3_{1 1} = - D^4_{1 1} = \begin{pmatrix}
 				0 & - 2 i \\
@@ -1006,21 +1004,22 @@
 	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
 	
 	\item the root vectors are $D^\alpha_{i j} = C^\alpha_{i j} - (C^{\alpha}_{i j})^T$, where $\alpha = 1, 2, 3, 4$ and,
-	\begin{equation}
-		C^1_{i j} = \begin{pmatrix}
+	\begin{align}
+		& C^1_{i j} = \begin{pmatrix}
 			E_{i j} & i E_{i j} \\
 			i E_{i j} & - E_{i j}
 		\end{pmatrix} \quad C^2_{i j} = \begin{pmatrix}
 			E_{i j} & - i E_{i j} \\
 			- i E_{i j} & - E_{i j}
-		\end{pmatrix} C^3_{i j} = \begin{pmatrix}
+		\end{pmatrix} \notag \\
+		& C^3_{i j} = \begin{pmatrix}
 			E_{i j} & - i E_{i j} \\
 			i E_{i j} & E_{i j}
 		\end{pmatrix} \quad C^4_{i j} = \begin{pmatrix}
 			E_{i j} & i E_{i j} \\
 			- i E_{i j} & E_{i j}
-		\end{pmatrix}
-	\end{equation}
+		\end{pmatrix} \label{6.7.11}
+	\end{align}
 	where $i \neq j \in \{1, \cdots, n\}$ (如果 $i = j$, 那么 $D^{1, 2}_{i i} = 0, D^{3, 4}_{i i} \in \mathfrak{h}$), and we have,
 	\begin{align}
 		& [H_a, D^1_{i j}] = i (a_i + a_j) D^1_{i j} \quad [H_a, D^2_{i j}] = - i (a_i + a_j) D^2_{i j} \notag \\
