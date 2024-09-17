@@ -1,0 +1,319 @@
+\chapter{the Lorentz group and the Lorentz algebra}
+\section{indefinite orthogonal groups}
+\begin{itemize}
+	\item $\mathrm{O}(p, q) = \{\Lambda \in \mathcal{M}_n(\mathbb{R}) | \Lambda^T \eta \Lambda = \eta\}$ is called the \href{https://en.wikipedia.org/wiki/Indefinite_orthogonal_group}{indefinite orthogonal group}, where $n = p + q$ and,
+	\begin{equation}
+		\eta = \mathrm{diag}(\underbrace{+ 1, \cdots, + 1}_{p}, \underbrace{- 1, \cdots, - 1}_{q})
+	\end{equation}
+	\begin{itemize}
+		\item 将 $\lambda$ 视作一组列向量 $(\lambda_1, \cdots, \lambda_n)$, 那么,
+		\begin{equation}
+			\eta(\lambda_\mu, \lambda_\nu) = \eta_{\mu \nu}
+		\end{equation}
+		即 $n$ 个互相正交的向量.
+		
+		\item $\dim \mathrm{O}(p, q) = \frac{n (n - 1)}{2}$.
+		
+		\item 可以证明, 对于,
+		\begin{equation}
+			\Lambda = \begin{pmatrix}
+				A & B \\
+				C & D
+			\end{pmatrix}
+		\end{equation}
+		有 $\det \Lambda = \frac{\det A}{\det D}$, 且 $|\det A|, |\det D| \geq 1$.
+		
+		\begin{tcolorbox}[title=proof:]
+			分块矩阵满足,
+			\begin{equation} \label{11.3.4}
+				\begin{dcases}
+					A^T B = C^T D \\
+					A^T A - C^T C = I_{p \times p} \\
+					D^T D - B^T B = I_{q \times q}
+				\end{dcases}
+			\end{equation}
+			如果 $\det A \neq 0$, 那么,
+			\begin{equation}
+				\det \Lambda = \det(A) \det(D - C A^{- 1} B)
+			\end{equation}
+			对 \eqref{11.3.4} 的第一行做变换, 得到,
+			\begin{equation}
+				A^{- 1} = C^{- 1} (D^T)^{- 1} B^T \Longrightarrow C A^{- 1} B = (D^T)^{- 1} B^T B
+			\end{equation}
+			再代入 \eqref{11.3.4} 的第三行, 得到 $C A^{- 1} B = D - (D^T)^{- 1}$, 所以...
+			
+			\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+			
+			由 \eqref{11.3.4} 的第二行,
+			\begin{equation}
+				{\det}^2 A = \det(I + C^T C) \overset{\textcolor{red}{(?)}}{\geq} 1
+			\end{equation}
+		\end{tcolorbox}
+	\end{itemize}
+	
+	\item $\mathrm{O}(p, q)$ 具有如下子群,
+	\begin{equation}
+		\begin{dcases}
+			\mathrm{SO}(p, q) = \{\Lambda \in \mathrm{O}(p, q) | \det \Lambda = 1\} \\
+			\mathrm{SO}_+(p, q) = \{\Lambda \in \mathrm{SO}(p, q) | \det A \geq 1\} \\
+			\mathrm{O}_+(p, q) = \{\Lambda \in \mathrm{O}(p, q) | \det A \geq 1\} \\
+			\mathrm{O}_-(p, q) = \{\Lambda \in \mathrm{O}(p, q) | \det D \geq 1\}
+		\end{dcases}
+	\end{equation}
+	且有如下四个连通分支,
+	\begin{equation}
+		\mathrm{SO}_\pm(p, q) \quad \text{and} \quad \mathrm{O'}_\pm(p, q) = \{\det \Lambda = - 1, \det A \geq 1 \ \text{or} \ \det A \leq - 1\}
+	\end{equation}
+\end{itemize}
+
+\section{the Lorentz group}
+\begin{itemize}
+	\item $\mathrm{L} = \mathrm{O}(3, 1)$ is called the Lorentz group.
+	
+	\item 有 3 个 rotations,
+	\begin{align}
+		& R(\omega_{x y}) = \begin{pmatrix}
+			1 & & & \\
+			& \cos \omega_{x y} & - \sin \omega_{x y} & \\
+			& \sin \omega_{x y} & \cos \omega_{x y} & \\
+			& & & 1
+		\end{pmatrix} \quad R(\omega_{y z}) = \begin{pmatrix}
+			1 & & & \\
+			& 1 & & \\
+			& & \cos \omega_{y z} & - \sin \omega_{y z} \\
+			& & \sin \omega_{y z} & \cos \omega_{y z}
+		\end{pmatrix} \notag \\
+		& R(\omega_{z x}) = \begin{pmatrix}
+			1 & & & \\
+			& \cos \omega_{z x} & & \sin \omega_{z x} \\
+			& & 1 & \\
+			& - \sin \omega_{z x} & & \cos \omega_{z x}
+		\end{pmatrix}
+	\end{align}
+	和 3 个 boosts,
+	\begin{align}
+		& B(\omega_{t x}) = \begin{pmatrix}
+			\cosh \omega_{t x} & \sinh \omega_{t x} & & \\
+			\sinh \omega_{t x} & \cosh \omega_{t x} & & \\
+			& & 1 & \\
+			& & & 1
+		\end{pmatrix} \quad B(\omega_{t y}) = \begin{pmatrix}
+			\cosh \omega_{t y} & & \sinh \omega_{t y} & \\
+			& 1 & & \\
+			\sinh \omega_{t y} & & \cosh \omega_{t y} & \\
+			& & & 1
+		\end{pmatrix} \notag \\
+		& B(\omega_{t z}) = \begin{pmatrix}
+			\cosh \omega_{t z} & & & \sinh \omega_{t z} \\
+			& 1 & & \\
+			& & 1 & \\
+			\sinh \omega_{t z} & & & \cosh \omega_{t z}
+		\end{pmatrix}
+	\end{align}
+\end{itemize}
+
+\section{the Lorentz algebra}
+\begin{itemize}
+	\item $\mathfrak{so}(3, 1) = \{A \in \mathcal{M}_4(\mathbb{R}) | A^T = - \eta A \eta\}$.
+	
+	\item 选择如下 6 个与 rotations and boosts 对应的基矢,
+	\begin{align}
+		& J^{1 2} = \frac{d}{d\omega_{x y}} R(\omega_{x y}) = \begin{pmatrix}
+			0 & & & \\
+			& 0 & - 1 & \\
+			& 1 & 0 & \\
+			& & & 0
+		\end{pmatrix} \quad J^{2 3} = \begin{pmatrix}
+			0 & & & \\
+			& 0 & & \\
+			& & 0 & - 1 \\
+			& & 1 & 0
+		\end{pmatrix} \quad J^{3 1} = \begin{pmatrix}
+			0 & & & \\
+			& 0 & & 1 \\
+			& & 0 & \\
+			& - 1 & & 0
+		\end{pmatrix} \notag \\
+		& J^{0 1} = \begin{pmatrix}
+			0 & 1 & & \\
+			1 & 0 & & \\
+			& & 0 & \\
+			& & & 0
+		\end{pmatrix} \quad J^{0 2} = \begin{pmatrix}
+			0 & & 1 & \\
+			& 0 & & \\
+			1 & & 0 & \\
+			& & & 0
+		\end{pmatrix} \quad J^{0 3} = \begin{pmatrix}
+			0 & & & 1 \\
+			& 0 & & \\
+			& & 0 & \\
+			1 & & & 0
+		\end{pmatrix}
+	\end{align}
+	在某个方向做 rotation 或 boost 可以一般地写为 $\lambda = e^{\frac{1}{2} \omega_{\mu \nu} J^{\mu \nu}}$ (另外, $\mathrm{SO}(3, 1)$ is compact, 它的连通分支内, 所有元素都可以写成指数形式, 原因见 \eqref{4.2.8}).
+	\begin{itemize}
+		\item $J^{\mu \nu}$ 可以一般地写作如下形式,
+		\begin{equation}
+			\tensor{(J^{\mu \nu})}{^\rho_\sigma} = 2 \eta^{[\mu| \rho} \tensor{\delta}{^{|\nu]}_\sigma}
+		\end{equation}
+		
+		\item 存在如下对易关系,
+		\begin{equation}
+			[J^{\mu \nu}, J^{\rho \sigma}] = - (\eta^{\mu \rho} J^{\nu \sigma} + \eta^{\nu \sigma} J^{\mu \rho} - \eta^{\mu \sigma} J^{\nu \rho} - \eta^{\nu \rho} J^{\mu \sigma})
+		\end{equation}
+	\end{itemize}
+\end{itemize}
+
+\section{roots and root spaces of the Lorentz algebra}
+\begin{itemize}
+	\item 考虑 $\mathfrak{so}(4, \mathbb{C})$ 的 Dynkin diagram, $D_2$, (见 section \ref{6.7}), 可见 $\mathfrak{so}(4, \mathbb{C}) \simeq \mathfrak{sl}(2, \mathbb{C}) \oplus \mathfrak{sl}(2, \mathbb{C})$.
+	\begin{itemize}
+		\item 因此, $\mathfrak{so}(3, 1)$ 的 irreducible rep. 是 $\text{spin-} j_1 \oplus \text{spin-} j_2$, 用 $(j_1, j_2)$ 表示.
+	\end{itemize}
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item 参考 subsection \ref{subsection 6.7.2}, $\mathfrak{so}(3, 1)$ 的 maximal commutative subalgebra 为,
+	\begin{equation}
+		\mathfrak{t} = \mathrm{span}(J^{0 2}, J^{3 1}) \Longrightarrow \mathfrak{h} = \mathfrak{t}_\mathbb{C}
+	\end{equation}
+	仿照 \eqref{6.7.5}, 定义内积 $\braket{A, B} = \frac{1}{2} \mathrm{tr}(A^\dag B)$, 有,
+	\begin{equation}
+		\braket{\left( \begin{array}{cc|cc}
+				& & - a & \\
+				& & & b \\
+				\hline
+				- a & & & \\
+				& - b & &
+			\end{array} \right), \left( \begin{array}{cc|cc}
+				& & - c & \\
+				& & & d \\
+				\hline
+				- c & & & \\
+				& - d & &
+			\end{array} \right)
+		} = a^* c + b^* d
+	\end{equation}
+	
+	\item 令 $\alpha = - J^{0 2} + i J^{3 1}, \beta = - J^{0 2} - i J^{3 1}$, 那么有 coroots $H_\alpha = \alpha, H_\beta = \beta$, 且,
+	\begin{equation}
+		\begin{dcases}
+			A_\alpha = - \frac{i}{2} ((J^{1 2} + i J^{2 3}) - (J^{0 1} - i J^{0 3})) \quad B_\alpha = - \frac{i}{2} ((J^{1 2} - i J^{2 3}) + (J^{0 1} + i J^{0 3})) \\
+			A_\beta = - \frac{i}{2} ((J^{1 2} - i J^{2 3}) - (J^{0 1} + i J^{0 3})) \quad B_\beta = - \frac{i}{2} ((J^{1 2} + i J^{2 3}) + (J^{0 1} - i J^{0 3}))
+		\end{dcases}
+	\end{equation}
+	或者,
+	\begin{equation}
+		\begin{dcases}
+			J^{1 2} = - \frac{A_\alpha + B_\alpha + A_\beta + B_\beta}{2 i} \\
+			J^{2 3} = \frac{A_\alpha - B_\alpha - A_\beta + B_\beta}{2}
+		\end{dcases} \quad \begin{dcases}
+			J^{0 1} = \frac{A_\alpha - B_\alpha + A_\beta - B_\beta}{2 i} \\
+			J^{0 3} = \frac{A_\alpha + B_\alpha - A_\beta - B_\beta}{2}
+		\end{dcases}
+	\end{equation}
+	\begin{itemize}
+		\item 为了让结果更美观, 利用指标 $1, 2, 3$ 的轮换对称性, 并用 $r^i = \frac{1}{2} \epsilon^{i j k} J^{j k}, b^i = J^{0 i}$, 有,
+		\begin{equation}
+			\begin{dcases}
+				\alpha = i (r^3 + i b^3) & A_\alpha = \frac{i}{2} ((r^1 + i b^1) + i (r^2 + i b^2)) \quad B_\alpha = \frac{i}{2} ((r^1 + i b^1) - i ( r^2 + i b^2)) \\
+				\beta = i (r^3 - i b^3) & A_\beta = \frac{i}{2} ((r^1 - i b^1) + i (r^2 - i b^2)) \quad B_\beta = \frac{i}{2} ((r^1 - i b^1) - i (r^2 - i b^2))
+			\end{dcases}
+		\end{equation}
+		
+		\begin{tcolorbox}[title=calculation:]
+			对于 $r^i$ 和 $b^i$, 有,
+			\begin{equation}
+				[r^i, r^j] = \epsilon^{i j k} r^k \quad [b^i, b^j] = - \epsilon^{i j k} r^k \quad [r^i, b^j] = \epsilon^{i j k} b^k
+			\end{equation}
+			因此, 令,
+			\begin{equation}
+				J^{(\pm)}_i = \frac{i}{2} (r^i \pm i b^i) \Longrightarrow \begin{dcases}
+					[J^{(\pm)}_i, J^{(\pm)}_j] = i \epsilon_{i j k} J^{(\pm)}_k \\
+					[J^{(+)}_i, J^{(-)}_j] = 0
+				\end{dcases}
+			\end{equation}
+			有 $\mathrm{span}(J^{(\pm)}_i) = \mathfrak{su}(2)_\mathbb{C}$.
+		\end{tcolorbox}
+	\end{itemize}
+\end{itemize}
+
+\section{the \texorpdfstring{$(j_+, j_-)$}{(j+, j-)} representation of the Lorentz algebra}
+\begin{itemize}
+	\item $(j_+, j_-)$ representation, 也就是 $\text{spin-} j_+ \oplus \text{spin-} j_-$, 因此,
+	\begin{equation}
+		\begin{dcases}
+			\pi_{(j_+, j_-)}(r^i) = - i (J^{(+)}_i \otimes I^{(-)} + I^{(+)} \otimes J^{(-)}_i) \\
+			\pi_{(j_+, j_-)}(b^i) = - J^{(+)}_i \otimes I^{(-)} + I^{(+)} \otimes J^{(-)}_i
+		\end{dcases}
+	\end{equation}
+	下文中, 按照惯例省略 $\pi_{(j_+, j_-)}$.
+\end{itemize}
+
+\subsection{the \texorpdfstring{$(\frac{1}{2}, 0)$}{(1/2, 0)} representation}
+\begin{itemize}
+	\item $(\frac{1}{2}, 0)$ rep. (also known as left-handed spinor) 中 (spin-$0$ 中 $J^{(0)}_i = 0$),
+	\begin{equation}
+		\begin{dcases}
+			r^i = - i \Big( \frac{1}{2} \sigma_i \otimes 1 + I \otimes 0 \Big) = - \frac{i}{2} \sigma_i \\
+			b^i = - \frac{1}{2} \sigma_i \otimes 1 + I \otimes 0 = - \frac{1}{2} \sigma_i
+		\end{dcases}
+	\end{equation}
+	其中 $\sigma_i$ 的具体形式见 \eqref{10.1.14}.
+\end{itemize}
+
+\subsection{the \texorpdfstring{$(\frac{1}{2}, 0) \oplus (0, \frac{1}{2})$}{(1/2, 0)+(0, 1/2)} representation}
+\begin{itemize}
+	\item $(\frac{1}{2}, 0) \oplus (0, \frac{1}{2})$ rep. (also known as Dirac spinor) 中,
+	\begin{equation}
+		\pi_{(\frac{1}{2}, 0) \oplus (0, \frac{1}{2})}(J^{\mu \nu}) = \begin{pmatrix}
+			\pi_{(\frac{1}{2}, 0)}(J^{\mu \nu}) & 0 \\
+			0 & \pi_{(0, \frac{1}{2})}(J^{\mu \nu})
+		\end{pmatrix}
+	\end{equation}
+	展开写为,
+	\begin{equation}
+		r^i = - \frac{i}{2} \begin{pmatrix}
+			\sigma_i & \\
+			& \sigma_i
+		\end{pmatrix} \quad b^i = \frac{1}{2} \begin{pmatrix}
+			- \sigma_i & \\
+			& \sigma_i
+		\end{pmatrix}
+	\end{equation}
+\end{itemize}
+
+\subsection{the \texorpdfstring{$(\frac{1}{2}, \frac{1}{2})$}{(1/2, 0)} representation}
+\begin{itemize}
+	\item $(\frac{1}{2}, \frac{1}{2})$ rep. (also known as vector) 中,
+	\begin{equation}
+		\begin{dcases}
+			r^i = - i \Big( \frac{1}{2} \sigma_i \otimes I_{2 \times 2} + I_{2 \times 2} \otimes \frac{1}{2} \sigma_i \Big) \\
+			b^i = - \frac{1}{2} \sigma_i \otimes I_{2 \times 2} + I_{2 \times 2} \otimes \frac{1}{2} \sigma_i
+		\end{dcases}
+	\end{equation}
+	展开写为,
+	\begin{align}
+		& r^1 = - \frac{i}{2} \begin{pmatrix}
+			\sigma_1 & I \\
+			I & \sigma_1
+		\end{pmatrix} \quad r^2 = - \frac{i}{2} \begin{pmatrix}
+			\sigma_2 & - i I \\
+			i I & \sigma_2
+		\end{pmatrix} \quad r^3 = - \frac{i}{2} \begin{pmatrix}
+			\sigma_3 + I & \\
+			& \sigma_3 - I
+		\end{pmatrix} \notag \\
+		& b^1 = \frac{1}{2} \begin{pmatrix}
+			- \sigma_1 & I \\
+			I & - \sigma_1
+		\end{pmatrix} \quad b^2 = \frac{1}{2} \begin{pmatrix}
+			- \sigma_2 & - i I \\
+			i I & - \sigma_2
+		\end{pmatrix} \quad b^3 = \frac{1}{2} \begin{pmatrix}
+			- \sigma_3 + I & \\
+			& - \sigma_3 - I
+		\end{pmatrix}
+	\end{align}
+\end{itemize}
