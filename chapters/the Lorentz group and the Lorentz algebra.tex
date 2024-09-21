@@ -1,4 +1,8 @@
 \chapter{the Lorentz group and the Lorentz algebra}
+\begin{itemize}
+	\item Wikipedia: \href{https://en.wikipedia.org/wiki/Representation_theory_of_the_Lorentz_group}{Representation theory of the Lorentz group}.
+\end{itemize}
+
 \section{indefinite orthogonal groups}
 \begin{itemize}
 	\item $\mathrm{O}(p, q) = \{\Lambda \in \mathcal{M}_n(\mathbb{R}) | \Lambda^T \eta \Lambda = \eta\}$ is called the \href{https://en.wikipedia.org/wiki/Indefinite_orthogonal_group}{indefinite orthogonal group}, where $n = p + q$ and,
@@ -66,6 +70,13 @@
 	\end{equation}
 \end{itemize}
 
+\subsection{universal cover and \texorpdfstring{$\mathrm{Spin}(p, q)$}{Spin(p, q)}}
+\begin{itemize}
+	\item 注意到 $\mathrm{SO}_+(p, q)$ 是连通, 但不是单连通, 回顾 subsection \ref{subsection 5.1.1}, $\mathrm{SO}_+(p, q)$ 的表示不能唯一地由 $\mathfrak{so}(p, q)$ 的表示来确定.
+	
+	\item 回顾 subsection \ref{subsection 5.1.2}, $\mathrm{Spin}(p, q)$ 的李代数与 $\mathfrak{so}(p, q)$ 同构, 且是 simply connected, 是 $\mathrm{SO}_+(p, q)$ 的 universal cover.
+\end{itemize}
+
 \section{the Lorentz group}
 \begin{itemize}
 	\item $\mathrm{L} = \mathrm{O}(3, 1)$ is called the Lorentz group.
@@ -112,6 +123,19 @@
 	\end{align}
 \end{itemize}
 
+\subsection{parity and time reversal}
+\begin{itemize}
+	\item $\mathrm{O}(3, 1)$ 有 4 个连通分支,
+	\begin{equation}
+		I \in \mathrm{SO}_+(3, 1) \quad P T \in \mathrm{SO}_-(3, 1) \quad P \in \mathrm{O}'_+(3, 1) \quad T \in \mathrm{O}'_-(3, 1)
+	\end{equation}
+	其中,
+	\begin{equation}
+		P = \mathrm{diag}(+ 1, - 1, - 1, - 1) \quad T = \mathrm{diag}(- 1, + 1, + 1, + 1)
+	\end{equation}
+	另外, $\eta P \eta = P, \eta T \eta = T$.
+\end{itemize}
+
 \section{the Lorentz algebra}
 \begin{itemize}
 	\item $\mathfrak{so}(3, 1) = \{A \in \mathcal{M}_4(\mathbb{R}) | A^T = - \eta A \eta\}$.
@@ -151,7 +175,7 @@
 			1 & & & 0
 		\end{pmatrix}
 	\end{align}
-	在某个方向做 rotation 或 boost 可以一般地写为 $\lambda = e^{\frac{1}{2} \omega_{\mu \nu} J^{\mu \nu}}$ (另外, $\mathrm{SO}(3, 1)$ is compact, 它的连通分支内, 所有元素都可以写成指数形式, 原因见 \eqref{4.2.8}).
+	在某个方向做 rotation 或 boost 可以一般地写为 $\Lambda = e^{\frac{1}{2} \omega_{\mu \nu} J^{\mu \nu}}$ (另外, $\mathrm{SO}(3, 1)$ is compact, 它的连通分支内, 所有元素都可以写成指数形式, 原因见 \eqref{4.2.8}).
 	\begin{itemize}
 		\item $J^{\mu \nu}$ 可以一般地写作如下形式,
 		\begin{equation}
@@ -162,6 +186,13 @@
 		\begin{equation}
 			[J^{\mu \nu}, J^{\rho \sigma}] = \eta^{\mu \rho} J^{\nu \sigma} + \eta^{\nu \sigma} J^{\mu \rho} - \eta^{\mu \sigma} J^{\nu \rho} - \eta^{\nu \rho} J^{\mu \sigma}
 		\end{equation}
+		
+		\item 注意, $\mathrm{SO}_+(3, 1)$ 不是单连通, 所以 $\mathrm{SO}_+(3, 1)$ 的表示 $\Pi$ 不能由 $\pi$ 唯一确定, 例如可能出现如下情况,
+		\begin{align}
+			& \Lambda^1 = e^{\frac{1}{2} \omega^1_{\mu \nu} J^{\mu \nu}} \quad \Lambda^2 = e^{\frac{1}{2} \omega^2_{\mu \nu} J^{\mu \nu}} \Longrightarrow \Lambda^3 = \Lambda^1 \Lambda^2 = e^{\frac{1}{2} \omega^3_{\mu \nu} J^{\mu \nu}} \notag \\
+			& \multicolumn{1}{c}{$\Updownarrow$ but} \notag \\
+			& e^{\frac{1}{2} \omega^1_{\mu \nu} \pi(J^{\mu \nu})} e^{\frac{1}{2} \omega^2_{\mu \nu} \pi(J^{\mu \nu})} \neq e^{\frac{1}{2} \omega^3_{\mu \nu} \pi(J^{\mu \nu})}
+		\end{align}
 	\end{itemize}
 \end{itemize}
 
@@ -261,6 +292,11 @@
 		\end{dcases}
 	\end{equation}
 	其中 $\sigma_i$ 的具体形式见 \eqref{10.1.14}.
+	
+	\item 对于 $P, T, P T$, 一个自然的定义是,
+	\begin{equation}
+		\Pi_{(\frac{1}{2}, 0)}(P) = \mathcolor{red}{(?)} \quad \Pi_{(\frac{1}{2}, 0)}(T) = \mathcolor{red}{(?)}
+	\end{equation}
 \end{itemize}
 
 \subsection{the \texorpdfstring{$(\frac{1}{2}, 0) \oplus (0, \frac{1}{2})$}{(1/2, 0)+(0, 1/2)} representation}
@@ -281,6 +317,14 @@
 			- \sigma_i & \\
 			& \sigma_i
 		\end{pmatrix}
+	\end{equation}
+	
+	\item 对于 $P, T, P T$, 一个自然的定义是,
+	\begin{equation}
+		\Pi_{(\frac{1}{2}, 0) \oplus (0, \frac{1}{2})}(P) = \begin{pmatrix}
+			& I \\
+			I &
+		\end{pmatrix} = I \otimes \tau_1 \quad \Pi_{(\frac{1}{2}, 0) \oplus (0, \frac{1}{2})}(T) = \mathcolor{red}{(?)}
 	\end{equation}
 \end{itemize}
 
@@ -316,4 +360,9 @@
 			& - \sigma_3 - I
 		\end{pmatrix}
 	\end{align}
+\end{itemize}
+
+\section{\texorpdfstring{$P, T$}{P, T} in representation}
+\begin{itemize}
+	\item 由于 $P, T, P T$ 与单位元 $I$ 不在同一个单连通分支
 \end{itemize}
