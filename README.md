@@ -12,4 +12,4 @@
 
 ---
 
-- [what is a GNU GPL License?](https://www.youtube.com/watch?v=6uoXqjVl4TQ)
+- [What is a GNU GPL License?](https://www.youtube.com/watch?v=6uoXqjVl4TQ)
