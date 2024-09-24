@@ -9,7 +9,3 @@
 - 微分几何入门与广义相对论 (中册), by 梁灿彬, 周彬.
 
 另外, 文档中插入的 pdf 格式的矢量图 (位于 `chapters/figures`) 使用 [ipe](https://en.wikipedia.org/wiki/Ipe_(software)) 绘制, 修改; rank-3 root systems 用 [vZome](https://www.vzome.com/) 绘制.
-
----
-
-- [What is the GNU GPL License?](https://www.youtube.com/watch?v=6uoXqjVl4TQ)
