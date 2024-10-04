@@ -1,0 +1,57 @@
+\chapter{the Poincaré group and the Poincaré algebra}
+\section{the Poincaré group}
+\begin{itemize}
+	\item Poincaré 群为 $\mathrm{P} = \mathbb{R}^{3, 1} \rtimes \mathrm{O}(3, 1)$, 其群乘法为,
+	\begin{equation}
+		(\Lambda_1, a_1) (\Lambda_2, a_2) = (\Lambda_1 \Lambda_2, a_1 + \Lambda_1 a_2) \quad \text{where} \quad \Lambda_i \in \mathrm{SO}(3, 1), a_i \in \mathbb{R}^{3, 1}
+	\end{equation}
+	
+	\begin{tcolorbox}[title=comment:]
+		可以认为群元素 $(\Lambda, a)$ 对应坐标变换,
+		\begin{equation}
+			x' = \Lambda x + a
+		\end{equation}
+	\end{tcolorbox}
+	
+	\item $\mathbb{R}^{3, 1} \rtimes \mathrm{SL}(2, \mathbb{C})$ 是 Poincaré 群的 universal cover.
+\end{itemize}
+
+\section{the Poincaré algebra}
+\begin{itemize}
+	\item $\mathbb{R}^{3, 1} \rtimes \mathrm{SO}(3, 1)_+$ 是 compact connect subgroup, 且与单位元 $(I, 0)$ 连通, 所以其中的元素都可以写成,
+	\begin{equation}
+		(\Lambda, a) = \exp \Big( a^\mu P_\mu + \frac{1}{2} \omega_{\mu \nu} J^{\mu \nu} \Big)
+	\end{equation}
+	
+	\item 得到 Poincaré algebra 的基矢的对易关系,
+	\begin{equation}
+		\begin{dcases}
+			[P_\mu, P_\nu] = 0 \\
+			[P_\rho, J^{\mu \nu}] = - \delta^\mu_\rho P^\nu + \delta^\nu_\rho P^\mu \\
+			[J^{\mu \nu}, J^{\rho \sigma}] = \eta^{\mu \rho} J^{\nu \sigma} + \eta^{\nu \sigma} J^{\mu \rho} - \eta^{\mu \sigma} J^{\nu \rho} - \eta^{\nu \rho} J^{\mu \sigma}
+		\end{dcases}
+	\end{equation}
+	注意, 与 Wikipedia: \href{https://en.wikipedia.org/wiki/Poincar%C3%A9_group}{Poincaré group} 对比结果时, 需要注意我们的度规号差不同, 且没有系数 $i$.
+	
+	\begin{tcolorbox}[title=proof:]
+		坐标 $\{\omega, a\}$ 覆盖 Poincaré 群的单位元的邻域, 定义,
+		\begin{equation}
+			P_\mu = \frac{d}{da^\mu} \Big|_{a = 0} (1, a) \quad J^{\mu \nu} = \frac{d}{d\omega_{\mu \nu}} (\Lambda(\omega), 0)
+		\end{equation}
+		对应的 left-invariant vector fields 分别为,
+		\begin{equation}
+			P_\mu \Big|_{(\Lambda, a)} = \tensor{\Lambda}{_\mu^\nu} \frac{\partial}{\partial a^\nu} \quad J^{\mu \nu} \Big|_{(\Lambda, a)} = f(\omega) \frac{\partial}{\partial\omega_{\mu \nu}}
+		\end{equation}
+		其中 $\Lambda(\omega)$ 的具体形式见 \eqref{13.2.1} 和 \eqref{13.2.2}, 所以,
+		\begin{align}
+			[P_\mu, P_\nu] &= \Big( \frac{\partial}{\partial a^\mu} \tensor{\Lambda}{^\rho_\nu}(\omega) \frac{\partial}{\partial a^\rho} - \frac{\partial}{\partial a^\nu} \tensor{\Lambda}{^\rho_\mu}(\omega) \frac{\partial}{\partial a^\rho} \Big) \Big|_{\omega = a = 0} = 0 \\
+			[P_\rho, J^{\mu \nu}] &= \Big( \frac{\partial}{\partial a^\rho} f(\omega) \frac{\partial}{\partial\omega_{\mu \nu}} - \frac{\partial}{\partial\omega_{\mu \nu}} \tensor{\Lambda}{^\sigma_\rho}(\omega) \frac{\partial}{\partial a^\sigma} \Big) \Big|_{\omega = a = 0} \notag \\
+			&= - \tensor{(J^{\mu \nu})}{^\sigma_\rho} \frac{\partial}{\partial a^\sigma} = - \delta^\mu_\rho P^\nu + \delta^\nu_\rho P^\mu \\
+			[J^{\mu \nu}, J^{\rho \sigma}] &= \cdots
+		\end{align}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		最关键的步骤是找到 left-invariant vector fields, 这部分内容在笔记 \href{https://github.com/siyang03/my-note---maps-between-manifolds}{maps between maifolds}.
+	\end{tcolorbox}
+\end{itemize}
