@@ -294,7 +294,7 @@
 	其中 $\sigma_i$ 的具体形式见 \eqref{10.1.14}.
 \end{itemize}
 
-\subsection{the \texorpdfstring{$(\frac{1}{2}, 0) \oplus (0, \frac{1}{2})$}{(1/2, 0)+(0, 1/2)} representation}
+\subsection{the \texorpdfstring{$(\frac{1}{2}, 0) \oplus (0, \frac{1}{2})$}{(1/2, 0)+(0, 1/2)} representation} \label{subsection 13.5.2}
 \begin{itemize}
 	\item 在 $(\frac{1}{2}, 0) \oplus (0, \frac{1}{2})$ rep. (also known as Dirac spinor) 中,
 	\begin{equation}
@@ -374,5 +374,92 @@
 
 \subsection{the \texorpdfstring{$(1, 0) \oplus (0, 1)$}{(1, 0)+(0, 1)} representation}
 \begin{itemize}
-	\item 
+	\item 在 $(1, 0) \oplus (0, 1)$ rep. 中 (矩阵直和参考 subsection \ref{subsection 13.5.2}),
+	\begin{equation} \label{13.5.9}
+		\begin{dcases}
+			r^i = - i (J_i \oplus J_i) \\
+			b^i = (- J_i) \oplus J_i
+		\end{dcases}
+	\end{equation}
+	
+	\item 考虑一个反对称张量,
+	\begin{equation}
+		F_{\mu \nu} = \begin{pmatrix}
+			0 & E_1 & E_2 & E_3 \\
+			- E_1 & 0 & - B_3 & B_2 \\
+			- E_2 & B_3 & 0 & - B_1 \\
+			- E_3 & - B_2 & B_1 & 0
+		\end{pmatrix}
+	\end{equation}
+	在 Lorentz 变换下,
+	\begin{equation}
+		F \mapsto (\eta e^{\frac{1}{2} \omega J} \eta) F (\eta e^{\frac{1}{2} \omega J} \eta)^T
+	\end{equation}
+	考虑向量 $F = (\vec{E}, \vec{B})^T$ 构成的表示,
+	\begin{align}
+		& r^1 = \left( \begin{array}{ccc|ccc}
+			0 & 0 & 0 & 0 & 0 & 0 \\
+			0 & 0 & - 1 & 0 & 0 & 0 \\
+			0 & 1 & 0 & 0 & 0 & 0 \\
+			\hline
+			0 & 0 & 0 & 0 & 0 & 0 \\
+			0 & 0 & 0 & 0 & 0 & - 1 \\
+			0 & 0 & 0 & 0 & 1 & 0 \\
+		\end{array} \right) \quad r^2 = \left( \begin{array}{ccc|ccc}
+			0 & 0 & 1 & 0 & 0 & 0 \\
+			0 & 0 & 0 & 0 & 0 & 0 \\
+			- 1 & 0 & 0 & 0 & 0 & 0 \\
+			\hline
+			0 & 0 & 0 & 0 & 0 & 1 \\
+			0 & 0 & 0 & 0 & 0 & 0 \\
+			0 & 0 & 0 & - 1 & 0 & 0 \\
+		\end{array} \right) \notag \\
+		& r^3 = \left( \begin{array}{ccc|ccc}
+			0 & - 1 & 0 & 0 & 0 & 0 \\
+			1 & 0 & 0 & 0 & 0 & 0 \\
+			0 & 0 & 0 & 0 & 0 & 0 \\
+			\hline
+			0 & 0 & 0 & 0 & - 1 & 0 \\
+			0 & 0 & 0 & 1 & 0 & 0 \\
+			0 & 0 & 0 & 0 & 0 & 0 \\
+		\end{array} \right) b^1 = \left( \begin{array}{ccc|ccc}
+			0 & 0 & 0 & 0 & 0 & 0 \\
+			0 & 0 & 0 & 0 & 0 & 1 \\
+			0 & 0 & 0 & 0 & - 1 & 0 \\
+			\hline
+			0 & 0 & 0 & 0 & 0 & 0 \\
+			0 & 0 & - 1 & 0 & 0 & 0 \\
+			0 & 1 & 0 & 0 & 0 & 0 \\
+		\end{array} \right) \notag \\
+		& b^2 = \left( \begin{array}{ccc|ccc}
+			0 & 0 & 0 & 0 & 0 & - 1 \\
+			0 & 0 & 0 & 0 & 0 & 0 \\
+			0 & 0 & 0 & 1 & 0 & 0 \\
+			\hline
+			0 & 0 & 1 & 0 & 0 & 0 \\
+			0 & 0 & 0 & 0 & 0 & 0 \\
+			- 1 & 0 & 0 & 0 & 0 & 0 \\
+		\end{array} \right) \quad b^3 = \left( \begin{array}{ccc|ccc}
+			0 & 0 & 0 & 0 & 1 & 0 \\
+			0 & 0 & 0 & - 1 & 0 & 0 \\
+			0 & 0 & 0 & 0 & 0 & 0 \\
+			\hline
+			0 & - 1 & 0 & 0 & 0 & 0 \\
+			1 & 0 & 0 & 0 & 0 & 0 \\
+			0 & 0 & 0 & 0 & 0 & 0 \\
+		\end{array} \right) \label{13.5.2}
+	\end{align}
+	
+	\item \eqref{13.5.9} 和 \eqref{13.5.2} 中的表示是等价的, 它们之间的相似变换矩阵是,
+	\begin{equation}
+		S = \begin{pmatrix}
+			\alpha A & - i \alpha A \\
+			\beta A & i \beta A
+		\end{pmatrix} \quad \text{where} \quad A = \begin{pmatrix}
+			1 & - i & 0 \\
+			0 & 0 & - \sqrt{2} \\
+			- 1 & - i & 0
+		\end{pmatrix}
+	\end{equation}
+	其中 $\alpha, \beta \in \mathbb{C} - \{0\}$.
 \end{itemize}
