@@ -317,7 +317,7 @@
 
 \subsection{the \texorpdfstring{$(\frac{1}{2}, \frac{1}{2})$}{(1/2, 0)} representation}
 \begin{itemize}
-	\item 在 $(\frac{1}{2}, \frac{1}{2})$ rep. (also known as 4-vector \textcolor{red}{(?)}) 中,
+	\item 在 $(\frac{1}{2}, \frac{1}{2})$ rep. (also known as 4-vector) 中,
 	\begin{equation}
 		\begin{dcases}
 			r^i = - i \Big( \frac{1}{2} \sigma_i \otimes I_{2 \times 2} + I_{2 \times 2} \otimes \frac{1}{2} \sigma_i \Big) \\
@@ -347,6 +347,17 @@
 			& - \sigma_3 - I
 		\end{pmatrix}
 	\end{align}
+	
+	\item 注意到存在如下相似变换,
+	\begin{equation}
+		S^{- 1} \pi_{(\frac{1}{2}, \frac{1}{2})}(J^{\mu \nu}) S = - 2 \eta^{[\mu| \rho} \tensor{\delta}{^{|\nu]}_\sigma} \quad \text{where} \quad S = \begin{pmatrix}
+			0 & - 1 & i & 0 \\
+			1 & 0 & 0 & 1 \\
+			- 1 & 0 & 0 & 1 \\
+			0 & 1 & i & 0
+		\end{pmatrix}
+	\end{equation}
+	所以 $(\frac{1}{2}, \frac{1}{2})$ rep. 对应 4-vector.
 \end{itemize}
 
 \subsection{the \texorpdfstring{$(1, 0)$}{(1, 0)} representation}
